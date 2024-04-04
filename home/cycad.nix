@@ -2,6 +2,10 @@
 {
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
+
+  imports = [
+    ./cycad/nixvim.nix
+  ];
   
   # Programs
 
@@ -73,19 +77,19 @@
     #   # even more plugins : https://search.nixos.org/packages
     # };
 
-    nixvim = {
-      enable = true;
-      colorschemes.catppuccin = {
-        enable = true;
-        flavour = "mocha";
-      };
-      plugins = {
-        bufferline.enable = true;
-        lualine.enable = true;
-        # neoscroll.enable = true;
-        nvim-tree.enable = true;
-      };
-    };
+    # nixvim = {
+    #   enable = true;
+    #   colorschemes.catppuccin = {
+    #     enable = true;
+    #     flavour = "mocha";
+    #   };
+    #   plugins = {
+    #     bufferline.enable = true;
+    #     lualine.enable = true;
+    #     # neoscroll.enable = true;
+    #     nvim-tree.enable = true;
+    #   };
+    # };
 
     vscode = {
       enable = true;
