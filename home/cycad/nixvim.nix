@@ -1,10 +1,10 @@
-{ config, pkgs, lib, unstablePkgs, nixvim, ... }:
+{ config, lib, ... }:
 {
   options = {
     nixvim.enable = lib.mkEnableOption "enables nixvim";
   };
   config = lib.mkIf config.nixvim.enable {
-    nixvim = {
+    programs.nixvim = {
       enable = true;
       colorschemes.catppuccin = {
         enable = true;
