@@ -9,7 +9,7 @@
       xserver = {
         # Enable X11
         enable = true;
-        # Enable GNOME DE
+        # Enable GNOME DM
         displayManager.gdm.enable = true;
         desktopManager.gnome.enable = true;
         # Configure keymap in X11

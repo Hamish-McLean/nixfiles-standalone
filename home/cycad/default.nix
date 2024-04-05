@@ -1,4 +1,5 @@
-{ config, pkgs, lib, unstablePkgs, nixvim, ... }:
+# Cycad's default home manager module which imports other home manager modules
+{ pkgs, ... }:
 {
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
@@ -8,20 +9,12 @@
     ./git.nix
     ./gnome.nix
     ./gtk.nix
+    ./hyprland.nix
     ./nixvim.nix
     ./starship.nix
     ./tmux.nix
     ./vscodium.nix
   ];
-
-  fish.enable = true;
-  git.enable = true;
-  gnome.enable = true;
-  gtk_config.enable = true;
-  nixvim.enable = true;
-  starship.enable = true;
-  tmux.enable = true;
-  vscodium.enable = true;
 
   # Fonts
   fonts.fontconfig.enable = true;

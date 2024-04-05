@@ -10,9 +10,13 @@
 
     nixvim.url = "github:nix-community/nixvim/nixos-23.11";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
+    hyprland-plugins.inputs.hyprland.follows = "hyprland";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nixvim, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nixvim, hyprland, hyprland-plugins, ... }:
     let 
       inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
 
@@ -34,20 +38,18 @@
             };
             modules = [
               ./hosts/${hostname}
-
+              ./hosts/common.nix
               home-manager.nixosModules.home-manager {
                 networking.hostName = hostname;
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.${username} = { 
                   imports = [ 
-                    ./home/${username}
+                    ./hosts/${hostname}/${username}.nix
                     nixvim.homeManagerModules.nixvim 
                   ]; 
                 };
               }
-
-              ./hosts/common.nix
             ];
           };
 

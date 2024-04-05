@@ -9,7 +9,7 @@
       ./hardware-configuration.nix
       ../common.nix
       ../../modules/gnome.nix
-      # ../../modules/hyprland.nix
+      ../../modules/hyprland.nix
     ];
 
   # Flakes
@@ -26,9 +26,6 @@
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true; # Enable networking
   };
-
-  # Set your time zone.
-  time.timeZone = "Europe/London";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -69,10 +66,13 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
+  
   gnome.enable = true;
+  hyprland.enable = true;
 
   programs.fish.enable = true;
+
+  services.tailscale.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cycad = {
@@ -83,35 +83,13 @@
     packages = (with pkgs; [
       bitwarden
       firefox
-      # kdeconnect
-      # obsidian
       spotify
       syncthing
       telegram-desktop
-      # vscodium
     ]) ++ (with unstablePkgs; [
       obsidian
     ]);
   };
-
-  services.tailscale.enable = true;
-
-  nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "obsidian"
-      "github-copilot-cli"
-      # "insync"
-      # "insync-pkg"
-      # "warp-terminal"
-    ];
-    # permittedInsecurePackages = [
-    #   "electron-25.9.0" # Required for obsidian (for now)
-    # ];
-  };
-
-  # nixpkgs.config.permittedInsecurePackages = [
-  #   "electron-25.9.0"
-  # ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
