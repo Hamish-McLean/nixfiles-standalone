@@ -7,9 +7,9 @@
     gtk = {
       enable = true;
       theme = {
-        name = "Catppuccin-Mocha";
+        name = "Catppuccin-Mocha-Standard-Lavender-Dark";
         package = pkgs.catppuccin-gtk.override {
-          accents = [ "teal" ];
+          accents = [ "lavender" ];
           size = "standard";
           # tweaks = [ "rimless" ];
           variant = "mocha";

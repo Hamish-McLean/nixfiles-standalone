@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, unstablePkgs, ... }:
 {
   options = {
     gnome_config.enable = lib.mkEnableOption "enables gnome_config";
@@ -8,10 +8,16 @@
     # GNOME dconf settings
     dconf.settings = {
       "org/gnome/shell" = {
-        disable-user-extensions = false;
 
+        # Theme
+        color-scheme = "prefer-dark";
+        gtk-theme = "Catppuccin-Mocha-Standard-Lavender-Dark";
+
+        # Extensions
+        disable-user-extensions = false;
         # `gnome-extensions list` for a list
         enabled-extensions = [
+          "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
           "gsconnect@andyholmes.github.io"
           "iso8601ish@S410"
           "just-perfection-desktop@just-perfection"
@@ -23,7 +29,7 @@
     };
 
     home.packages = with pkgs.gnomeExtensions; [
-      gsconnect
+      # gsconnect
       iso8601-ish-clock
       just-perfection
       mpris-label

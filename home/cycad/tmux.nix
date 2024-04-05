@@ -14,6 +14,12 @@
         catppuccin
         better-mouse-mode
       ];
+      extraConfig = ''
+        set -g mouse on
+        set -g @catppuccin_flavour 'mocha'
+        set -g @catppuccin_window_tabs_enabled on
+        set -g @catppuccin_date_time "%H:%M"
+      '';
     };
   };
 }
