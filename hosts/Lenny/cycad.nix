@@ -1,17 +1,21 @@
-# Cycad's host-specific home manager module for toggling other home manager modules
+/*
+Cycad's home manager module for Lenny.
+This imports Cycad's default home manager module which imports the other modules.
+Modules can be enabled or disabled here.
+*/
 { ... }:
 {
   imports = [
     ../../home/cycad
   ];
 
-  fish.enable = true;
-  git.enable = true;
-  gnome_config.enable = true;
-  gtk_config.enable = true;
+  # Enable all cliPrograms modules
+  cliPrograms.enable = true;
+
+  # Enable all guiPrograms modules
+  guiPrograms.enable = true;
+
+  # Disable specific modules
   hyprland.enable = false;
-  nixvim.enable = true;
-  starship.enable = true;
-  tmux.enable = true;
-  vscodium.enable = true;
+
 }

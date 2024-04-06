@@ -5,15 +5,8 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ./fish.nix
-    ./git.nix
-    ./gnome.nix
-    ./gtk.nix
-    ./hyprland.nix
-    ./nixvim.nix
-    ./starship.nix
-    ./tmux.nix
-    ./vscodium.nix
+    ./cliPrograms
+    ./guiPrograms
   ];
 
   # Fonts
