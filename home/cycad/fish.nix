@@ -7,7 +7,7 @@
     programs.fish = {
       enable = true;
       interactiveShellInit = ''
-        set -U fish_greeting "🐟"
+        set -U fish_greeting ""
       '';
       # plugins = [ { name = "tide"; src = pkgs.fishPlugins.tide.src; } ];
       
