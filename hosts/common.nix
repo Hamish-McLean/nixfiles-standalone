@@ -26,7 +26,7 @@ in
     git
     github-copilot-cli
     htop
-    helix
+    nano
     neovim
     neofetch
     tmux 
