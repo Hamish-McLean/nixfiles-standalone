@@ -6,7 +6,7 @@ Modules can be enabled or disabled here.
 { ... }:
 {
   imports = [
-    ../../home/cycad
+    ../default.nix
   ];
 
   # Enable all cliPrograms modules
