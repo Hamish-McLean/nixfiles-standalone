@@ -47,7 +47,7 @@
                 home-manager.useUserPackages = true;
                 home-manager.users.${username} = { 
                   imports = [ 
-                    ./hosts/${hostname}/${username}.nix
+                    ./home/${username}/hosts/${hostname}.nix
                     nixvim.homeManagerModules.nixvim 
                   ]; 
                 };
