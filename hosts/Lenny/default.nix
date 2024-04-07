@@ -6,15 +6,12 @@
 
 {
   imports = [
-      ./hardware-configuration.nix
-      nixos-hardware.nixosModules.lenovo-thinkpad-t480s
-      ../common.nix
-      ../../modules/gnome.nix
-      ../../modules/hyprland.nix
-    ];
-
-  # Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    ./hardware-configuration.nix
+    nixos-hardware.nixosModules.lenovo-thinkpad-t480s
+    ../common.nix
+    ../../modules/gnome.nix
+    ../../modules/hyprland.nix
+  ];
 
   # Bootloader
   boot.loader = {

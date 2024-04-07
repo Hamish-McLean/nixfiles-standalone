@@ -7,8 +7,8 @@ in
 
   nix = {
     settings = {
-        experimental-features = [ "nix-command" "flakes" ];
-        # warn-dirty = false;
+      experimental-features = [ "nix-command" "flakes" ];
+      # warn-dirty = false;
     };
     # Automate garbage collection
     gc = {
@@ -17,11 +17,6 @@ in
       options = "--delete-older-than 5";
     };
   };
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
 
   environment.systemPackages = with pkgs; [
     curl
