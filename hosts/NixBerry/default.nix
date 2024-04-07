@@ -16,6 +16,12 @@
     };
   };
 
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/NIXOS_SD";
+    fsType =  "ext4";
+    options = [ "noatime" ];
+  };
+
   networking = {
     hostName = "NixBerry";
     wireless.enable = true;  # Enables wireless support via wpa_supplicant.
