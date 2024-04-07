@@ -35,6 +35,7 @@
       mpris-label
       tray-icons-reloaded
       user-themes
+      wintile-windows-10-window-tiling-for-gnome
     ];
     # ]) ++ (with pkgs; [
     #   nerdfonts

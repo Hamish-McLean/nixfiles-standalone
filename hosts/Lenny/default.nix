@@ -84,6 +84,7 @@
       spotify
       syncthing
       telegram-desktop
+      whatsapp-for-linux
     ]) ++ (with unstablePkgs; [
       obsidian
     ]);
