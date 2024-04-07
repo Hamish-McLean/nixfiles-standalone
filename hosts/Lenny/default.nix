@@ -2,11 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, unstablePkgs, lib, ... }:
+{ config, pkgs, unstablePkgs, lib, nixos-hardware, ... }:
 
 {
   imports = [
       ./hardware-configuration.nix
+      nixos-hardware.nixosModules.lenovo-thinkpad-t480s
       ../common.nix
       ../../modules/gnome.nix
       ../../modules/hyprland.nix
