@@ -10,6 +10,8 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+    catppuccin.url = "github:catppuccin/nix";
+
     nixvim.url = "github:nix-community/nixvim/nixos-23.11";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -18,7 +20,7 @@
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nixvim, hyprland, hyprland-plugins, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, catppuccin, nixvim, hyprland, hyprland-plugins, ... }:
     let 
       inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
 
@@ -48,7 +50,8 @@
                 home-manager.users.${username} = { 
                   imports = [ 
                     ./home/${username}/hosts/${hostname}.nix
-                    nixvim.homeManagerModules.nixvim 
+                    nixvim.homeManagerModules.nixvim
+                    catppuccin.homeManagerModules.catppuccin
                   ]; 
                 };
               }

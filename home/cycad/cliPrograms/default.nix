@@ -10,6 +10,7 @@ Modules are enabled by default so can be disabled by setting them to false.
   imports = [
     ./fish.nix
     ./git.nix
+    ./helix.nix
     ./nixvim.nix
     ./starship.nix
     ./tmux.nix
@@ -22,6 +23,7 @@ Modules are enabled by default so can be disabled by setting them to false.
   config = lib.mkIf config.cliPrograms.enable {
     fish.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
+    helix.enable = lib.mkDefault true;
     nixvim.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;

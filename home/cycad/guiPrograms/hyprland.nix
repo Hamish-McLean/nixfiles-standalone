@@ -6,6 +6,7 @@
   config = lib.mkIf config.hyprland.enable {
     wayland.windowManager.hyprland = {
       enable = true;
+      catppuccin.enable = true;
       settings = {
         "$mod" = "SUPER";
         bind =

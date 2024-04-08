@@ -12,6 +12,8 @@
   # Fonts
   fonts.fontconfig.enable = true;
 
+  catppuccin.flavour = "mocha";
+
   home.packages = with pkgs; [
     nerdfonts
   ];
