@@ -8,6 +8,7 @@ Modules are enabled by default so can be disabled by setting them to false.
 {
   # Cli programs to import
   imports = [
+    ./btop.nix
     ./fish.nix
     ./git.nix
     ./helix.nix
@@ -22,6 +23,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     cliPrograms.enable = lib.mkEnableOption "enables cliPrograms";
   };
   config = lib.mkIf config.cliPrograms.enable {
+    btop.enable = lib.mkDefault true;
     fish.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
     helix.enable = lib.mkDefault true;
