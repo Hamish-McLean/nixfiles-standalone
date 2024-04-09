@@ -11,7 +11,7 @@
 
         # Theme
         color-scheme = "prefer-dark";
-        gtk-theme = "Catppuccin-Mocha-Standard-Lavender-Dark";
+        # gtk-theme = "Catppuccin-Mocha-Standard-Lavender-Dark";
 
         # Extensions
         disable-user-extensions = false;

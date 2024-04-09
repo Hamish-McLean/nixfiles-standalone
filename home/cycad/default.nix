@@ -12,7 +12,12 @@
   # Fonts
   fonts.fontconfig.enable = true;
 
-  catppuccin.flavour = "mocha";
+  xdg.enable = true;
+
+  catppuccin = {
+    flavour = "mocha";
+    accent = "sapphire";
+  };
 
   home.packages = with pkgs; [
     nerdfonts

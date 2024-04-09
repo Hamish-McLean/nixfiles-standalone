@@ -5,9 +5,9 @@
   };
   config = lib.mkIf config.starship.enable {
     programs.starship = 
-      let
-        flavour = "mocha";
-      in
+      # let
+      #   flavour = "mocha";
+      # in
       {
         enable = true;
         # Configuration written to ~/.config/starship.toml
@@ -15,7 +15,7 @@
         settings = {
           add_newline = true;
           format = "$all";
-          palette = "catppuccin_${flavour}";
+          # palette = "catppuccin_${flavour}";
 
           # character = {
           #   success_symbol = "[➜](bold green)";

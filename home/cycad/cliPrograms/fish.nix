@@ -4,7 +4,6 @@
     fish.enable = lib.mkEnableOption "enables fish";
   };
   config = lib.mkIf config.fish.enable {
-    xdg.enable = true; # Required for fish theming
     programs.fish = {
       enable = true;
       catppuccin.enable = true;

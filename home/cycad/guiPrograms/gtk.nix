@@ -6,15 +6,10 @@
   config = lib.mkIf config.gtk_config.enable {
     gtk = {
       enable = true;
-      catppuccin.enable = true;
-      # theme = {
-      #   name = "Catppuccin-Mocha-Standard-Lavender-Dark";
-      #   package = pkgs.catppuccin-gtk.override {
-      #     accents = [ "lavender" ];
-      #     size = "standard";
-      #     # tweaks = [ "rimless" ];
-      #     variant = "mocha";
-      #   };
+      catppuccin = {
+        enable = true;
+        cursor.enable = true;
+      };
     };
 
     # Now symlink the `~/.config/gtk-4.0/` folder declaratively:
