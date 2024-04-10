@@ -8,7 +8,7 @@ in
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
-      # warn-dirty = false;
+      warn-dirty = false;
     };
     # Automate garbage collection
     gc = {
@@ -17,6 +17,8 @@ in
       options = "--delete-older-than 5";
     };
   };
+
+  security.sudo.wheelNeedsPassword = false;
 
   environment.systemPackages = with pkgs; [
     curl
