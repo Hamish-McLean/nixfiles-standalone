@@ -10,6 +10,9 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+
     catppuccin.url = "github:catppuccin/nix";
 
     nixvim.url = "github:nix-community/nixvim/nixos-23.11";
@@ -20,7 +23,10 @@
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, catppuccin, nixvim, hyprland, hyprland-plugins, ... }:
+  outputs = inputs@{
+      self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nixos-wsl, 
+      catppuccin, nixvim, hyprland, hyprland-plugins, ... 
+    }:
     let 
       inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
 
@@ -36,7 +42,7 @@
           nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = {
-              inherit pkgs unstablePkgs nixos-hardware;
+              inherit pkgs unstablePkgs nixos-hardware nixos-wsl;
               # lets us use these things in modules
               customArgs = { inherit system hostname username pkgs unstablePkgs; };
             };
@@ -62,6 +68,8 @@
       nixosConfigurations = {
         Lenny = nixosSystem "x86_64-linux" "Lenny" "cycad";
         NixBerry = nixosSystem "aarch64-linux" "NixBerry" "cycad";
+        Roger = nixosSystem "x86_64-linux" "Roger" "cycad";
+        EMR0148 = nixosSystem "x86_64-linux" "EMR0148" "cycad";
       };
     };
 }
