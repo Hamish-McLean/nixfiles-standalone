@@ -10,7 +10,7 @@
     defaultUser = "cycad";
   };
 
-  networking.hostName = $hostname;
+  networking.hostName = "EMR0148";
 
   programs.fish.enable = true;
 
@@ -18,8 +18,11 @@
     isNormalUser = true;
     packages = with pkgs; [
       fish
+      gh
+      git
       neovim
       tmux
+      wget
     ];
     shell = pkgs.fish;
   };
