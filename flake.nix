@@ -13,6 +13,12 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     catppuccin.url = "github:catppuccin/nix";
 
     nixvim.url = "github:nix-community/nixvim/nixos-23.11";
@@ -64,12 +70,36 @@
             ];
           };
 
+      nixOnDroidSystem = system: hostname: username:
+        let
+          pkgs = genPkgs system;
+          unstablePkgs = genUnstablePkgs system;
+        in
+          nix-on-droid.lib.nixOnDroidConfiguration {
+            inherit system;
+            specialArgs = {
+              inherit pkgs unstablePkgs nix-on-droid;
+              customArgs = { inherit system hostname username pkgs unstablePkgs; };
+            };
+            modules = [
+              ./hosts/${hostname}
+              ./home/cycad/hosts/${hostname} # Cycad username hardcoded for now
+            ];
+          };
+
     in {
       nixosConfigurations = {
+        # NixOS hosts
         Lenny = nixosSystem "x86_64-linux" "Lenny" "cycad";
         NixBerry = nixosSystem "aarch64-linux" "NixBerry" "cycad";
+
+        # WSL hosts
         Roger = nixosSystem "x86_64-linux" "Roger" "cycad";
         EMR0148 = nixosSystem "x86_64-linux" "EMR0148" "cycad";
+      };
+
+      nixOnDroidConfigurations = {
+        Pixel5 = nixOnDroidSystem "aarch64-linux" "Pixel5" "localhost"; # Username must be set to localhost
       };
     };
 }
