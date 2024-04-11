@@ -83,8 +83,13 @@
             };
             modules = [
               ./hosts/${hostname}
-              ./home/cycad/hosts/${hostname} # Cycad username hardcoded for now
+              
+              home-manager = {
+                config = ./home/cycad/hosts/${hostname} # Cycad username hardcoded for now
+                useGlobalPkgs = true;
+              };
             ];
+            home-manager-path = home-manager.outPath;
           };
 
     in {
