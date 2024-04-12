@@ -23,6 +23,9 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    helix.url = "github:helix-editor/helix";
+    helix.inputs.nixpkgs.follows = "nixpkgs";
+
     nixvim.url = "github:nix-community/nixvim/nixos-23.11";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -33,7 +36,7 @@
 
   outputs = inputs@{
       self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nixos-wsl, nix-on-droid, 
-      vscode-server, catppuccin, nixvim, hyprland, hyprland-plugins, ... 
+      vscode-server, catppuccin, helix, nixvim, hyprland, hyprland-plugins, ... 
     }:
     let 
       inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
@@ -50,7 +53,7 @@
           nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = {
-              inherit pkgs unstablePkgs nixos-hardware nixos-wsl vscode-server;
+              inherit pkgs unstablePkgs nixos-hardware nixos-wsl vscode-server helix;
               # lets us use these things in modules
               customArgs = { inherit system hostname username pkgs unstablePkgs; };
             };

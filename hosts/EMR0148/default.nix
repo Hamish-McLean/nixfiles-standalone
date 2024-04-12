@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../common.nix
     nixos-wsl.nixosModules.wsl
     vscode-server.nixosModules.default
   ];
@@ -24,6 +25,7 @@
       fish
       gh
       git
+      # helix.packages."${pkgs}".helix
       neovim
       tmux
       wget

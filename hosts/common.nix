@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, lib, inputs, ... }:
+{ pkgs, unstablePkgs, system, lib, inputs, helix, ... }:
 let
   inherit (inputs) nixpkgs nixpkgs-unstable;
 in
@@ -27,6 +27,7 @@ in
     gh # Github
     git
     github-copilot-cli
+    helix.packages."${pkgs.system}".helix
     htop
     nano
     neovim
