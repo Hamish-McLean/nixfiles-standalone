@@ -19,6 +19,8 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+
     catppuccin.url = "github:catppuccin/nix";
 
     nixvim.url = "github:nix-community/nixvim/nixos-23.11";
@@ -30,8 +32,8 @@
   };
 
   outputs = inputs@{
-      self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nixos-wsl, 
-      catppuccin, nixvim, hyprland, hyprland-plugins, ... 
+      self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nixos-wsl, nix-on-droid, 
+      vscode-server, catppuccin, nixvim, hyprland, hyprland-plugins, ... 
     }:
     let 
       inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
@@ -48,7 +50,7 @@
           nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = {
-              inherit pkgs unstablePkgs nixos-hardware nixos-wsl;
+              inherit pkgs unstablePkgs nixos-hardware nixos-wsl vscode-server;
               # lets us use these things in modules
               customArgs = { inherit system hostname username pkgs unstablePkgs; };
             };
@@ -84,10 +86,10 @@
             modules = [
               ./hosts/${hostname}
               
-              home-manager = {
-                config = ./home/cycad/hosts/${hostname} # Cycad username hardcoded for now
-                useGlobalPkgs = true;
-              };
+              #home-manager = {
+              #  config = ./home/cycad/hosts/${hostname} # Cycad username hardcoded for now
+              #  useGlobalPkgs = true;
+              #};
             ];
             home-manager-path = home-manager.outPath;
           };
@@ -104,7 +106,7 @@
       };
 
       nixOnDroidConfigurations = {
-        Pixel5 = nixOnDroidSystem "aarch64-linux" "Pixel5" "nix-on-droid"; # Username must be set to localhost
+        Pixel5 = nixOnDroidSystem "aarch64-linux" "Pixel5" "nix-on-droid"; # Username must be set to nix-on-droid
       };
     };
 }

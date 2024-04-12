@@ -1,8 +1,9 @@
-{ config, lib, pkgs, nixos-wsl, ... }:
+{ config, lib, pkgs, nixos-wsl, vscode-server, ... }:
 
 {
   imports = [
     nixos-wsl.nixosModules.wsl
+    vscode-server.nixosModules.default
   ];
 
   wsl = {
@@ -12,6 +13,9 @@
 
   networking.hostName = "EMR0148";
 
+  # vscode server as a module -- try import this module as a separate file
+  services.vscode-server.enable = true;
+  
   programs.fish.enable = true;
 
   users.users.cycad = {
