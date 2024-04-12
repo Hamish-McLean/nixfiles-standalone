@@ -104,7 +104,7 @@
       };
 
       nixOnDroidConfigurations = {
-        Pixel5 = nixOnDroidSystem "aarch64-linux" "Pixel5" "localhost"; # Username must be set to localhost
+        Pixel5 = nixOnDroidSystem "aarch64-linux" "Pixel5" "nix-on-droid"; # Username must be set to localhost
       };
     };
 }
