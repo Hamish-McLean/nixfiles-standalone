@@ -7,6 +7,9 @@
     programs.kitty = {
       enable = true;
       catppuccin.enable = true;
+      settings = {
+        hide_window_decorations = true; # Disables white top bar             
+      };
     };
   };
 }
