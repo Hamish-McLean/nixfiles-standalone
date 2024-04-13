@@ -87,6 +87,7 @@
       whatsapp-for-linux
     ]) ++ (with unstablePkgs; [
       obsidian
+      warp-terminal
     ]);
   };
 

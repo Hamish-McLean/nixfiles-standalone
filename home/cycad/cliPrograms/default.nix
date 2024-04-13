@@ -16,6 +16,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     ./nixvim.nix
     ./starship.nix
     ./tmux.nix
+    # ./warp.nix
   ];
 
   # Option to enable all cliPrograms modules
@@ -31,6 +32,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     nixvim.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
+    # warp.enable = lib.mkDefault true;
   };
   
 }
