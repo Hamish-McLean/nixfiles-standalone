@@ -21,8 +21,11 @@ in
   security.sudo.wheelNeedsPassword = false;
 
   environment.systemPackages = with pkgs; [
-    curl
     btop
+    curl
+    ddgr
+    du-dust
+    eza
     fish
     gh # Github
     git
@@ -30,9 +33,13 @@ in
     helix.packages."${pkgs.system}".helix
     htop
     nano
-    neovim
     neofetch
-    tmux 
+    neovim
+    nmap
+    onefetch
+    pet
+    tldr
+    tmux
     tree
     wget
   ];

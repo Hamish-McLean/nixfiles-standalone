@@ -7,7 +7,7 @@
     git
   ];
 
-  programs.fish.enable = true;
+  #programs.fish.enable = true;
 
   users.users.nix-on-droid.shell = pkgs.fish;
 

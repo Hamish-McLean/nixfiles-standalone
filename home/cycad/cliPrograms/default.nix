@@ -8,14 +8,19 @@ Modules are enabled by default so can be disabled by setting them to false.
 {
   # Cli programs to import
   imports = [
+    ./bat.nix
     ./btop.nix
+    ./direnv.nix
     ./fish.nix
+    ./fzf.nix
     ./git.nix
-    ./helix.nix
+    # ./helix.nix
     ./kitty.nix
     ./nixvim.nix
+    ./pandoc.nix
     ./starship.nix
     ./tmux.nix
+    ./zoxide.nix
     # ./warp.nix
   ];
 
@@ -24,15 +29,25 @@ Modules are enabled by default so can be disabled by setting them to false.
     cliPrograms.enable = lib.mkEnableOption "enables cliPrograms";
   };
   config = lib.mkIf config.cliPrograms.enable {
+    bat.enable = lib.mkDefault true;
     btop.enable = lib.mkDefault true;
+    direnv.enable = lib.mkDefault true;
     fish.enable = lib.mkDefault true;
+    fzf.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
     # helix.enable = lib.mkDefault true; Installed from flake as a nixosModule
     kitty.enable = lib.mkDefault true;
     nixvim.enable = lib.mkDefault true;
+    pandoc.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
-    # warp.enable = lib.mkDefault true;
+    # warp.enable = lib.mkDefault true; Installed from unstablePkgs
+    zoxide.enable = lib.mkDefault true;
+
+    # Extra programs
+    # programs = {
+    #   htop.enable = lib.mkDefault true;
+    # };
   };
   
 }
