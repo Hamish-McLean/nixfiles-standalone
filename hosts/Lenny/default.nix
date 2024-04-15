@@ -87,6 +87,7 @@
       whatsapp-for-linux
     ]) ++ (with unstablePkgs; [
       obsidian
+      prismlauncher # Open source minecraft launcher
       warp-terminal
     ]);
   };
