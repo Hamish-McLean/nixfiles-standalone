@@ -30,7 +30,7 @@ in
     gh # Github
     git
     github-copilot-cli
-    helix.packages."${pkgs.system}".helix
+    # helix.packages."${pkgs.system}".helix
     htop
     nano
     neofetch
