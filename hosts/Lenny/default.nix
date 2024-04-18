@@ -81,6 +81,7 @@
     packages = (with pkgs; [
       bitwarden
       firefox
+      oh-my-git
       spotify
       syncthing
       telegram-desktop
