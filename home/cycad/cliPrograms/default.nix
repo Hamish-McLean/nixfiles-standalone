@@ -35,7 +35,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     fish.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
-    # helix.enable = lib.mkDefault true; Installed from flake as a nixosModule
+    # helix.enable = lib.mkDefault true; # Installed from flake as a nixosModule
     kitty.enable = lib.mkDefault true;
     nixvim.enable = lib.mkDefault true;
     pandoc.enable = lib.mkDefault true;

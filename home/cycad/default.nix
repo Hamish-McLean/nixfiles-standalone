@@ -1,5 +1,5 @@
 # Cycad's default home manager module which imports other home manager modules
-{ pkgs, ... }:
+{ pkgs, unstablePkgs, ... }:
 {
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
