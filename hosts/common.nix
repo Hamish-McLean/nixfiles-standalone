@@ -20,7 +20,7 @@ in
 
   security.sudo.wheelNeedsPassword = false;
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     btop
     curl
     ddgr
@@ -42,6 +42,8 @@ in
     tmux
     tree
     wget
-  ];
+  ]) ++ (with unstablePkgs; [
+    nh # Nix helper
+  ]);
 
 }

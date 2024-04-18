@@ -11,6 +11,8 @@
         catppuccin.catppuccin-vsc
         catppuccin.catppuccin-vsc-icons
         jnoortheen.nix-ide
+        ms-vscode-remote.remote-ssh
+        tailscale.vscode-tailscale
       ];
     };
   };
