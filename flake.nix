@@ -20,6 +20,7 @@
     };
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+    vscodium-server.url = "github:unicap/nixos-vscodium-server";
 
     catppuccin.url = "github:catppuccin/nix";
 
@@ -36,7 +37,7 @@
 
   outputs = inputs@{
       self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nixos-wsl, nix-on-droid, 
-      vscode-server, catppuccin, helix, nixvim, hyprland, hyprland-plugins, ... 
+      vscode-server, vscodium-server, catppuccin, helix, nixvim, hyprland, hyprland-plugins, ... 
     }:
     let 
       inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
@@ -53,7 +54,7 @@
           nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = {
-              inherit pkgs unstablePkgs nixos-hardware nixos-wsl vscode-server helix;
+              inherit pkgs unstablePkgs nixos-hardware nixos-wsl vscode-server vscodium-server helix;
               # lets us use these things in modules
               customArgs = { inherit system hostname username pkgs unstablePkgs; };
             };

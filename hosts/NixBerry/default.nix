@@ -1,9 +1,10 @@
-{ config, pkgs, unstablePkgs, lib, nixos-hardware, ... }:
+{ config, pkgs, unstablePkgs, lib, nixos-hardware, vscodium-server, ... }:
 
 {
   imports = [
     nixos-hardware.nixosModules.raspberry-pi-4
     ../common.nix
+    vscodium-server.nixosModules.default
   ];
 
   # Bootloader
@@ -33,6 +34,8 @@
   services.openssh.enable = true;
 
   services.tailscale.enable = true;
+
+  services.vscodium-server.enable = true;
 
   virtualisation.docker.enable = true; # Docker running as root
 
