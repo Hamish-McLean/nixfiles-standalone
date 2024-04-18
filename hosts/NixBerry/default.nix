@@ -12,7 +12,7 @@
     initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
     loader = {
       grub.enable = false;
-      generic-extlinux.compatible.enable = true; # What does this do?
+      generic-extlinux-compatible.enable = true; # What does this do?
     };
   };
 
@@ -25,14 +25,14 @@
   networking = {
     hostName = "NixBerry";
     wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networkmanager.enable = true;
+    networkmanager.enable = false; # Didn't work...
   };
 
   programs.fish.enable = true;
 
   services.openssh.enable = true;
 
-  services.tailscale = true;
+  services.tailscale.enable = true;
 
   virtualisation.docker.enable = true; # Docker running as root
 
