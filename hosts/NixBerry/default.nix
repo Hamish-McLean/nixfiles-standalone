@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
     nixos-hardware.nixosModules.raspberry-pi-4
     ../common.nix
   ];
@@ -10,7 +9,7 @@
   # Bootloader
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
-    initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ]
+    initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
     loader = {
       grub.enable = false;
       generic-extlinux.compatible.enable = true; # What does this do?
