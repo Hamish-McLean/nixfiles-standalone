@@ -65,6 +65,7 @@
                 networking.hostName = hostname;
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = { inherit pkgs unstablePkgs; };
                 home-manager.users.${username} = { 
                   imports = [ 
                     ./home/${username}/hosts/${hostname}.nix
