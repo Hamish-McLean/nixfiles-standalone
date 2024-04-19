@@ -1,4 +1,4 @@
-{ config, lib, pkgs, unstablePkgs, ... }:
+{ config, lib, unstablePkgs, ... }:
 {
   options = {
     helix.enable = lib.mkEnableOption "enables helix";
@@ -10,6 +10,7 @@
       catppuccin.enable = true;
       languages.language = [{
         name = "nix";
+        scope = "source.nix";
         auto-format = true;
       }];
     };
