@@ -25,7 +25,6 @@ in
     curl
     ddgr
     du-dust
-    eza
     fish
     gh # Github
     git

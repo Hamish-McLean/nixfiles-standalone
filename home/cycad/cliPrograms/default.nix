@@ -11,6 +11,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     ./bat.nix
     ./btop.nix
     ./direnv.nix
+    ./eza.nix
     ./fish.nix
     ./fzf.nix
     ./git.nix
@@ -32,6 +33,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     bat.enable = lib.mkDefault true;
     btop.enable = lib.mkDefault true;
     direnv.enable = lib.mkDefault true;
+    eza.enable = lib.mkDefault true;
     fish.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
