@@ -72,6 +72,8 @@
 
   services.tailscale.enable = true;
 
+  programs.steam.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cycad = {
     isNormalUser = true;
@@ -83,6 +85,7 @@
       firefox
       oh-my-git
       spotify
+      steam
       syncthing
       telegram-desktop
       whatsapp-for-linux

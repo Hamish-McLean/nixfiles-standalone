@@ -20,6 +20,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     ./kitty.nix
     ./nixvim.nix
     ./pandoc.nix
+    ./spotify-tui.nix
     ./starship.nix
     ./tmux.nix
     ./zoxide.nix
@@ -43,6 +44,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     kitty.enable = lib.mkDefault true;
     nixvim.enable = lib.mkDefault true;
     pandoc.enable = lib.mkDefault true;
+    spotify-tui.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
     # warp.enable = lib.mkDefault true; Installed from unstablePkgs
