@@ -15,6 +15,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     ./fish.nix
     ./fzf.nix
     ./git.nix
+    ./gitui.nix
     ./helix.nix
     ./kitty.nix
     ./nixvim.nix
@@ -37,6 +38,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     fish.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
+    gitui.enable = lib.mkDefault true;
     # helix.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
     nixvim.enable = lib.mkDefault true;
