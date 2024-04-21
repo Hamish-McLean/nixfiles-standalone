@@ -2,41 +2,34 @@
   description = "System flake";
 
   inputs = {
+    # Nix
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    nixos-hardware.url = "github:nixos/nixos-hardware";
-
-    nixos-wsl.url = "github:nix-community/NixOS-WSL";
-    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
-
+    home-manager = { url = "github:nix-community/home-manager/release-23.11"; inputs.nixpkgs.follows = "nixpkgs"; };
+    nixos-wsl = { url = "github:nix-community/NixOS-WSL"; inputs.nixpkgs.follows = "nixpkgs"; };
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
 
+    # Hardware
+    nixos-hardware.url = "github:nixos/nixos-hardware";
+    # For Lenny's 06cb-009a fingerprint sensor
+    lenny-fingerprint = { url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor"; inputs.nixpkgs.follows = "nixpkgs"; };
+
+    # Packages
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscodium-server.url = "github:unicap/nixos-vscodium-server";
-
     catppuccin.url = "github:catppuccin/nix";
-
-    helix.url = "github:helix-editor/helix";
-    helix.inputs.nixpkgs.follows = "nixpkgs";
-
-    nixvim.url = "github:nix-community/nixvim/nixos-23.11";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
-
+    helix = { url = "github:helix-editor/helix"; inputs.nixpkgs.follows = "nixpkgs"; };
+    nixvim = { url = "github:nix-community/nixvim/nixos-23.11"; inputs.nixpkgs.follows = "nixpkgs"; };
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
-    hyprland-plugins.inputs.hyprland.follows = "hyprland";
+    hyprland-plugins = { url = "github:hyprwm/hyprland-plugins"; inputs.hyprland.follows = "hyprland"; };
   };
 
   outputs = inputs@{
-      self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nixos-wsl, nix-on-droid, 
+      self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nixos-wsl, nix-on-droid, lenny-fingerprint,
       vscode-server, vscodium-server, catppuccin, helix, nixvim, hyprland, hyprland-plugins, ... 
     }:
     let 
@@ -54,7 +47,7 @@
           nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = {
-              inherit pkgs unstablePkgs nixos-hardware nixos-wsl vscode-server vscodium-server helix;
+              inherit pkgs unstablePkgs nixos-hardware nixos-wsl lenny-fingerprint vscode-server vscodium-server helix;
               # lets us use these things in modules
               customArgs = { inherit system hostname username pkgs unstablePkgs; };
             };
