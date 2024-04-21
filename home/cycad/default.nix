@@ -1,5 +1,5 @@
 # Cycad's default home manager module which imports other home manager modules
-{ pkgs, unstablePkgs, ... }:
+{ pkgs, unstablePkgs, catppuccin, ... }:
 {
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
@@ -7,6 +7,7 @@
   imports = [
     ./cliPrograms
     ./guiPrograms
+    catppuccin.homeManagerModules.catppuccin
   ];
 
   # Fonts

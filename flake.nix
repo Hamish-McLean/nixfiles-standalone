@@ -47,7 +47,8 @@
           nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = {
-              inherit pkgs unstablePkgs nixos-hardware nixos-wsl lenny-fingerprint vscode-server vscodium-server helix;
+              inherit pkgs unstablePkgs nixos-hardware nixos-wsl lenny-fingerprint 
+              vscode-server vscodium-server helix;
               # lets us use these things in modules
               customArgs = { inherit system hostname username pkgs unstablePkgs; };
             };
@@ -58,13 +59,11 @@
                 networking.hostName = hostname;
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = { inherit pkgs unstablePkgs; };
+                home-manager.extraSpecialArgs = { 
+                  inherit pkgs unstablePkgs nixvim catppuccin; 
+                };
                 home-manager.users.${username} = { 
-                  imports = [ 
-                    ./home/${username}/hosts/${hostname}.nix
-                    nixvim.homeManagerModules.nixvim
-                    catppuccin.homeManagerModules.catppuccin
-                  ]; 
+                  imports = [ ./home/${username}/hosts/${hostname}.nix ]; 
                 };
               }
             ];

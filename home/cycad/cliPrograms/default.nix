@@ -18,7 +18,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     ./gitui.nix
     ./helix.nix
     ./kitty.nix
-    ./nixvim.nix
+    ./nixvim-config.nix
     ./pandoc.nix
     ./spotify-tui.nix
     ./starship.nix
@@ -42,7 +42,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     gitui.enable = lib.mkDefault true;
     # helix.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
-    nixvim.enable = lib.mkDefault true;
+    nixvim-config.enable = lib.mkDefault true;
     pandoc.enable = lib.mkDefault true;
     spotify-tui.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
