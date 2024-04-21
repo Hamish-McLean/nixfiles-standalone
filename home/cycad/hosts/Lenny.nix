@@ -16,6 +16,6 @@ Modules can be enabled or disabled here.
   guiPrograms.enable = true;
 
   # Disable specific modules
-  hyprland.enable = false;
+  hyprland.enable = true;
 
 }
