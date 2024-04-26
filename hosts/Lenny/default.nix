@@ -87,6 +87,7 @@
       oh-my-git
       spotify
       steam
+      stremio
       syncthing
       telegram-desktop
       whatsapp-for-linux
