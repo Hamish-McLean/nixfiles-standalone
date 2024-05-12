@@ -46,6 +46,8 @@
           # `gnome-extensions list` for a list
           enabled-extensions = [
             "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
+            "blur-my-shell@aunetx"
+            "dash-to-dock@micxgx.gmail.com"
             "gsconnect@andyholmes.github.io"
             "iso8601ish@S410"
             "just-perfection-desktop@just-perfection"
@@ -57,13 +59,15 @@
     };
 
     home.packages = with pkgs.gnomeExtensions; [
-      # gsconnect
+      blur-my-shell
+      dash-to-dock
+      gsconnect
       iso8601-ish-clock
       just-perfection
       mpris-label
       tray-icons-reloaded
       user-themes
-      wintile-windows-10-window-tiling-for-gnome
+      # wintile-windows-10-window-tiling-for-gnome # incompatible version
     ];
     # ]) ++ (with pkgs; [
     #   nerdfonts

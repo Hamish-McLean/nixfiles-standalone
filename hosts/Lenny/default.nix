@@ -84,6 +84,7 @@
     packages = (with pkgs; [
       bitwarden
       firefox
+      fractal
       oh-my-git
       spotify
       steam

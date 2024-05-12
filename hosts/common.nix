@@ -32,7 +32,7 @@ in
     # helix.packages."${pkgs.system}".helix
     htop
     nano
-    neofetch
+    fastfetch
     neovim
     nmap
     onefetch
