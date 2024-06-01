@@ -12,7 +12,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     ./btop.nix
     ./direnv.nix
     ./eza.nix
-    # ./fastfetch.nix
+    ./fastfetch.nix
     ./fish.nix
     ./fzf.nix
     ./git.nix
@@ -21,11 +21,11 @@ Modules are enabled by default so can be disabled by setting them to false.
     ./kitty.nix
     ./nixvim-config.nix
     ./pandoc.nix
-    ./spotify-tui.nix
+    # ./spotify-tui.nix # Depracated
     ./starship.nix
     ./tmux.nix
-    ./zoxide.nix
     # ./warp.nix
+    ./zoxide.nix
   ];
 
   # Option to enable all cliPrograms modules
@@ -37,7 +37,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     btop.enable = lib.mkDefault true;
     direnv.enable = lib.mkDefault true;
     eza.enable = lib.mkDefault true;
-    # fastfetch.enable = lib.mkDefault true; # Only in home-manager unstable
+    fastfetch.enable = lib.mkDefault true; # Only in home-manager unstable
     fish.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
@@ -46,10 +46,10 @@ Modules are enabled by default so can be disabled by setting them to false.
     kitty.enable = lib.mkDefault true;
     nixvim-config.enable = lib.mkDefault true;
     pandoc.enable = lib.mkDefault true;
-    spotify-tui.enable = lib.mkDefault true;
+    # spotify-tui.enable = lib.mkDefault true; # Depracated
     starship.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
-    # warp.enable = lib.mkDefault true; Installed from unstablePkgs
+    # warp.enable = lib.mkDefault true; # Does this have a home manager module?
     zoxide.enable = lib.mkDefault true;
 
     # Extra programs

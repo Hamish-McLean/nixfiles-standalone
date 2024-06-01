@@ -6,7 +6,7 @@
   config = lib.mkIf config.fastfetch.enable {
     programs.fastfetch = {
       enable = true;
-      package = unstablePkgs.fastfetch;
+      # package = unstablePkgs.fastfetch;
     };
   };
 }
