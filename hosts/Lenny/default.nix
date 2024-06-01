@@ -67,13 +67,24 @@
   # services.xserver.libinput.enable = true;
   
   gnome.enable = true;
-  hyprland.enable = true;
 
-  programs.fish.enable = true;
+  hyprland.enable = true;
 
   services.tailscale.enable = true;
 
-  programs.steam.enable = true;
+  programs = {
+    firefox = {
+      enable = true;
+      package = pkgs.firefox;
+      nativeMessagingHosts.packages = [ unstablePkgs.firefoxpwa ];
+    };
+    fish.enable = true;
+    steam.enable = true;
+  };
+
+  environment.systemPackages = [
+    unstablePkgs.firefoxpwa
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cycad = {
@@ -83,8 +94,10 @@
     shell = pkgs.fish;
     packages = (with pkgs; [
       bitwarden
+      discord
       firefox
       fractal
+      mumble
       oh-my-git
       spotify
       steam
