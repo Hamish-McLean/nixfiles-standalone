@@ -52,6 +52,7 @@
             "iso8601ish@S410"
             "just-perfection-desktop@just-perfection"
             "mprisLabel@moon-0xff.github.com"
+            # "openbar@neuromorph"
             "trayIconsReloaded@selfmade.pl"
             "user-theme@gnome-shell-extensions.gcampax.github.com"
           ];
@@ -65,6 +66,7 @@
       iso8601-ish-clock
       just-perfection
       mpris-label
+      # open-bar # Permission issues with the style.css
       tray-icons-reloaded
       user-themes
       # wintile-windows-10-window-tiling-for-gnome # incompatible version

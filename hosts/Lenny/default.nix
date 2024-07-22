@@ -97,6 +97,8 @@
       discord
       firefox
       fractal
+      gtop
+      libreoffice
       mumble
       oh-my-git
       spotify
