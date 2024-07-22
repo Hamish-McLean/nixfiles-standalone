@@ -25,8 +25,8 @@
 
   networking = {
     hostName = "NixBerry";
-    wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networkmanager.enable = false; # Didn't work...
+    wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+    networkmanager.enable = true; # Didn't work...
   };
 
   programs.fish.enable = true;
