@@ -19,18 +19,19 @@
     lenny-fingerprint = { url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor"; inputs.nixpkgs.follows = "nixpkgs"; };
 
     # Packages
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
-    vscodium-server.url = "github:unicap/nixos-vscodium-server";
     catppuccin.url = "github:catppuccin/nix";
+    cosmic = { url = "github:lilyinstarlight/nixos-cosmic"; inputs.nixpkgs.follows = "nixpkgs-unstable"; };
     helix = { url = "github:helix-editor/helix"; inputs.nixpkgs.follows = "nixpkgs"; };
-    nixvim = { url = "github:nix-community/nixvim"; inputs.nixpkgs.follows = "nixpkgs"; }; # Change URL to "github:nix-community/nixvim/nixos-24.05" when available
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = { url = "github:hyprwm/hyprland-plugins"; inputs.hyprland.follows = "hyprland"; };
+    nixvim = { url = "github:nix-community/nixvim"; inputs.nixpkgs.follows = "nixpkgs"; }; # Change URL to "github:nix-community/nixvim/nixos-24.05" when available
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    vscodium-server.url = "github:unicap/nixos-vscodium-server";
   };
 
   outputs = inputs@{
       self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nixos-wsl, nix-on-droid, lenny-fingerprint,
-      vscode-server, vscodium-server, catppuccin, helix, nixvim, hyprland, hyprland-plugins, ... 
+      cosmic, vscode-server, vscodium-server, catppuccin, helix, nixvim, hyprland, hyprland-plugins, ... 
     }:
     let 
       inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
@@ -48,7 +49,7 @@
             inherit system;
             specialArgs = {
               inherit pkgs unstablePkgs nixos-hardware nixos-wsl lenny-fingerprint 
-              vscode-server vscodium-server helix;
+              cosmic vscode-server vscodium-server helix;
               # lets us use these things in modules
               customArgs = { inherit system hostname username pkgs unstablePkgs; };
             };
@@ -66,6 +67,7 @@
                   imports = [ ./home/${username}/hosts/${hostname}.nix ]; 
                 };
               }
+              
             ];
           };
 

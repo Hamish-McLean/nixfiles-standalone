@@ -8,10 +8,11 @@
   imports = [
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.lenovo-thinkpad-t480s
-    ./lenny-fingerprint.nix
+    # ./lenny-fingerprint.nix
     ../common.nix
     ../../modules/gnome.nix
     ../../modules/hyprland.nix
+    ../../modules/cosmic-de.nix
   ];
 
   # Bootloader
