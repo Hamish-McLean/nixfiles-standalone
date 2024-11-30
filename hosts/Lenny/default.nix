@@ -12,7 +12,7 @@
     ../common.nix
     ../../modules/gnome.nix
     ../../modules/hyprland.nix
-    ../../modules/cosmic-de.nix
+    # ../../modules/cosmic-de.nix
   ];
 
   # Bootloader

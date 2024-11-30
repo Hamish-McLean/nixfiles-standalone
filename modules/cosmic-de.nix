@@ -10,7 +10,7 @@
   };
 
   services.desktopManager.cosmic.enable = true;
-  # services.displayManager.cosmic-greeter.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
 
   environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
   security.pam.services.cosmic-greeter.enableGnomeKeyring = true;
