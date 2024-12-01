@@ -12,7 +12,7 @@
     ../common.nix
     ../../modules/gnome.nix
     ../../modules/hyprland.nix
-    # ../../modules/cosmic-de.nix
+    ../../modules/cosmic-de.nix
   ];
 
   # Bootloader
@@ -70,6 +70,8 @@
   gnome.enable = true;
 
   hyprland.enable = true;
+
+  cosmic.enable = false;
 
   services.tailscale.enable = true;
 

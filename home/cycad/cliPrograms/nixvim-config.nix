@@ -12,13 +12,14 @@
       enable = true;
       colorschemes.catppuccin = {
         enable = true;
-        flavour = "mocha";
+        settings.flavour = "mocha";
       };
       plugins = {
         bufferline.enable = true;
         lualine.enable = true;
         # neoscroll.enable = true;
         nvim-tree.enable = true;
+        # web-devicons.enable = true; # required in unstable for bufferline and nvim-tree
       };
     };
   };

@@ -24,7 +24,7 @@
     helix = { url = "github:helix-editor/helix"; inputs.nixpkgs.follows = "nixpkgs"; };
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = { url = "github:hyprwm/hyprland-plugins"; inputs.hyprland.follows = "hyprland"; };
-    nixvim = { url = "github:nix-community/nixvim"; inputs.nixpkgs.follows = "nixpkgs"; }; # Change URL to "github:nix-community/nixvim/nixos-24.05" when available
+    nixvim = { url = "github:nix-community/nixvim/nixos-24.05"; inputs.nixpkgs.follows = "nixpkgs"; }; # Change URL to "github:nix-community/nixvim/nixos-24.05" when available
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscodium-server.url = "github:unicap/nixos-vscodium-server";
   };

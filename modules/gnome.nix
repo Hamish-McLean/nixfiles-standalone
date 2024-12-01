@@ -13,8 +13,8 @@
         displayManager.gdm.enable = true;
         desktopManager.gnome.enable = true;
         # Configure keymap in X11
-        layout = "gb";
-        xkbVariant = "";
+        xkb.layout = "gb";
+        xkb.variant = "";
         excludePackages = [ pkgs.xterm ];
       };
       gnome = {
