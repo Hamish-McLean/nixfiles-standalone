@@ -6,7 +6,7 @@
   config = lib.mkIf config.tmux.enable {
     programs.tmux = {
       enable = true;
-      catppuccin.enable = true;
+      # catppuccin.enable = true;
       shell = "${pkgs.fish}/bin/fish";
       #keyMode = "vi";
       clock24 = true;
@@ -22,5 +22,6 @@
         set -g @catppuccin_date_time "%H:%M"
       '';
     };
+    catppuccin.tmux.enable = true;
   };
 }

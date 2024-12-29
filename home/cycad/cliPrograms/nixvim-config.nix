@@ -17,9 +17,9 @@
       plugins = {
         bufferline.enable = true;
         lualine.enable = true;
-        # neoscroll.enable = true;
+        neoscroll.enable = true;
         nvim-tree.enable = true;
-        # web-devicons.enable = true; # required in unstable for bufferline and nvim-tree
+        web-devicons.enable = true; # required for bufferline and nvim-tree
       };
     };
   };

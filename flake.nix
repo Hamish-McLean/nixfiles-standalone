@@ -3,9 +3,9 @@
 
   inputs = {
     # Nix
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = { url = "github:nix-community/home-manager/release-24.05"; inputs.nixpkgs.follows = "nixpkgs"; };
+    home-manager = { url = "github:nix-community/home-manager/release-24.11"; inputs.nixpkgs.follows = "nixpkgs"; };
     nixos-wsl = { url = "github:nix-community/NixOS-WSL"; inputs.nixpkgs.follows = "nixpkgs"; };
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-23.11";
@@ -24,7 +24,7 @@
     helix = { url = "github:helix-editor/helix"; inputs.nixpkgs.follows = "nixpkgs"; };
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = { url = "github:hyprwm/hyprland-plugins"; inputs.hyprland.follows = "hyprland"; };
-    nixvim = { url = "github:nix-community/nixvim/nixos-24.05"; inputs.nixpkgs.follows = "nixpkgs"; }; # Change URL to "github:nix-community/nixvim/nixos-24.05" when available
+    nixvim = { url = "github:nix-community/nixvim/nixos-24.11"; inputs.nixpkgs.follows = "nixpkgs"; }; # Change URL to "github:nix-community/nixvim/nixos-24.05" when available
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscodium-server.url = "github:unicap/nixos-vscodium-server";
   };
@@ -48,12 +48,14 @@
           nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = {
-              inherit pkgs unstablePkgs nixos-hardware nixos-wsl lenny-fingerprint 
-              cosmic vscode-server vscodium-server helix;
+              inherit nixos-hardware nixos-wsl lenny-fingerprint 
+              cosmic vscode-server vscodium-server helix; # removed pkgs unstablePkgs 
               # lets us use these things in modules
-              customArgs = { inherit system hostname username pkgs unstablePkgs; };
+              customArgs = { inherit system hostname username; }; # removed pkgs unstablePkgs 
             };
             modules = [
+              # Allow unfree packages
+              { nixpkgs.config.allowUnfree = true; }
               ./hosts/${hostname}
               ./hosts/common.nix
               home-manager.nixosModules.home-manager {

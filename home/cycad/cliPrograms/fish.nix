@@ -6,7 +6,7 @@
   config = lib.mkIf config.fish.enable {
     programs.fish = {
       enable = true;
-      catppuccin.enable = true;
+      # catppuccin.enable = true;
       interactiveShellInit = ''
         set -U fish_greeting ""
       '';
@@ -18,5 +18,6 @@
         # tide.src
       # ];
     };
+    catppuccin.fish.enable = true;
   };
 }

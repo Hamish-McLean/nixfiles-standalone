@@ -1,4 +1,4 @@
-{ config, lib, pkgs, unstablePkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   options = {
     gnome_config.enable = lib.mkEnableOption "enables gnome_config";

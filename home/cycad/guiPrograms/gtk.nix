@@ -6,9 +6,17 @@
   config = lib.mkIf config.gtk_config.enable {
     gtk = {
       enable = true;
-      catppuccin = {
+      # catppuccin = {
+      #   enable = true;
+      #   cursor.enable = true;
+      # };
+    };
+    catppuccin = {
+      gtk.enable = true;
+      cursors = {
         enable = true;
-        cursor.enable = true;
+        flavor = "mocha";
+        accent = "sapphire";
       };
     };
 

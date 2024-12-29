@@ -1,4 +1,4 @@
-{ config, pkgs, unstablePkgs, lib, nixos-hardware, vscode-server, ... }:
+{ config, pkgs, lib, nixos-hardware, vscode-server, ... }:
 
 {
   imports = [

@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, system, lib, inputs, helix, ... }:
+{ pkgs, system, lib, inputs, helix, ... }:
 let
   inherit (inputs) nixpkgs nixpkgs-unstable;
 in
@@ -34,6 +34,7 @@ in
     nano
     fastfetch
     neovim
+    nh # Nix helper
     nmap
     onefetch
     pet
@@ -41,8 +42,6 @@ in
     tmux
     tree
     wget
-  ]) ++ (with unstablePkgs; [
-    nh # Nix helper
   ]);
 
 }

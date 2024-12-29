@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, lib, config, ... }:
+{ pkgs, lib, config, ... }:
 {
   options = {
     gnome.enable = lib.mkEnableOption "enables gnome";
@@ -39,12 +39,11 @@
       gnome-terminal.enable = true;
     };
 
-    environment.systemPackages = (with pkgs.gnome; [
+    environment.systemPackages = (with pkgs; [
       gnome-tweaks
       gnome-terminal
+      gnomeExtensions.gsconnect
       nautilus
-    ]) ++ (with unstablePkgs.gnomeExtensions; [
-      gsconnect
-    ]) ;
+    ]);
   };
 }

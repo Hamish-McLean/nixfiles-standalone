@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, unstablePkgs, lib, nixos-hardware, ... }:
+{ config, pkgs, lib, nixos-hardware, ... }:
 
 {
   imports = [
@@ -48,7 +48,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  # sound.enable = true; depracated?
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -69,9 +69,9 @@
   
   gnome.enable = true;
 
-  hyprland.enable = true;
+  hyprland.enable = false;
 
-  cosmic.enable = false;
+  cosmic.enable = true;
 
   services.tailscale.enable = true;
 
@@ -79,14 +79,14 @@
     firefox = {
       enable = true;
       package = pkgs.firefox;
-      nativeMessagingHosts.packages = [ unstablePkgs.firefoxpwa ];
+      nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
     };
     fish.enable = true;
     steam.enable = true;
   };
 
   environment.systemPackages = [
-    unstablePkgs.firefoxpwa
+    pkgs.firefoxpwa
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -103,17 +103,16 @@
       gtop
       libreoffice
       mumble
+      obsidian
       oh-my-git
       spotify
+      prismlauncher # Open source minecraft launcher
       steam
       stremio
       syncthing
       telegram-desktop
-      whatsapp-for-linux
-    ]) ++ (with unstablePkgs; [
-      obsidian
-      prismlauncher # Open source minecraft launcher
       warp-terminal
+      whatsapp-for-linux
     ]);
   };
 
