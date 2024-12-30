@@ -1,8 +1,12 @@
-{ pkgs, system, lib, inputs, helix, ... }:
+{ pkgs, system, lib, inputs, helix, catppuccin, ... }:
 let
   inherit (inputs) nixpkgs nixpkgs-unstable;
 in
 {
+  imports = [
+    catppuccin.nixosModules.catppuccin
+  ];
+
   time.timeZone = "Europe/London";
 
   nix = {
@@ -14,11 +18,17 @@ in
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 5";
+      options = "--delete-older-than 60d";
     };
   };
 
   security.sudo.wheelNeedsPassword = false;
+
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "sapphire";
+  };
 
   environment.systemPackages = (with pkgs; [
     btop

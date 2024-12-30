@@ -10,9 +10,10 @@
     nixos-hardware.nixosModules.lenovo-thinkpad-t480s
     # ./lenny-fingerprint.nix
     ../common.nix
+    ../../modules/cosmic-de.nix
     ../../modules/gnome.nix
     ../../modules/hyprland.nix
-    ../../modules/cosmic-de.nix
+    ../../modules/kde.nix
   ];
 
   # Bootloader
@@ -67,11 +68,11 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
   
+  # Desktop environments
+  cosmic.enable = false;
   gnome.enable = true;
-
   hyprland.enable = false;
-
-  cosmic.enable = true;
+  kde.enable = true;
 
   services.tailscale.enable = true;
 
@@ -102,6 +103,7 @@
       fractal
       gtop
       libreoffice
+      modrinth-app
       mumble
       obsidian
       oh-my-git

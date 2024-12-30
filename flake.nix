@@ -25,13 +25,14 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = { url = "github:hyprwm/hyprland-plugins"; inputs.hyprland.follows = "hyprland"; };
     nixvim = { url = "github:nix-community/nixvim/nixos-24.11"; inputs.nixpkgs.follows = "nixpkgs"; }; # Change URL to "github:nix-community/nixvim/nixos-24.05" when available
+    plasma-manager = { url = "github:nix-community/plasma-manager"; inputs.nixpkgs.follows = "nixpkgs"; inputs.home-manager.follows = "home-manager"; };
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscodium-server.url = "github:unicap/nixos-vscodium-server";
   };
 
   outputs = inputs@{
       self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nixos-wsl, nix-on-droid, lenny-fingerprint,
-      cosmic, vscode-server, vscodium-server, catppuccin, helix, nixvim, hyprland, hyprland-plugins, ... 
+      cosmic, vscode-server, vscodium-server, catppuccin, helix, nixvim, plasma-manager, hyprland, hyprland-plugins, ... 
     }:
     let 
       inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
@@ -49,7 +50,7 @@
             inherit system;
             specialArgs = {
               inherit nixos-hardware nixos-wsl lenny-fingerprint 
-              cosmic vscode-server vscodium-server helix; # removed pkgs unstablePkgs 
+              cosmic catppuccin vscode-server vscodium-server helix plasma-manager; # removed pkgs unstablePkgs 
               # lets us use these things in modules
               customArgs = { inherit system hostname username; }; # removed pkgs unstablePkgs 
             };
@@ -63,7 +64,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = { 
-                  inherit pkgs unstablePkgs nixvim catppuccin; 
+                  inherit pkgs unstablePkgs nixvim catppuccin plasma-manager; 
                 };
                 home-manager.users.${username} = { 
                   imports = [ ./home/${username}/hosts/${hostname}.nix ]; 

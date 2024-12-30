@@ -11,6 +11,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     ./gnome.nix
     ./gtk.nix
     ./hyprland.nix
+    ./plasma.nix
     ./vscodium.nix
   ];
 
@@ -22,6 +23,7 @@ Modules are enabled by default so can be disabled by setting them to false.
     gnome_config.enable = lib.mkDefault true;
     gtk_config.enable = lib.mkDefault true;
     hyprland.enable = lib.mkDefault true;
+    plasma.enable = lib.mkDefault true;
     vscodium.enable = lib.mkDefault true;
   };
   
