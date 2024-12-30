@@ -18,11 +18,16 @@
       # oxygen
     ];
 
-    # qt = {
-    #   enable = true;
-    #   platformTheme = "qtct";
-    #   style.name = "kvantum";
-    # };
+    environment.systemPackages = with pkgs; [
+      # libsForQt5.qt5ct
+      libsForQt5.qtstyleplugin-kvantum
+    ];
+
+    qt = {
+      enable = true;
+      platformTheme = "qt5ct";
+      style = "kvantum";
+    };
 
     # xdg.configFile = {
     #   "Kvantum/ArcDark".source = "${pkgs.arc-kde-theme}/share/Kvantum/ArcDark";
