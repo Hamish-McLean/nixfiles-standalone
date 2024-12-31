@@ -20,6 +20,7 @@
     # services.xserver.displayManager.gdm.wayland = true;
     services.displayManager.sddm = {
       enable = true;
+      package = pkgs.kdePackages.sddm;
       # theme = "catppuccin-mocha";
     };
     catppuccin.sddm.enable = true;

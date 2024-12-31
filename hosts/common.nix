@@ -10,6 +10,7 @@ in
   time.timeZone = "Europe/London";
 
   nix = {
+    # nixPath = [ "nixpkgs=${nixpkgs}" ];
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
@@ -45,6 +46,8 @@ in
     fastfetch
     neovim
     nh # Nix helper
+    nixd
+    nixfmt-rfc-style
     nmap
     onefetch
     pet
