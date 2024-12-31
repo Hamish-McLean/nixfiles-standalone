@@ -71,8 +71,8 @@
   # Desktop environments
   cosmic.enable = false;
   gnome.enable = true;
-  hyprland.enable = false;
-  kde.enable = true;
+  hyprland.enable = true;
+  kde.enable = false;
 
   services.tailscale.enable = true;
 
@@ -94,7 +94,7 @@
   users.users.cycad = {
     isNormalUser = true;
     description = "Hamish McLean";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" ];
     shell = pkgs.fish;
     packages = (with pkgs; [
       bitwarden

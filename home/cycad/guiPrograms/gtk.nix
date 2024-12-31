@@ -12,7 +12,12 @@
       # };
     };
     catppuccin = {
-      gtk.enable = true;
+      gtk = {
+        enable = true;
+        size = "standard";
+        gnomeShellTheme = true;
+        icon.enable = true;
+      };
       cursors = {
         enable = true;
         flavor = "mocha";

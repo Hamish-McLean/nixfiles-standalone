@@ -17,7 +17,12 @@
       waybar
     ];
 
-    services.xserver.displayManager.gdm.wayland = true;
+    # services.xserver.displayManager.gdm.wayland = true;
+    services.displayManager.sddm = {
+      enable = true;
+      # theme = "catppuccin-mocha";
+    };
+    catppuccin.sddm.enable = true;
 
     # services = {
     #   xserver = {

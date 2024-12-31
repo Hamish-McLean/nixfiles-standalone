@@ -5,12 +5,14 @@
   };
 
   config = lib.mkIf config.gnome.enable {
+    # catppuccin.sddm.enable = true;
     services = {
+      displayManager.sddm.enable = true;
       xserver = {
         # Enable X11
         enable = true;
         # Enable GNOME DM
-        displayManager.gdm.enable = true;
+        # displayManager.gdm.enable = true;
         desktopManager.gnome.enable = true;
         # Configure keymap in X11
         xkb.layout = "gb";

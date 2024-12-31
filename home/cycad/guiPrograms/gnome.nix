@@ -9,8 +9,8 @@
     # This requires gnome-tweaks, maybe assert this?
     dconf.settings =
       let # Find a way to read these values from home-manager.catppuccin
-        cat-flavour = "Mocha";
-        cat-accent = "Sapphire";
+        cat-flavour = "mocha";
+        cat-accent = "sapphire";
         user-font = "CodeNewRoman Nerd Font";
         user-font-size = "11";
         wallpaper = pkgs.fetchurl {
@@ -33,7 +33,7 @@
         
         # Theme
         "org/gnome/shell/extensions/user-theme" = {
-          name = "Catppuccin-${cat-flavour}-Standard-${cat-accent}-Dark";
+          name = "catppuccin-${cat-flavour}-${cat-accent}-standard";
         };
         
         # GNOME shell settings

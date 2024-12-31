@@ -18,7 +18,6 @@ Modules are enabled by default so can be disabled by setting them to false.
     ./git.nix
     ./gitui.nix
     ./helix.nix
-    ./kitty.nix
     ./nixvim-config.nix
     ./pandoc.nix
     # ./spotify-tui.nix # Depracated
@@ -43,7 +42,6 @@ Modules are enabled by default so can be disabled by setting them to false.
     git.enable = lib.mkDefault true;
     gitui.enable = lib.mkDefault true;
     # helix.enable = lib.mkDefault true;
-    kitty.enable = lib.mkDefault true;
     nixvim-config.enable = lib.mkDefault true;
     pandoc.enable = lib.mkDefault true;
     # spotify-tui.enable = lib.mkDefault true; # Depracated

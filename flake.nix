@@ -63,7 +63,7 @@
                 networking.hostName = hostname;
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.backupFileExtension = "hm-backup";
+                home-manager.backupFileExtension = "backup";
                 home-manager.extraSpecialArgs = { 
                   inherit pkgs unstablePkgs nixvim catppuccin plasma-manager; 
                 };
