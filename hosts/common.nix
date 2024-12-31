@@ -1,4 +1,12 @@
-{ pkgs, system, lib, inputs, helix, catppuccin, ... }:
+{
+  pkgs,
+  system,
+  lib,
+  inputs,
+  helix,
+  catppuccin,
+  ...
+}:
 let
   inherit (inputs) nixpkgs nixpkgs-unstable;
 in
@@ -12,7 +20,10 @@ in
   nix = {
     # nixPath = [ "nixpkgs=${nixpkgs}" ];
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
     };
     # Automate garbage collection
@@ -31,30 +42,33 @@ in
     accent = "sapphire";
   };
 
-  environment.systemPackages = (with pkgs; [
-    btop
-    curl
-    ddgr
-    du-dust
-    fish
-    gh # Github
-    git
-    github-copilot-cli
-    # helix.packages."${pkgs.system}".helix
-    htop
-    nano
-    fastfetch
-    neovim
-    nh # Nix helper
-    nixd
-    nixfmt-rfc-style
-    nmap
-    onefetch
-    pet
-    tldr
-    tmux
-    tree
-    wget
-  ]);
+  environment.systemPackages = (
+    with pkgs;
+    [
+      btop
+      curl
+      ddgr
+      du-dust
+      fish
+      gh # Github
+      git
+      github-copilot-cli
+      # helix.packages."${pkgs.system}".helix
+      htop
+      nano
+      fastfetch
+      neovim
+      nh # Nix helper
+      nixd
+      nixfmt-rfc-style
+      nmap
+      onefetch
+      pet
+      tldr
+      tmux
+      tree
+      wget
+    ]
+  );
 
 }

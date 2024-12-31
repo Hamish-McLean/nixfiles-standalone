@@ -1,8 +1,8 @@
 /*
-Cycad's default guiPrograms home manager module.
-This imports other guiPrograms home manager modules.
-All can be enabled by setting guiPrograms = true.
-Modules are enabled by default so can be disabled by setting them to false.
+  Cycad's default guiPrograms home manager module.
+  This imports other guiPrograms home manager modules.
+  All can be enabled by setting guiPrograms = true.
+  Modules are enabled by default so can be disabled by setting them to false.
 */
 { lib, config, ... }:
 {
@@ -28,5 +28,5 @@ Modules are enabled by default so can be disabled by setting them to false.
     plasma.enable = lib.mkDefault true;
     vscodium.enable = lib.mkDefault true;
   };
-  
+
 }

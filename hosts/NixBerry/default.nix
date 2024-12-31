@@ -1,4 +1,11 @@
-{ config, pkgs, lib, nixos-hardware, vscode-server, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  nixos-hardware,
+  vscode-server,
+  ...
+}:
 
 {
   imports = [
@@ -10,7 +17,11 @@
   # Bootloader
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
-    initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "usbhid"
+      "usb_storage"
+    ];
     loader = {
       grub.enable = false;
       generic-extlinux-compatible.enable = true; # What does this do?
@@ -19,13 +30,13 @@
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXOS_SD";
-    fsType =  "ext4";
+    fsType = "ext4";
     options = [ "noatime" ];
   };
 
   networking = {
     hostName = "NixBerry";
-    wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+    wireless.enable = false; # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true; # Didn't work...
   };
 
@@ -42,7 +53,10 @@
   users.users.cycad = {
     isNormalUser = true;
     description = "Hamish McLean";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.fish;
   };
 

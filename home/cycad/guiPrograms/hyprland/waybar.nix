@@ -1,8 +1,13 @@
-/* 
-catppuccin waybar example at 
-https://github.com/rubyowo/dotfiles/tree/f925cf8e3461420a21b6dc8b8ad1190107b0cc56/config/waybar
+/*
+  catppuccin waybar example at
+  https://github.com/rubyowo/dotfiles/tree/f925cf8e3461420a21b6dc8b8ad1190107b0cc56/config/waybar
 */
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options = {
     waybar.enable = lib.mkEnableOption "enables waybar";
@@ -29,8 +34,8 @@ https://github.com/rubyowo/dotfiles/tree/f925cf8e3461420a21b6dc8b8ad1190107b0cc5
             # "hyprland/window"
             # "tray"
           ];
-          modules-center = [ 
-            # "clock" 
+          modules-center = [
+            # "clock"
             "custom/music"
           ];
           modules-right = [
@@ -72,7 +77,17 @@ https://github.com/rubyowo/dotfiles/tree/f925cf8e3461420a21b6dc8b8ad1190107b0cc5
           backlight = {
             device = "intel_backlight";
             format = "{icon}";
-            format-icons = [ "" "" "" "" "" "" "" "" "" ];
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
           };
           battery = {
             states = {
@@ -81,7 +96,13 @@ https://github.com/rubyowo/dotfiles/tree/f925cf8e3461420a21b6dc8b8ad1190107b0cc5
               critical = 15;
             };
             format = "{capacity}% {icon}";
-            format-icons = [ "󰁹" "󰂀" "󰂁" "󰂂" "󰁿" ];
+            format-icons = [
+              "󰁹"
+              "󰂀"
+              "󰂁"
+              "󰂂"
+              "󰁿"
+            ];
             format-charging = "{capacity}% 󰂄";
             format-full = "󰁹";
           };
@@ -90,7 +111,11 @@ https://github.com/rubyowo/dotfiles/tree/f925cf8e3461420a21b6dc8b8ad1190107b0cc5
             format = "{icon} {volume}%";
             format-muted = "";
             format-icons = {
-              default = [ "" "" " " ];
+              default = [
+                ""
+                ""
+                " "
+              ];
             };
             on-click = "pavucontrol";
           };
@@ -104,11 +129,11 @@ https://github.com/rubyowo/dotfiles/tree/f925cf8e3461420a21b6dc8b8ad1190107b0cc5
             on-click = "wlogout &";
             format = "襤";
           };
-        #   "network" = {
-        #     format-wifi = "󰤨 {signalStrength}%",
-        #     format-ethernet = "󰀀 Wired",
-        #     format-disconnected = "󰤮 Disconnected",
-        #   };
+          #   "network" = {
+          #     format-wifi = "󰤨 {signalStrength}%",
+          #     format-ethernet = "󰀀 Wired",
+          #     format-disconnected = "󰤮 Disconnected",
+          #   };
         }
       ];
       style = builtins.readFile ./waybar.css;

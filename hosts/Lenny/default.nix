@@ -2,7 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, nixos-hardware, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  nixos-hardware,
+  ...
+}:
 
 {
   imports = [
@@ -67,7 +73,7 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-  
+
   # Desktop environments
   cosmic.enable = false;
   gnome.enable = true;
@@ -94,28 +100,35 @@
   users.users.cycad = {
     isNormalUser = true;
     description = "Hamish McLean";
-    extraGroups = [ "networkmanager" "wheel" "input" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "input"
+    ];
     shell = pkgs.fish;
-    packages = (with pkgs; [
-      bitwarden
-      discord
-      firefox
-      fractal
-      gtop
-      libreoffice
-      modrinth-app
-      mumble
-      obsidian
-      oh-my-git
-      spotify
-      prismlauncher # Open source minecraft launcher
-      steam
-      stremio
-      syncthing
-      telegram-desktop
-      warp-terminal
-      whatsapp-for-linux
-    ]);
+    packages = (
+      with pkgs;
+      [
+        bitwarden
+        discord
+        firefox
+        fractal
+        gtop
+        libreoffice
+        modrinth-app
+        mumble
+        obsidian
+        oh-my-git
+        spotify
+        prismlauncher # Open source minecraft launcher
+        steam
+        stremio
+        syncthing
+        telegram-desktop
+        warp-terminal
+        whatsapp-for-linux
+      ]
+    );
   };
 
   # Some programs need SUID wrappers, can be configured further or are

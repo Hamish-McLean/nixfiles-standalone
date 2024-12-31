@@ -1,6 +1,6 @@
 /*
-NixOS module for lenny's 06cb-009a fingerprint sensor.
-From: https://github.com/ahbnr/nixos-06cb-009a-fingerprint-sensor
+  NixOS module for lenny's 06cb-009a fingerprint sensor.
+  From: https://github.com/ahbnr/nixos-06cb-009a-fingerprint-sensor
 */
 { lenny-fingerprint, ... }:
 {

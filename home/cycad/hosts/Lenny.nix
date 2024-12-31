@@ -1,7 +1,7 @@
 /*
-Cycad's home manager module for Lenny.
-This imports Cycad's default home manager module which imports the other modules.
-Modules can be enabled or disabled here.
+  Cycad's home manager module for Lenny.
+  This imports Cycad's default home manager module which imports the other modules.
+  Modules can be enabled or disabled here.
 */
 { ... }:
 {

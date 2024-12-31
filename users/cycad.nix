@@ -6,7 +6,10 @@
     users.users.cycad = {
       isNormalUser = true;
       description = "Hamish McLean";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
       shell = pkgs.fish;
     };
   };

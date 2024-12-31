@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   options = {
     gnome.enable = lib.mkEnableOption "enables gnome";
@@ -29,11 +34,17 @@
 
     networking.firewall.allowedTCPPortRanges = [
       # gsconnect
-      { from = 1714; to = 1764; }
+      {
+        from = 1714;
+        to = 1764;
+      }
     ];
     networking.firewall.allowedUDPPortRanges = [
       # gsconnect
-      { from = 1714; to = 1764; }
+      {
+        from = 1714;
+        to = 1764;
+      }
     ];
 
     programs = {
@@ -41,11 +52,14 @@
       gnome-terminal.enable = true;
     };
 
-    environment.systemPackages = (with pkgs; [
-      gnome-tweaks
-      gnome-terminal
-      gnomeExtensions.gsconnect
-      nautilus
-    ]);
+    environment.systemPackages = (
+      with pkgs;
+      [
+        gnome-tweaks
+        gnome-terminal
+        gnomeExtensions.gsconnect
+        nautilus
+      ]
+    );
   };
 }

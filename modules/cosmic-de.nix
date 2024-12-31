@@ -1,15 +1,20 @@
-{ config, lib, cosmic, ... }:
+{
+  config,
+  lib,
+  cosmic,
+  ...
+}:
 {
   imports = [
     cosmic.nixosModules.default
   ];
-  
+
   options = {
     cosmic.enable = lib.mkEnableOption "enables cosmic";
   };
 
   config = lib.mkIf config.cosmic.enable {
-    
+
     nix.settings = {
       substituters = [ "https://cosmic.cachix.org/" ];
       trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];

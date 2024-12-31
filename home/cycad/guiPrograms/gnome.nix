@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options = {
     gnome_config.enable = lib.mkEnableOption "enables gnome_config";
@@ -30,12 +35,12 @@
           font-name = "${user-font} ${user-font-size}";
           monospace-font-name = "${user-font} Mono ${user-font-size}";
         };
-        
+
         # Theme
         "org/gnome/shell/extensions/user-theme" = {
           name = "catppuccin-${cat-flavour}-${cat-accent}-standard";
         };
-        
+
         # GNOME shell settings
         "org/gnome/shell" = {
           # Theme
@@ -57,7 +62,7 @@
             "user-theme@gnome-shell-extensions.gcampax.github.com"
           ];
         };
-    };
+      };
 
     home.packages = with pkgs.gnomeExtensions; [
       blur-my-shell

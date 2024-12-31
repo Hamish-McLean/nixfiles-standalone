@@ -1,9 +1,14 @@
-{ config, lib, nixvim, ... }:
+{
+  config,
+  lib,
+  nixvim,
+  ...
+}:
 {
   imports = [
     nixvim.homeManagerModules.nixvim
   ];
-  
+
   options = {
     nixvim-config.enable = lib.mkEnableOption "enables nixvim-config";
   };

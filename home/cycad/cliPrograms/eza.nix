@@ -10,7 +10,7 @@
       enableFishIntegration = true; # Option not in 23.11
       icons = "auto";
       git = true;
-      extraOptions = [];
+      extraOptions = [ ];
     };
   };
 }

@@ -1,8 +1,8 @@
 /*
-Cycad's default cliPrograms home manager module.
-This imports other cliPrograms home manager modules.
-All can be enabled by setting cliPrograms = true.
-Modules are enabled by default so can be disabled by setting them to false.
+  Cycad's default cliPrograms home manager module.
+  This imports other cliPrograms home manager modules.
+  All can be enabled by setting cliPrograms = true.
+  Modules are enabled by default so can be disabled by setting them to false.
 */
 { lib, config, ... }:
 {
@@ -55,5 +55,5 @@ Modules are enabled by default so can be disabled by setting them to false.
     #   htop.enable = lib.mkDefault true;
     # };
   };
-  
+
 }

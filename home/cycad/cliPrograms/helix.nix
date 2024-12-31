@@ -7,11 +7,13 @@
     programs.helix = {
       enable = true;
       catppuccin.enable = true;
-      languages.language = [{
-        name = "nix";
-        scope = "source.nix";
-        auto-format = true;
-      }];
+      languages.language = [
+        {
+          name = "nix";
+          scope = "source.nix";
+          auto-format = true;
+        }
+      ];
     };
   };
 }
