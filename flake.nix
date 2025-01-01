@@ -134,6 +134,7 @@
                   nixvim
                   catppuccin
                   plasma-manager
+                  hyprland-plugins
                   ;
               };
               home-manager.users.${username} = {

@@ -1,5 +1,6 @@
 {
   config,
+  hyprland-plugins,
   lib,
   pkgs,
   ...
@@ -16,28 +17,23 @@
 
   config = lib.mkIf config.hyprland.enable {
 
-    home.packages = with pkgs; [
-      tofi
-      wofi
+    home.packages = with pkgs; [ 
+      hyprlock
     ];
 
-    # programs.hyprlock.enable = true;
-    programs.tofi.enable = true;
+    programs.hyprlock.enable = true;
 
     rofi.enable = true;
     waybar.enable = true;
 
-    catppuccin = {
-      hyprland.enable = true;
-      tofi.enable = true;
-    };
+    catppuccin.hyprland.enable = true;
 
     wayland.windowManager.hyprland = {
       enable = true;
-      # catppuccin.enable = true;
-      # plugins = with pkgs.hyprlandPlugins; [
+      # plugins = with hyprland-plugins.packages."${pkgs.system}"; [
+      #   borders-plus-plus  
       #   hyprbars
-      #   hyprspace
+      #   # hyprspace
       #   hyprtrails
       # ];
       settings = {
@@ -56,11 +52,10 @@
             "$mod, C, killactive"
             "$mod, E, exec, nautilus"
             "$mod, F, exec, firefox"
-            "$mod, J, togglesplit"
             "$mod, K, exec, kitty"
             "$mod, M, exit"
-            "$mod, R, exec, rofi -show drun"
-            "$mod, V, togglefloating"
+            "$mod, R, exec, hyprctl reload"
+            "$mod, V, exec, codium"
             ", Print, exec, grimblast copy area"
 
             # Windows
@@ -70,6 +65,29 @@
             "$mod SHIFT, RIGHT, movetoworkspace, +1"
             "CTRL, TAB, focuswindow, r"
             "CTRL SHIFT, TAB, focuswindow, l"
+            "$mod, COMMA, togglesplit"
+            "$mod, PERIOD, togglefloating"
+
+            # Media
+            ", XF86AudioPlay, exec, playerctl play-pause"
+            ", XF86AudioNext, exec, playerctl next"
+            ", XF86AudioPrev, exec, playerctl previous"
+            ", XF86audiostop, exec, playerctl stop"
+
+            # Volume
+            # ", 115, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+            # ", 114, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+            # ", 113, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+            ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+            ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+            ", XF86AudioMute, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ toggle"
+
+            # Brightness
+            ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+            ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+            ", xf86KbdBrightnessUp, exec, brightnessctl -d *::kbd_backlight set 33%+"
+            ", xf86KbdBrightnessDown, exec, brightnessctl -d *::kbd_backlight set 33%-"
+
           ]
           ++ (
             # workspaces
@@ -98,6 +116,15 @@
           "$mod, mouse:272, movewindow"
           "$mod, mouse:273, resizewindow"
         ];
+        bindr = [
+          "$mod, SUPER_L, exec, rofi -show drun"
+        ];
+
+        # plugins
+        "plugin:borders-plus-plus" = {
+          add_borders = 1;
+          natural_rounding = "yes";
+        };
       };
     };
   };

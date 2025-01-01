@@ -40,12 +40,12 @@
           ];
           modules-right = [
             "pulseaudio"
-            # "network"
             "backlight"
             "battery"
             "clock"
             "tray"
-            "custom/lock"
+            "network"
+            # "custom/lock"
             "custom/power"
             # "battery#bat0" # Fix battery name if needed
           ];
@@ -64,19 +64,19 @@
             escape = true;
             interval = 5;
             tooltip = false;
-            # exec = "playerctl metadata --format='{{ title }}'";
+            exec = "playerctl metadata --format='{{ title }}'";
             on-click = "playerctl play-pause";
             max-length = 50;
           };
           clock = {
             timezone = "Europe/London";
             tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-            format-alt = " {:%Y-%m-%d}";
-            format = " {:%H:%M}";
+            format-alt = "󰃭  {:%Y-%m-%d}";
+            format = "  {:%H:%M}";
           };
           backlight = {
             device = "intel_backlight";
-            format = "{icon}";
+            format = "{icon} {percent}%";
             format-icons = [
               ""
               ""
@@ -95,25 +95,25 @@
               warning = 30;
               critical = 15;
             };
-            format = "{capacity}% {icon}";
+            format = "{icon} {capacity}%";
             format-icons = [
-              "󰁹"
+              "󰁿"
               "󰂀"
               "󰂁"
               "󰂂"
-              "󰁿"
+              "󰁹"
             ];
             format-charging = "{capacity}% 󰂄";
             format-full = "󰁹";
           };
           pulseaudio = {
             # scroll-step = 1,; # %, can be a float
-            format = "{icon} {volume}%";
-            format-muted = "";
+            format = "{icon}  {volume}%";
+            format-muted = " ";
             format-icons = {
               default = [
-                ""
-                ""
+                " "
+                " "
                 " "
               ];
             };
@@ -127,13 +127,22 @@
           "custom/power" = {
             tooltip = false;
             on-click = "wlogout &";
-            format = "襤";
+            format = "⏻";
           };
-          #   "network" = {
-          #     format-wifi = "󰤨 {signalStrength}%",
-          #     format-ethernet = "󰀀 Wired",
-          #     format-disconnected = "󰤮 Disconnected",
-          #   };
+          network = {
+            format-wifi = "{icon}";
+            format-icons = {
+              wifi = [
+                  "󰤟 "
+                  "󰤢 "
+                  "󰤥 "
+                  "󰤨 "
+              ];
+            };
+            format-disconnected = "󰤮 ";
+            format-ethernet = "󰈁";
+            tooltip-format = "{essid}";
+          };
         }
       ];
       style = builtins.readFile ./waybar.css;

@@ -13,6 +13,7 @@
     ./hyprland/hyprland.nix
     ./kitty.nix
     ./plasma.nix
+    ./qt.nix
     ./vscodium.nix
   ];
 
@@ -25,7 +26,8 @@
     gtk_config.enable = lib.mkDefault true;
     hyprland.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
-    plasma.enable = lib.mkDefault true;
+    plasma.enable = lib.mkDefault false;
+    qt_config.enable = lib.mkDefault false;
     vscodium.enable = lib.mkDefault true;
   };
 

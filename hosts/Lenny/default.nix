@@ -16,10 +16,7 @@
     nixos-hardware.nixosModules.lenovo-thinkpad-t480s
     # ./lenny-fingerprint.nix
     ../common.nix
-    ../../modules/cosmic-de.nix
-    ../../modules/gnome.nix
-    ../../modules/hyprland.nix
-    ../../modules/kde.nix
+    ../../modules
   ];
 
   # Bootloader
@@ -63,6 +60,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -70,6 +68,7 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+  services.dbus.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -79,6 +78,7 @@
   gnome.enable = true;
   hyprland.enable = true;
   kde.enable = false;
+  qt_config.enable = false;
 
   services.tailscale.enable = true;
 
@@ -92,8 +92,9 @@
     steam.enable = true;
   };
 
-  environment.systemPackages = [
-    pkgs.firefoxpwa
+  environment.systemPackages = with pkgs; [
+    firefoxpwa
+    playerctl
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

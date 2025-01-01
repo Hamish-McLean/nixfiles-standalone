@@ -13,7 +13,7 @@
     catppuccin.rofi.enable = true;
     programs.rofi = {
       enable = true;
-      location = "middle";
+      location = "center";
       terminal = "kitty";
       # plugins = [];
       extraConfig = {
