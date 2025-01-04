@@ -5,10 +5,10 @@
     # Nix
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # home-manager = {
+    #   url = "github:nix-community/home-manager/release-24.11";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,10 +33,6 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    helix = {
-      url = "github:helix-editor/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,15 +42,6 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    # nixvim = {
-    #   url = "github:nix-community/nixvim/nixos-24.11";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # }; # Change URL to "github:nix-community/nixvim/nixos-24.05" when available
-    # plasma-manager = {
-    #   url = "github:nix-community/plasma-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.home-manager.follows = "home-manager";
-    # };
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscodium-server.url = "github:unicap/nixos-vscodium-server";
   };
@@ -73,15 +60,11 @@
       vscode-server,
       vscodium-server,
       catppuccin,
-      helix,
-      # nixvim,
-      # plasma-manager,
       hyprland,
       hyprland-plugins,
       ...
     }:
     let
-      # inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
 
       genPkgs =
         system:
@@ -116,7 +99,6 @@
               catppuccin
               vscode-server
               vscodium-server
-              helix
               # plasma-manager
               ; # removed pkgs unstablePkgs
             # lets us use these things in modules
@@ -127,27 +109,6 @@
             { nixpkgs.config.allowUnfree = true; }
             ./hosts/${hostname}
             ./hosts/common.nix
-            # home-manager.nixosModules.home-manager
-            # {
-            #   networking.hostName = hostname;
-            #   home-manager.useGlobalPkgs = true;
-            #   home-manager.useUserPackages = true;
-            #   home-manager.backupFileExtension = "backup";
-            #   home-manager.extraSpecialArgs = {
-            #     inherit
-            #       pkgs
-            #       unstablePkgs
-            #       nixvim
-            #       catppuccin
-            #       plasma-manager
-            #       hyprland-plugins
-            #       ;
-            #   };
-            #   home-manager.users.${username} = {
-            #     imports = [ ./home/${username}/hosts/${hostname}.nix ];
-            #   };
-            # }
-
           ];
         };
 
