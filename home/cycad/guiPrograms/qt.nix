@@ -24,9 +24,9 @@
       platformTheme.name = "kvantum";
       style.name = "kvantum";
     };
-    environment.variables = {
-      QT_QPA_PLATFORMTHEME = "qt5ct";
-    };
+    # environment.variables = {
+    #   QT_QPA_PLATFORMTHEME = "qt5ct";
+    # };
     catppuccin.kvantum = {
       enable = true;
       apply = true;

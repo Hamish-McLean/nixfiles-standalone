@@ -1,8 +1,10 @@
 {
   config,
   hyprland,
+  inputs,
   lib,
   pkgs,
+  system,
   ...
 }:
 {
@@ -14,22 +16,26 @@
 
     programs.hyprland = {
       enable = true;
-      # package = hyprland.packages.pkgs.hyprland;
       xwayland.enable = true;
+      # package = inputs.hyprland.packages.${system}.hyprland;
+      # portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
     };
 
-    environment.systemPackages = with pkgs; [
-      kitty
-      waybar
-    ];
+    # environment.systemPackages = with pkgs; [
+    #   kitty
+    # ];
 
     # services.xserver.displayManager.gdm.wayland = true;
     services.displayManager.sddm = {
       enable = true;
+      wayland.enable = true;
       package = pkgs.kdePackages.sddm;
       # theme = "catppuccin-mocha";
     };
-    catppuccin.sddm.enable = true;
+    catppuccin.sddm = {
+      enable = true;
+      background = ./wallpapers/rainbow.png;
+    };
 
     # services = {
     #   xserver = {

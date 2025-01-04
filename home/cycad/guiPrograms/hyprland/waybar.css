@@ -1,5 +1,5 @@
 * {
-  font-family: FantasqueSansMono Nerd Font;
+  font-family: FiraCode Nerd Font;
   font-size: 17px;
   min-height: 0;
 }
@@ -33,12 +33,16 @@
   border-radius: 1rem;
 }
 
+#custom-rofi,
+#wlr-taskbar,
+#hyprland-window
 #custom-music,
 #tray,
+#wireplumber,
 #backlight,
-#clock,
 #battery,
-#pulseaudio,
+#clock,
+#bluetooth,
 #network,
 #custom-lock,
 #custom-power {
@@ -47,10 +51,47 @@
   margin: 5px 0;
 }
 
+#custom-rofi {
+  color: @sapphire;
+  border-radius: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#wlr-taskbar {
+  border-radius: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#hyprland-window {
+  border-radius: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#custom-music {
+  color: @mauve;
+  border-radius: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#tray {
+  margin-right: 1rem;
+  border-radius: 1rem;
+}
+
+#wireplumber {
+  color: @maroon;
+  border-radius: 1rem 0px 0px 1rem;
+  margin-left: 1rem;
+}
+
 #clock {
   color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
-  margin-right: 1rem;
+  border-radius: 1rem 0px 0px 1rem;
+  margin-left: 1rem;
 }
 
 #battery {
@@ -69,39 +110,28 @@
   color: @yellow;
 }
 
-#backlight, #battery {
-    border-radius: 0;
+#backlight, #battery, #bluetooth {
+  border-radius: 0;
 }
 
-#pulseaudio {
-  color: @maroon;
-  border-radius: 1rem 0px 0px 1rem;
-  margin-left: 1rem;
+#bluetooth {
+  color: @blue;
 }
 
 #network {
   color: @text;
-  border-radius: 1rem 0px 0px 1rem;
-  margin-left: 1rem;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
 }
 
-#custom-music {
-  color: @mauve;
-  border-radius: 1rem;
-}
 
 #custom-lock {
-    border-radius: 1rem 0px 0px 1rem;
-    color: @lavender;
+  border-radius: 1rem 0px 0px 1rem;
+  color: @lavender;
 }
 
 #custom-power {
-    margin-right: 1rem;
-    border-radius: 0px 1rem 1rem 0px;
-    color: @red;
-}
-
-#tray {
+  color: @red;
+  border-radius: 0px 1rem 1rem 0px;
   margin-right: 1rem;
-  border-radius: 1rem;
 }

@@ -14,10 +14,14 @@
     programs.rofi = {
       enable = true;
       location = "center";
-      terminal = "kitty";
+      terminal = "${pkgs.kitty}/bin/kitty";
       # plugins = [];
       extraConfig = {
-        modi = "drun";
+        display-drun="   Apps ";
+        display-run="   Run ";
+        display-window=" 󰕰  Window";
+        display-Network=" 󰤨  Network";
+        sidebar-mode=true;
         show-icons = true;
       };
     };

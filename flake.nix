@@ -37,20 +37,24 @@
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+      # submodules = true;
+    };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    }; # Change URL to "github:nix-community/nixvim/nixos-24.05" when available
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    # nixvim = {
+    #   url = "github:nix-community/nixvim/nixos-24.11";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # }; # Change URL to "github:nix-community/nixvim/nixos-24.05" when available
+    # plasma-manager = {
+    #   url = "github:nix-community/plasma-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.home-manager.follows = "home-manager";
+    # };
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscodium-server.url = "github:unicap/nixos-vscodium-server";
   };
@@ -70,14 +74,14 @@
       vscodium-server,
       catppuccin,
       helix,
-      nixvim,
-      plasma-manager,
+      # nixvim,
+      # plasma-manager,
       hyprland,
       hyprland-plugins,
       ...
     }:
     let
-      inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
+      # inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
 
       genPkgs =
         system:
@@ -103,6 +107,8 @@
           inherit system;
           specialArgs = {
             inherit
+              system
+              inputs
               nixos-hardware
               nixos-wsl
               lenny-fingerprint
@@ -111,7 +117,7 @@
               vscode-server
               vscodium-server
               helix
-              plasma-manager
+              # plasma-manager
               ; # removed pkgs unstablePkgs
             # lets us use these things in modules
             customArgs = { inherit system hostname username; }; # removed pkgs unstablePkgs
@@ -121,26 +127,26 @@
             { nixpkgs.config.allowUnfree = true; }
             ./hosts/${hostname}
             ./hosts/common.nix
-            home-manager.nixosModules.home-manager
-            {
-              networking.hostName = hostname;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "backup";
-              home-manager.extraSpecialArgs = {
-                inherit
-                  pkgs
-                  unstablePkgs
-                  nixvim
-                  catppuccin
-                  plasma-manager
-                  hyprland-plugins
-                  ;
-              };
-              home-manager.users.${username} = {
-                imports = [ ./home/${username}/hosts/${hostname}.nix ];
-              };
-            }
+            # home-manager.nixosModules.home-manager
+            # {
+            #   networking.hostName = hostname;
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
+            #   home-manager.backupFileExtension = "backup";
+            #   home-manager.extraSpecialArgs = {
+            #     inherit
+            #       pkgs
+            #       unstablePkgs
+            #       nixvim
+            #       catppuccin
+            #       plasma-manager
+            #       hyprland-plugins
+            #       ;
+            #   };
+            #   home-manager.users.${username} = {
+            #     imports = [ ./home/${username}/hosts/${hostname}.nix ];
+            #   };
+            # }
 
           ];
         };

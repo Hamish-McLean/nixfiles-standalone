@@ -22,6 +22,7 @@
         {
           layer = "top"; # or bottom
           position = "top"; # or bottom
+          margin = "4px";
           # height = 30;
           # width = 1280;
           # spacing = 4;
@@ -30,34 +31,40 @@
           #   "HDMI-A-2"
           # ];
           modules-left = [
+            "custom/rofi"
             "hyprland/workspaces"
-            # "hyprland/window"
-            # "tray"
+            "wlr/taskbar"
+            "hyprland/window"
           ];
           modules-center = [
-            # "clock"
             "custom/music"
+            # "mpris"
           ];
           modules-right = [
-            "pulseaudio"
+            "tray"
+            "wireplumber"
             "backlight"
             "battery"
-            "clock"
-            "tray"
+            "bluetooth"
             "network"
+            "clock"
             # "custom/lock"
             "custom/power"
             # "battery#bat0" # Fix battery name if needed
           ];
+          "custom/rofi" = {
+            format = " ";
+            on-click = "rofi -show drun";
+          };
           "hyprland/workspaces" = {
             format = "{icon}";
             fromat-icons = {
-              default = "";
+              default = " ";
             };
           };
-          tray = {
-            icon-size = 21;
-            spacing = 10;
+          "wlr/taskbar" = {
+            on-click = "activate";
+            icon-size = 20;
           };
           "custom/music" = {
             format = "  {}";
@@ -68,15 +75,27 @@
             on-click = "playerctl play-pause";
             max-length = 50;
           };
-          clock = {
-            timezone = "Europe/London";
-            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-            format-alt = "󰃭  {:%Y-%m-%d}";
-            format = "  {:%H:%M}";
+          tray = {
+            icon-size = 20;
+            spacing = 10;
+          };
+          wireplumber = {
+            # scroll-step = 1,; # %, can be a float
+            format = "{icon}";
+            tooltip-format = "{node_name} {volume}%";
+            format-muted = " ";
+            format-icons = [
+              " "
+              " "
+              " "
+            ];
+            on-click = "pavucontrol";
+            on-click-right = "qpwgraph";
           };
           backlight = {
-            device = "intel_backlight";
-            format = "{icon} {percent}%";
+            # device = "intel_backlight";
+            format = "{icon}";
+            tooltip-format="{percent}%";
             format-icons = [
               ""
               ""
@@ -95,39 +114,27 @@
               warning = 30;
               critical = 15;
             };
-            format = "{icon} {capacity}%";
-            format-icons = [
-              "󰁿"
-              "󰂀"
-              "󰂁"
-              "󰂂"
-              "󰁹"
-            ];
-            format-charging = "{capacity}% 󰂄";
-            format-full = "󰁹";
+            format = "{icon}";
+            tooltip-format = "{capacity}%";
+            format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+            format-charging = "{icon}󱐋";
+            format-full = "󱟢 ";
           };
-          pulseaudio = {
-            # scroll-step = 1,; # %, can be a float
-            format = "{icon}  {volume}%";
-            format-muted = " ";
-            format-icons = {
-              default = [
-                " "
-                " "
-                " "
-              ];
-            };
-            on-click = "pavucontrol";
+          clock = {
+            timezone = "Europe/London";
+            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+            format-alt = "{:%Y-%m-%d}";
+            format = "{:%H:%M}";
           };
           "custom/lock" = {
             tooltip = false;
             # on-click = "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown";
-            format = "";
+            format = " ";
           };
           "custom/power" = {
             tooltip = false;
             on-click = "wlogout &";
-            format = "⏻";
+            format = "⏻ ";
           };
           network = {
             format-wifi = "{icon}";
@@ -142,6 +149,14 @@
             format-disconnected = "󰤮 ";
             format-ethernet = "󰈁";
             tooltip-format = "{essid}";
+          };
+          bluetooth = {
+            format-connected = "󰂰 ";
+            format-on = "󰂯 ";
+            format-off="󰂲 ";
+            on-click = "blueman-manager";
+            tooltip-format-connected = "{device_enumerate}";
+            tooltip-device-enumerate-connected = "{device_alias}";
           };
         }
       ];

@@ -18,7 +18,12 @@
   config = lib.mkIf config.hyprland.enable {
 
     home.packages = with pkgs; [ 
+      brightnessctl
+      hyprcursor
       hyprlock
+      hyprpaper
+      networkmanagerapplet
+      pavucontrol
     ];
 
     programs.hyprlock.enable = true;
@@ -44,6 +49,18 @@
         input = {
           kb_layout = "gb";
         };
+        decoration = {
+          rounding = 12;
+          blur = {
+            enabled = true;
+            size = 16;
+            passes = 2;
+            ignore_opacity = true;
+          };
+        };
+        gestures = {
+          workspace_swipe = "on";
+        };
         "$mod" = "SUPER";
         bind =
           [
@@ -59,12 +76,18 @@
             ", Print, exec, grimblast copy area"
 
             # Windows
-            "$mod, LEFT, swapnext"
-            "$mod, RIGHT, swapnext"
-            "$mod SHIFT, LEFT, movetoworkspace, -1"
-            "$mod SHIFT, RIGHT, movetoworkspace, +1"
-            "CTRL, TAB, focuswindow, r"
-            "CTRL SHIFT, TAB, focuswindow, l"
+            "$mod, left, movefocus, l"
+            "$mod, right, movefocus, r"
+            "$mod, up, movefocus, u"
+            "$mod, down, movefocus, d"
+            "$mod CTRL, left, movewindow, l"
+            "$mod CTRL, right, movewindow, r"
+            "$mod CTRL, up, movewindow, u"
+            "$mod CTRL, down, movewindow, d"
+            "$mod SHIFT, left, movetoworkspace, -1"
+            "$mod SHIFT, right, movetoworkspace, +1"
+            "$mod, tab, workspace, e+1"
+            "$mod SHIFT, tab, workspace, e-1"
             "$mod, COMMA, togglesplit"
             "$mod, PERIOD, togglefloating"
 
@@ -80,7 +103,7 @@
             # ", 113, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
             ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
             ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-            ", XF86AudioMute, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ toggle"
+            ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
             # Brightness
             ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
@@ -117,7 +140,7 @@
           "$mod, mouse:273, resizewindow"
         ];
         bindr = [
-          "$mod, SUPER_L, exec, rofi -show drun"
+          "$mod, SUPER_L, exec, killall rofi || rofi -show drun"
         ];
 
         # plugins
@@ -125,6 +148,15 @@
           add_borders = 1;
           natural_rounding = "yes";
         };
+      };
+    };
+    services.hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = "on";
+        splash = true;
+        preload = [ "${../../wallpapers/rainbow.png}" ];
+        wallpaper = ", ${../../wallpapers/rainbow.png}";
       };
     };
   };
