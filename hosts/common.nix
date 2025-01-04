@@ -3,17 +3,9 @@
   system,
   lib,
   inputs,
-  helix,
-  catppuccin,
   ...
 }:
-let
-  inherit (inputs) nixpkgs nixpkgs-unstable;
-in
 {
-  imports = [
-    catppuccin.nixosModules.catppuccin
-  ];
 
   time.timeZone = "Europe/London";
 
@@ -35,12 +27,6 @@ in
   };
 
   security.sudo.wheelNeedsPassword = false;
-
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-    accent = "sapphire";
-  };
 
   environment.systemPackages = (
     with pkgs;

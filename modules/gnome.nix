@@ -10,7 +10,6 @@
   };
 
   config = lib.mkIf config.gnome.enable {
-    # catppuccin.sddm.enable = true;
     services = {
       displayManager.sddm.enable = true;
       xserver = {

@@ -24,6 +24,7 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
+  boot.plymouth.enable = true;
 
   networking = {
     hostName = "Lenny"; # Define your hostname.
@@ -95,6 +96,7 @@
   environment.systemPackages = with pkgs; [
     firefoxpwa
     playerctl
+    plymouth
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
