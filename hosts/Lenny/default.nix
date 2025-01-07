@@ -90,13 +90,33 @@
       nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
     };
     fish.enable = true;
-    steam.enable = true;
   };
+
+  # Steam
+  programs.steam = {
+    enable = true;
+    extraPackages = with pkgs; [
+      libGL
+    ];
+  };
+  # services.xserver = {
+  #   enable = true;
+  #   extraConfig = pkgs.libGL.config;
+  # };
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+  hardware.steam-hardware.enable = true; # For steam controller
 
   environment.systemPackages = with pkgs; [
     firefoxpwa
     playerctl
-    plymouth
+    plymouth # Boot screen with catppuccin themes
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -124,7 +144,6 @@
         oh-my-git
         spotify
         prismlauncher # Open source minecraft launcher
-        steam
         stremio
         syncthing
         telegram-desktop
