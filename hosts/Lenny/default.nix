@@ -127,7 +127,6 @@
     isNormalUser = true;
     description = "Hamish McLean";
     extraGroups = [
-      "docker"
       "input"
       "networkmanager"
       "wheel"
