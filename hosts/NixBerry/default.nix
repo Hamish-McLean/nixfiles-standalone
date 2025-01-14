@@ -1,17 +1,19 @@
 {
-  config,
+  # config,
+  inputs,
   pkgs,
-  lib,
-  nixos-hardware,
-  vscode-server,
+  # lib,
+  # nixos-hardware,
+  # vscode-server,
   ...
 }:
 
 {
   imports = [
-    nixos-hardware.nixosModules.raspberry-pi-4
+    inputs.nixos-hardware.nixosModules.raspberry-pi-4
     ../common.nix
-    vscode-server.nixosModules.default
+    inputs.vscode-server.nixosModules.default
+    inputs.vscodium-server.nixosModules.default
   ];
 
   # Bootloader
@@ -46,7 +48,9 @@
 
   services.tailscale.enable = true;
 
+  # VSCode
   services.vscode-server.enable = true;
+  services.vscodium-server.enable = true;
 
   virtualisation.docker.enable = true; # Docker running as root
 
