@@ -83,6 +83,9 @@
 
   services.tailscale.enable = true;
 
+  # Flatpaks
+  services.flatpak.enable = true;
+
   programs = {
     firefox = {
       enable = true;
