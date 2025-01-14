@@ -127,9 +127,10 @@
     isNormalUser = true;
     description = "Hamish McLean";
     extraGroups = [
+      "docker"
+      "input"
       "networkmanager"
       "wheel"
-      "input"
     ];
     shell = pkgs.fish;
     packages = (
