@@ -121,9 +121,8 @@
         nix-on-droid.lib.nixOnDroidConfiguration {
           inherit system;
           pkgs = pkgs;
-          specialArgs = {
-            inherit inputs pkgs unstablePkgs nix-on-droid;
-            customArgs = { inherit system hostname username ; };
+          extraSpecialArgs = {
+            inherit inputs pkgs unstablePkgs system hostname username;
           };
           modules = [
             ./hosts/nix-on-droid
