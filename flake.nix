@@ -14,9 +14,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/release-23.11";
+      url = "github:nix-community/nix-on-droid/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+      # inputs.home-manager.follows = "home-manager";
     };
 
     # Hardware
@@ -133,14 +133,8 @@
             };
           };
           modules = [
-            ./hosts/${hostname}
-
-            #home-manager = {
-            #  config = ./home/cycad/hosts/${hostname} # Cycad username hardcoded for now
-            #  useGlobalPkgs = true;
-            #};
+            ./hosts/nix-on-droid
           ];
-          home-manager-path = home-manager.outPath;
         };
 
     in
@@ -156,7 +150,7 @@
       };
 
       nixOnDroidConfigurations = {
-        Pixel5 = nixOnDroidSystem "aarch64-linux" "Pixel5" "nix-on-droid"; # Username must be set to nix-on-droid
+        default = nixOnDroidSystem "aarch64-linux" "localhost" "nix-on-droid"; # Username must be set to nix-on-droid
       };
     };
 }

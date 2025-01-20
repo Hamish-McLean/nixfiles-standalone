@@ -3,6 +3,9 @@
   ...
 }:
 {
+  imports = [
+    ../common.nix
+  ];
   # environment.packages = with pkgs; [
   #   fish
   #   gh
@@ -11,7 +14,7 @@
 
   programs.fish.enable = true;
 
-  users.users.nix-on-droid.shell = pkgs.fish;
+  user.shell = pkgs.fish;
 
   # nix.extraOptions = ''
   #   experimental-features = nix-command flakes
