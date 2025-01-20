@@ -3,18 +3,18 @@
   ...
 }:
 {
-  imports = [
-    ../common.nix
-  ];
-  # environment.packages = with pkgs; [
-  #   fish
-  #   gh
-  #   git
+  # imports = [
+  #   ../common.nix
   # ];
 
-  programs.fish.enable = true;
+  environment.packages = with pkgs; [
+    # fish
+    # gh
+    # git
+    nano
+  ];
 
-  user.shell = pkgs.fish;
+  # user.shell = pkgs.fish;
 
   # nix.extraOptions = ''
   #   experimental-features = nix-command flakes
