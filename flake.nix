@@ -119,8 +119,10 @@
           unstablePkgs = genUnstablePkgs system;
         in
         nix-on-droid.lib.nixOnDroidConfiguration {
-          inherit system;
-          pkgs = pkgs;
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [ nix-on-droid.overlays.default ];
+          };
           extraSpecialArgs = {
             inherit inputs pkgs unstablePkgs system hostname username;
           };
