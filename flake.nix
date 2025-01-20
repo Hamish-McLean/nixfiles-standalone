@@ -120,17 +120,10 @@
         in
         nix-on-droid.lib.nixOnDroidConfiguration {
           inherit system;
+          pkgs = pkgs;
           specialArgs = {
-            inherit pkgs unstablePkgs nix-on-droid;
-            customArgs = {
-              inherit
-                system
-                hostname
-                username
-                pkgs
-                unstablePkgs
-                ;
-            };
+            inherit inputs pkgs unstablePkgs nix-on-droid;
+            customArgs = { inherit system hostname username ; };
           };
           modules = [
             ./hosts/nix-on-droid
