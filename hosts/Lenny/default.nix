@@ -88,6 +88,7 @@
 
   programs = {
     firefox = {
+      
       enable = true;
       package = pkgs.firefox;
       nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
@@ -95,13 +96,18 @@
     fish.enable = true;
   };
 
-  # Steam
+  # Gaming
   programs.steam = {
     enable = true;
     extraPackages = with pkgs; [
       libGL
     ];
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+    gamescopeSession.enable = true;
   };
+  programs.gamemode.enable = true;
   # services.xserver = {
   #   enable = true;
   #   extraConfig = pkgs.libGL.config;
@@ -120,6 +126,11 @@
     firefoxpwa
     playerctl
     plymouth # Boot screen with catppuccin themes
+
+    # Gaming
+    bottles
+    lutris
+    protonup-qt
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
