@@ -14,7 +14,7 @@
     curl
     nano
     nh
-  ];
+  ]; # add nerdfonts here
 
   #cat-colours.enable = true;
 

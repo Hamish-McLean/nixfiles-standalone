@@ -1,8 +1,8 @@
 {
   pkgs,
-  system,
-  lib,
-  inputs,
+  # system,
+  # lib,
+  # inputs,
   ...
 }:
 {
@@ -34,12 +34,9 @@
     [
       btop
       curl
-      ddgr
-      du-dust
       fish
       gh # Github
       git
-      github-copilot-cli
       # helix.packages."${pkgs.system}".helix
       htop
       nano
@@ -53,7 +50,6 @@
       pet
       tldr
       tmux
-      tree
       wget
     ]
   );

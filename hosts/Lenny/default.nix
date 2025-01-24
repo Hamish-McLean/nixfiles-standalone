@@ -17,6 +17,9 @@
     ../../modules
   ];
 
+  # Custom options
+  gaming.enable = true;
+
   # Bootloader
   boot.loader = {
     systemd-boot.enable = true;
@@ -29,20 +32,6 @@
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true; # Enable networking
   };
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_GB.UTF-8";
-  # i18n.extraLocaleSettings = {
-  #   LC_ADDRESS = "en_GB.UTF-8";
-  #   LC_IDENTIFICATION = "en_GB.UTF-8";
-  #   LC_MEASUREMENT = "en_GB.UTF-8";
-  #   LC_MONETARY = "en_GB.UTF-8";
-  #   LC_NAME = "en_GB.UTF-8";
-  #   LC_NUMERIC = "en_GB.UTF-8";
-  #   LC_PAPER = "en_GB.UTF-8";
-  #   LC_TELEPHONE = "en_GB.UTF-8";
-  #   LC_TIME = "en_GB.UTF-8";
-  # };
 
   # Configure console keymap
   console.keyMap = "uk";
@@ -94,41 +83,10 @@
     fish.enable = true;
   };
 
-  # Gaming
-  programs.steam = {
-    enable = true;
-    extraPackages = with pkgs; [
-      libGL
-    ];
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
-    gamescopeSession.enable = true;
-  };
-  programs.gamemode.enable = true;
-  # services.xserver = {
-  #   enable = true;
-  #   extraConfig = pkgs.libGL.config;
-  # };
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
-  hardware.steam-hardware.enable = true; # For steam controller
-
   environment.systemPackages = with pkgs; [
     firefoxpwa
     playerctl
     plymouth # Boot screen with catppuccin themes
-
-    # Gaming
-    bottles
-    lutris
-    protonup-qt
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -145,7 +103,6 @@
       with pkgs;
       [
         bitwarden
-        discord
         firefox
         fractal
         gtop
