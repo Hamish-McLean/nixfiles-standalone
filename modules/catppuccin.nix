@@ -1,18 +1,18 @@
-{ 
+{
   config,
-  inputs, 
-  lib, 
-  ... 
+  inputs,
+  lib,
+  ...
 }:
 {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
   ];
-  
+
   options = {
     cat-colours.enable = lib.mkEnableOption "enables catppuccin";
   };
-  
+
   config = lib.mkIf config.cat-colours.enable {
     catppuccin = {
       enable = true;

@@ -1,17 +1,15 @@
-/*
-Gaming settings
-*/
-{ 
-  config, 
+# Gaming settings
+{
+  config,
   lib,
   pkgs,
-  ... 
+  ...
 }:
 {
   options = {
     gaming.enable = lib.mkEnableOption "enables gaming";
   };
-  
+
   config = lib.mkIf config.gaming.enable {
     programs.steam = {
       enable = true;
