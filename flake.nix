@@ -42,6 +42,10 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscodium-server.url = "github:unicap/nixos-vscodium-server";
   };
@@ -109,6 +113,7 @@
             { nixpkgs.config.allowUnfree = true; }
             ./hosts/${hostname}
             ./hosts/common.nix
+            inputs.sops-nix.nixosModules.sops
           ];
         };
 
