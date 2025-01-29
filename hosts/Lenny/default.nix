@@ -4,17 +4,19 @@
 
 {
   pkgs,
-  nixos-hardware,
+  inputs,
+  username,
   ...
 }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    nixos-hardware.nixosModules.lenovo-thinkpad-t480s
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
     # ./lenny-fingerprint.nix
     ../common.nix
     ../../modules
+    ../../users/cycad.nix
   ];
 
   # Custom options
@@ -90,35 +92,34 @@
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.cycad = {
-    isNormalUser = true;
-    description = "Hamish McLean";
-    extraGroups = [
-      "input"
-      "networkmanager"
-      "wheel"
-    ];
-    shell = pkgs.fish;
-    packages = (
-      with pkgs;
-      [
-        bitwarden
-        firefox
-        fractal
-        gtop
-        libreoffice
-        modrinth-app
-        mumble
-        obsidian
-        oh-my-git
-        stremio
-        syncthing
-        telegram-desktop
-        warp-terminal
-        whatsapp-for-linux
-      ]
-    );
-  };
+  # users.users.cycad = {
+  #   isNormalUser = true;
+  #   description = "Hamish McLean";
+  #   extraGroups = [
+  #     "input"
+  #     "networkmanager"
+  #     "wheel"
+  #   ];
+  #   shell = pkgs.fish;
+  # };
+  users.users.cycad.packages = (
+    with pkgs; [
+      bitwarden
+      firefox
+      fractal
+      gtop
+      libreoffice
+      modrinth-app
+      mumble
+      obsidian
+      oh-my-git
+      stremio
+      syncthing
+      telegram-desktop
+      warp-terminal
+      whatsapp-for-linux
+    ]
+  );
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

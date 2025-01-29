@@ -1,14 +1,18 @@
 {
+  inputs,
+  lib,
   pkgs,
-  # system,
-  # lib,
-  # inputs,
+  username,
   ...
 }:
 {
 
-  time.timeZone = "Europe/London";
-  i18n.defaultLocale = "en_GB.UTF-8";
+  imports = [
+    inputs.sops-nix.nixosModules.sops
+  ];
+
+  time.timeZone = lib.mkDefault "Europe/London";
+  i18n.defaultLocale = lib.mkDefault "en_GB.UTF-8";
 
   nix = {
     # nixPath = [ "nixpkgs=${nixpkgs}" ];
@@ -28,6 +32,13 @@
   };
 
   security.sudo.wheelNeedsPassword = false;
+
+  sops = {
+    defaultSopsFile = ../secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age.keyFile = "/home/cycad/.config/sops/age/keys.txt";
+    secrets = {};
+  };
 
   environment.systemPackages = (
     with pkgs;

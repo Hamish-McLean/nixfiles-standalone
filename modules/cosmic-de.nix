@@ -1,12 +1,12 @@
 {
   config,
+  inputs,
   lib,
-  cosmic,
   ...
 }:
 {
   imports = [
-    cosmic.nixosModules.default
+    inputs.cosmic.nixosModules.default
   ];
 
   options = {

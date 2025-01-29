@@ -3,8 +3,6 @@
   inputs,
   pkgs,
   # lib,
-  # nixos-hardware,
-  # vscode-server,
   ...
 }:
 

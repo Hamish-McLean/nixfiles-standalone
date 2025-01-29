@@ -13,11 +13,6 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.home-manager.follows = "home-manager";
-    };
 
     # Hardware
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -50,106 +45,43 @@
     vscodium-server.url = "github:unicap/nixos-vscodium-server";
   };
 
-  outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      nixpkgs-unstable,
-      home-manager,
-      nixos-hardware,
-      nixos-wsl,
-      nix-on-droid,
-      lenny-fingerprint,
-      cosmic,
-      vscode-server,
-      vscodium-server,
-      catppuccin,
-      hyprland,
-      hyprland-plugins,
-      ...
-    }:
-    let
+  outputs = {
+    nixpkgs,
+    nixpkgs-unstable,
+    ...
+  }@inputs:
 
-      genPkgs =
-        system:
-        import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
+  let
+    nixosSystem =
+      system: hostname: username:
+      let
+        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+        unstablePkgs = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+      in
+      nixpkgs.lib.nixosSystem {
+        pkgs = pkgs;
+        inherit system;
+        specialArgs = {
+          inherit inputs pkgs unstablePkgs;
+          customArgs = { inherit system hostname username; };
         };
-      genUnstablePkgs =
-        system:
-        import nixpkgs-unstable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-
-      # creates a nixos system config
-      nixosSystem =
-        system: hostname: username:
-        let
-          pkgs = genPkgs system;
-          unstablePkgs = genUnstablePkgs system;
-        in
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit
-              system
-              inputs
-              nixos-hardware
-              nixos-wsl
-              lenny-fingerprint
-              cosmic
-              catppuccin
-              vscode-server
-              vscodium-server
-              # plasma-manager
-              ; # removed pkgs unstablePkgs
-            # lets us use these things in modules
-            customArgs = { inherit system hostname username; }; # removed pkgs unstablePkgs
-          };
-          modules = [
-            # Allow unfree packages
-            { nixpkgs.config.allowUnfree = true; }
-            ./hosts/${hostname}
-            ./hosts/common.nix
-            inputs.sops-nix.nixosModules.sops
-          ];
-        };
-
-      nixOnDroidSystem =
-        system: hostname: username:
-        let
-          pkgs = genPkgs system;
-          unstablePkgs = genUnstablePkgs system;
-        in
-        nix-on-droid.lib.nixOnDroidConfiguration {
-          pkgs = import nixpkgs {
-            inherit system;
-            overlays = [ nix-on-droid.overlays.default ];
-          };
-          extraSpecialArgs = {
-            inherit inputs pkgs unstablePkgs system hostname username;
-          };
-          modules = [
-            ./hosts/nix-on-droid
-          ];
-        };
-
-    in
-    {
-      nixosConfigurations = {
-        # NixOS hosts
-        Lenny = nixosSystem "x86_64-linux" "Lenny" "cycad";
-        NixBerry = nixosSystem "aarch64-linux" "NixBerry" "cycad";
-
-        # WSL hosts
-        Roger = nixosSystem "x86_64-linux" "Roger" "cycad";
-        EMR0148 = nixosSystem "x86_64-linux" "EMR0148" "cycad";
+        modules = [
+          # { nixpkgs.config.allowUnfree = true; }
+          ./hosts/${hostname}
+          ./hosts/common.nix
+        ];
       };
+  
+  in
+  {
+    nixosConfigurations = {
+      # NixOS hosts
+      Lenny = nixosSystem "x86_64-linux" "Lenny" "cycad";
+      NixBerry = nixosSystem "aarch64-linux" "NixBerry" "cycad";
 
-      nixOnDroidConfigurations = {
-        default = nixOnDroidSystem "aarch64-linux" "localhost" "nix-on-droid"; # Username must be set to nix-on-droid
-      };
+      # WSL hosts
+      Roger = nixosSystem "x86_64-linux" "Roger" "cycad";
+      EMR0148 = nixosSystem "x86_64-linux" "EMR0148" "cycad";
     };
+  };
 }

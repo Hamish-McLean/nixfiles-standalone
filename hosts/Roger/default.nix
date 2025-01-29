@@ -1,8 +1,12 @@
-{ config, lib, pkgs, nixos-wsl, ... }:
-
+{
+  hostname,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
-    nixos-wsl.nixosModules.wsl
+    inputs.nixos-wsl.nixosModules.wsl
   ];
 
   wsl = {
@@ -10,7 +14,7 @@
     defaultUser = "cycad";
   };
 
-  networking.hostName = $hostname;
+  networking.hostName = "${hostname}";
 
   programs.fish.enable = true;
 

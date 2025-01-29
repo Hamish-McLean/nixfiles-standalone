@@ -1,6 +1,5 @@
 {
   config,
-  hyprland,
   inputs,
   lib,
   pkgs,

@@ -2,7 +2,10 @@
   NixOS module for lenny's 06cb-009a fingerprint sensor.
   From: https://github.com/ahbnr/nixos-06cb-009a-fingerprint-sensor
 */
-{ lenny-fingerprint, ... }:
+{
+  inputs,
+  ...
+}:
 {
   # First, setup fprintd and enroll fingerprints
   # imports = [
@@ -20,7 +23,7 @@
     enable = true;
     tod = {
       enable = true;
-      driver = lenny-fingerprint.lib.libfprint-2-tod1-vfs0090-bingch {
+      driver = inputs.lenny-fingerprint.lib.libfprint-2-tod1-vfs0090-bingch {
         calib-data-file = ./calib-data.bin;
       };
     };
