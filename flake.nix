@@ -45,43 +45,50 @@
     vscodium-server.url = "github:unicap/nixos-vscodium-server";
   };
 
-  outputs = {
-    nixpkgs,
-    nixpkgs-unstable,
-    ...
-  }@inputs:
+  outputs =
+    {
+      nixpkgs,
+      nixpkgs-unstable,
+      ...
+    }@inputs:
 
-  let
-    nixosSystem =
-      system: hostname: username:
-      let
-        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-        unstablePkgs = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-      in
-      nixpkgs.lib.nixosSystem {
-        pkgs = pkgs;
-        inherit system;
-        specialArgs = {
-          inherit inputs pkgs unstablePkgs;
-          customArgs = { inherit system hostname username; };
+    let
+      nixosSystem =
+        system: hostname: username:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+          unstablePkgs = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        in
+        nixpkgs.lib.nixosSystem {
+          pkgs = pkgs;
+          inherit system;
+          specialArgs = {
+            inherit inputs pkgs unstablePkgs;
+            customArgs = { inherit system hostname username; };
+          };
+          modules = [
+            # { nixpkgs.config.allowUnfree = true; }
+            ./hosts/${hostname}
+            ./hosts/common.nix
+          ];
         };
-        modules = [
-          # { nixpkgs.config.allowUnfree = true; }
-          ./hosts/${hostname}
-          ./hosts/common.nix
-        ];
-      };
-  
-  in
-  {
-    nixosConfigurations = {
-      # NixOS hosts
-      Lenny = nixosSystem "x86_64-linux" "Lenny" "cycad";
-      NixBerry = nixosSystem "aarch64-linux" "NixBerry" "cycad";
 
-      # WSL hosts
-      Roger = nixosSystem "x86_64-linux" "Roger" "cycad";
-      EMR0148 = nixosSystem "x86_64-linux" "EMR0148" "cycad";
+    in
+    {
+      nixosConfigurations = {
+        # NixOS hosts
+        Lenny = nixosSystem "x86_64-linux" "Lenny" "cycad";
+        NixBerry = nixosSystem "aarch64-linux" "NixBerry" "cycad";
+
+        # WSL hosts
+        Roger = nixosSystem "x86_64-linux" "Roger" "cycad";
+        EMR0148 = nixosSystem "x86_64-linux" "EMR0148" "cycad";
+      };
     };
-  };
 }

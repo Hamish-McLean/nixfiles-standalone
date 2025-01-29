@@ -37,7 +37,7 @@
     defaultSopsFile = ../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
     age.keyFile = "/home/cycad/.config/sops/age/keys.txt";
-    secrets = {};
+    secrets = { };
   };
 
   environment.systemPackages = (
