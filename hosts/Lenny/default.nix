@@ -111,8 +111,6 @@
         mumble
         obsidian
         oh-my-git
-        spotify
-        prismlauncher # Open source minecraft launcher
         stremio
         syncthing
         telegram-desktop
