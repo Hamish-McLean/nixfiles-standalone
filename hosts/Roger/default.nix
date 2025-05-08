@@ -14,7 +14,7 @@
     defaultUser = "cycad";
   };
 
-  networking.hostName = "${hostname}";
+  networking.hostName = "Roger";
 
   programs.fish.enable = true;
 
