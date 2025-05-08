@@ -39,6 +39,8 @@
       bottles
       lutris
       protonup-qt
+      winetricks
+      wineWowPackages.wayland
     ];
 
   };
