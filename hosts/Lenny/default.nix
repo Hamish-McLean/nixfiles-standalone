@@ -77,13 +77,18 @@
 
   programs = {
     firefox = {
-      
       enable = true;
       package = pkgs.firefox;
       nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
     };
     fish.enable = true;
   };
+
+  # Android
+  programs.adb.enable = true;
+  users.users.cycad.extraGroups = ["adbusers"];
+
+  virtualisation.waydroid.enable = true;
 
   environment.systemPackages = with pkgs; [
     firefoxpwa
