@@ -11,21 +11,16 @@
 
   config = lib.mkIf config.gnome.enable {
     services = {
-      displayManager.sddm.enable = true;
       xserver = {
         # Enable X11
         enable = true;
         # Enable GNOME DM
-        # displayManager.gdm.enable = true;
         desktopManager.gnome.enable = true;
-        # Configure keymap in X11
-        xkb.layout = "gb";
-        xkb.variant = "";
         excludePackages = [ pkgs.xterm ];
       };
       gnome = {
         # Disable default GNOME core-utilities
-        core-utilities.enable = false;
+        core-utilities.enable = true;
         # Enable GNOME utilities
         sushi.enable = true;
       };

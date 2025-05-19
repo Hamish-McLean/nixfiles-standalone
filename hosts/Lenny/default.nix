@@ -17,6 +17,7 @@
     ../common.nix
     ../../modules
     ../../users/cycad.nix
+    ../../users/fallo.nix
   ];
 
   # Custom options
@@ -64,6 +65,7 @@
   # services.xserver.libinput.enable = true;
 
   # Desktop environments
+  sddm.enable = true;
   cosmic.enable = false;
   gnome.enable = true;
   hyprland.enable = true;

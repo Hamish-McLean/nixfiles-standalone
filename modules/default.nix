@@ -11,6 +11,7 @@
     ./hyprland.nix
     ./kde.nix
     ./qt.nix
+    ./sddm.nix
   ];
 
   cat-colours.enable = lib.mkDefault true;

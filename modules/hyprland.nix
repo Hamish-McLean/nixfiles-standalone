@@ -19,12 +19,5 @@
       # package = inputs.hyprland.packages.${system}.hyprland;
       # portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
     };
-
-    services.displayManager.sddm = {
-      enable = true;
-      # wayland.enable = true;
-      package = pkgs.kdePackages.sddm;
-    };
-
   };
 }
