@@ -20,7 +20,7 @@
       };
       gnome = {
         # Disable default GNOME core-utilities
-        core-utilities.enable = true;
+        core-apps.enable = true;
         # Enable GNOME utilities
         sushi.enable = true;
       };

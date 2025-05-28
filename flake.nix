@@ -3,7 +3,7 @@
 
   inputs = {
     # Nix
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # home-manager = {
     #   url = "github:nix-community/home-manager/release-24.11";
@@ -55,25 +55,38 @@
     let
       nixosSystem =
         system: hostname: username:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-          unstablePkgs = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        in
+        # let
+        #   pkgs = import nixpkgs {
+        #     inherit system;
+        #     config.allowUnfree = true;
+        #   };
+        #   unstablePkgs = import nixpkgs-unstable {
+        #     inherit system;
+        #     config.allowUnfree = true;
+        #   };
+        # in
         nixpkgs.lib.nixosSystem {
-          pkgs = pkgs;
+          # pkgs = pkgs;
           inherit system;
           specialArgs = {
-            inherit inputs pkgs unstablePkgs;
+            inherit inputs; # pkgs unstablePkgs;
             customArgs = { inherit system hostname username; };
           };
           modules = [
-            # { nixpkgs.config.allowUnfree = true; }
+            {
+              nixpkgs.config.allowUnfree = true;
+              # Overlay to make unstable packages available as `pkgs.unstable.<package>`
+              nixpkgs.overlays = [
+                # This overlay adds an 'unstable' attribute to pkgs,
+                # which contains packages from the nixpkgs-unstable input.
+                (final: prev: {
+                  unstable = import nixpkgs-unstable {
+                    inherit system;
+                    config.allowUnfree = true; # Allow unfree in unstable pkgs as well
+                  };
+                })
+              ];
+            }
             ./hosts/${hostname}
             ./hosts/common.nix
           ];

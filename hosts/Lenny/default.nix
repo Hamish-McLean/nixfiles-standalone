@@ -44,8 +44,8 @@
 
   # Enable sound with pipewire.
   # sound.enable = true; depracated?
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  services.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -116,7 +116,7 @@
       fractal
       gtop
       libreoffice
-      modrinth-app
+      # modrinth-app
       mumble
       obsidian
       oh-my-git
