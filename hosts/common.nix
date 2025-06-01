@@ -13,6 +13,7 @@
 
   time.timeZone = lib.mkDefault "Europe/London";
   i18n.defaultLocale = lib.mkDefault "en_GB.UTF-8";
+  i18n.extraLocaleSettings.LC_TIME = lib.mkDefault "en_DK.UTF-8"; # ISO 8601 datetimes
 
   nix = {
     # nixPath = [ "nixpkgs=${nixpkgs}" ];
