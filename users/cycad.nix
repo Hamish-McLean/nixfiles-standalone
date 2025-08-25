@@ -9,12 +9,13 @@
       description = "Hamish McLean";
       extraGroups = [
         "adbusers"
+        "docker"
         "input"
         "networkmanager"
         "wheel"
       ];
       linger = true; 
-      shell = pkgs.fish;
+      shell = pkgs.nushell;
     };
   };
 }
