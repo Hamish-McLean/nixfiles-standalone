@@ -11,11 +11,11 @@
 
   config = lib.mkIf config.gnome.enable {
     services = {
+      desktopManager.gnome.enable = true;
       xserver = {
         # Enable X11
         enable = true;
         # Enable GNOME DM
-        desktopManager.gnome.enable = true;
         excludePackages = [ pkgs.xterm ];
       };
       gnome = {

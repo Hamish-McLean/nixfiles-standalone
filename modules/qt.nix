@@ -11,8 +11,8 @@
 
   config = lib.mkIf config.qt_config.enable {
     environment.systemPackages = with pkgs; [
-      libsForQt5.qt5ct
-      libsForQt5.qtstyleplugin-kvantum
+      # libsForQt5.qt5ct
+      # libsForQt5.qtstyleplugin-kvantum
     ];
     qt = {
       enable = true;

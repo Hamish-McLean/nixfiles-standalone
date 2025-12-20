@@ -111,7 +111,7 @@
   # };
   users.users.cycad.packages = (
     with pkgs; [
-      bitwarden
+      bitwarden-desktop
       firefox
       fractal
       gtop
@@ -120,11 +120,10 @@
       mumble
       obsidian
       oh-my-git
-      stremio
+      # stremio
       syncthing
       telegram-desktop
       warp-terminal
-      whatsapp-for-linux
     ]
   );
 
