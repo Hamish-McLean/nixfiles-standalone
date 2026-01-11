@@ -10,6 +10,7 @@
     ./gnome.nix
     ./hyprland.nix
     ./kde.nix
+    ./libredns.nix
     ./qt.nix
     ./sddm.nix
   ];

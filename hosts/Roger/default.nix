@@ -9,6 +9,7 @@
     inputs.nixos-wsl.nixosModules.wsl
     inputs.vscode-server.nixosModules.default
     inputs.vscodium-server.nixosModules.default
+    ../../modules
   ];
 
   wsl = {
