@@ -17,7 +17,9 @@
     defaultUser = "cycad";
   };
 
+  # Networking
   networking.hostName = "Roger";
+  libredns.enable = false;
 
   programs.fish.enable = true;
 
