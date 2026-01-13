@@ -10,6 +10,7 @@
     inputs.vscode-server.nixosModules.default
     inputs.vscodium-server.nixosModules.default
     ../../modules
+    ../../users/cycad.nix
   ];
 
   wsl = {
@@ -26,16 +27,6 @@
   # VSCode
   services.vscode-server.enable = true;
   services.vscodium-server.enable = true;
-
-  users.users.cycad = {
-    isNormalUser = true;
-    packages = with pkgs; [
-      fish
-      neovim
-      tmux
-    ];
-    shell = pkgs.fish;
-  };
 
   system.stateVersion = "23.11";
 }
