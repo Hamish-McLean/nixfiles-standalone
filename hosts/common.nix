@@ -25,6 +25,7 @@
   nix = {
     # nixPath = [ "nixpkgs=${nixpkgs}" ];
     settings = {
+      auto-optimise-store = true; # deduplicates nix store when files are added; adds overhead
       experimental-features = [
         "nix-command"
         "flakes"
