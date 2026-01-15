@@ -9,9 +9,10 @@
 {
   imports = [
     inputs.nixos-hardware.nixosModules.raspberry-pi-4
-    ../common.nix
     inputs.vscode-server.nixosModules.default
     inputs.vscodium-server.nixosModules.default
+    ../common.nix
+    ../../users/cycad.nix
   ];
 
   # Bootloader
@@ -40,29 +41,17 @@
     networkmanager.enable = true; # Didn't work...
   };
 
-  programs.fish.enable = true;
-
-  services.openssh.enable = true;
-
-  services.tailscale.enable = true;
-
-  # VSCode
-  services.vscode-server.enable = true;
-  services.vscodium-server.enable = true;
+  services = {
+    openssh.enable = true;
+    tailscale.enable = true;
+    # VSCode
+    vscode-server.enable = true;
+    vscodium-server.enable = true;
+  };
 
   virtualisation.docker.enable = true; # Docker running as root
-
-  users.users.cycad = {
-    isNormalUser = true;
-    description = "Hamish McLean";
-    extraGroups = [
-      "docker"
-      "networkmanager"
-      "wheel"
-    ];
-    shell = pkgs.fish;
-  };
 
   hardware.enableRedistributableFirmware = true;
   system.stateVersion = "23.11";
 }
+
