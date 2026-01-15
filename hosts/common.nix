@@ -31,12 +31,7 @@
       ];
       warn-dirty = false;
     };
-    # Automate garbage collection
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 60d";
-    };
+    gc.automatic = false; # disable automatic garbage collection to handle with nh instead
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -48,29 +43,16 @@
     secrets = { };
   };
 
-  environment.systemPackages = (
-    with pkgs;
-    [
-      btop
-      curl
-      fish
-      gh # Github
-      git
-      # helix.packages."${pkgs.system}".helix
-      htop
-      nano
-      fastfetch
-      neovim
-      nh # Nix helper
-      nixd
-      nixfmt-rfc-style
-      nmap
-      onefetch
-      pet
-      tldr
-      tmux
-      wget
-    ]
-  );
+  environment.systemPackages = (with pkgs; [
+    curl
+    fish
+    git
+    nano
+    nixd
+    nixfmt-rfc-style
+    nmap
+    pet
+    wget
+  ]);
 
 }
