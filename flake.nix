@@ -24,10 +24,10 @@
 
     # Packages
     catppuccin.url = "github:catppuccin/nix/release-25.05";
-    cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    # cosmic = {
+    #   url = "github:lilyinstarlight/nixos-cosmic";
+    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # };
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,6 +36,10 @@
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
+    };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
       url = "github:Mic92/sops-nix";

@@ -12,6 +12,7 @@
     ./kde.nix
     ./libredns.nix
     ./nh.nix
+    ./niri.nix
     ./qt.nix
     ./sddm.nix
   ];

@@ -66,10 +66,11 @@
 
   # Desktop environments
   sddm.enable = true;
-  cosmic.enable = false;
+  cosmic.enable = true;
   gnome.enable = true;
   hyprland.enable = true;
   kde.enable = false;
+  niri.enable = true;
   qt_config.enable = false;
 
   services.tailscale.enable = true;
