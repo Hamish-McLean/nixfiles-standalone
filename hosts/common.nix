@@ -21,6 +21,12 @@
   # DNS
   libredns.enable = lib.mkDefault true;
 
+  # Firewall
+  networking = {
+    firewall.enable = true;
+    nftables.enable = true;
+  };
+
   # Nix
   nix = {
     # nixPath = [ "nixpkgs=${nixpkgs}" ];
