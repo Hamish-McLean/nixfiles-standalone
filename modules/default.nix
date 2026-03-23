@@ -13,6 +13,7 @@
     ./libredns.nix
     ./nh.nix
     ./niri.nix
+    ./opensnitch.nix
     ./qt.nix
     ./sddm.nix
   ];

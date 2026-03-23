@@ -30,11 +30,19 @@
   };
   boot.plymouth.enable = true;
 
+  # Network
   networking = {
     hostName = "Lenny"; # Define your hostname.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true; # Enable networking
+    stevenblack = { # Local ad and content blocker
+      enable = true;
+      block = [ "fakenews" "gambling" ]; # Options: "fakenews" "gambling" "porn" "social"
+      whitelist = [];
+    };
   };
+  opensnitch.enable = true; # OpenSnitch application firewall
+
 
   # Configure console keymap
   console.keyMap = "uk";
