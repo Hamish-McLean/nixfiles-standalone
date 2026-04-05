@@ -70,8 +70,8 @@
           content = {
             type = "btrfs";
             subvolumes = {
-              "/steam" = {
-                mountpoint = "/mnt/games";
+              "data" = {
+                mountpoint = "/data";
                 mountOptions = [
                   "compress=zstd"
                   "noatime"
