@@ -8,7 +8,7 @@
   disko.devices.disk = {
     # 500 GB M.2 - system
     system = {
-      device = "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_500GB_S466NB0K406614N"; #"/dev/nvme0n1";
+      device = "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_500GB_S466NB0K406614N"; # "/dev/nvme0n1";
       type = "disk";
       content = {
         type = "gpt";
@@ -26,6 +26,8 @@
           content = {
             type = "swap";
             discardPolicy = "both";
+          };
+        };
         partitions.root = {
           size = "100%";
           content = {
