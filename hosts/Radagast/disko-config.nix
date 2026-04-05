@@ -8,12 +8,12 @@
   disko.devices.disk = {
     # 500 GB M.2 - system
     system = {
-      device = "/dev/nvme0n1";
+      device = "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_500GB_S466NB0K406614N"; #"/dev/nvme0n1";
       type = "disk";
       content = {
         type = "gpt";
         partitions.ESP = {
-          size = "8G";
+          size = "4G";
           type = "EF00";
           content = {
             type = "filesystem";
@@ -21,26 +21,31 @@
             mountpoint = "/boot";
           };
         };
+        partitions.swap = {
+          size = "8G";
+          content = {
+            type = "swap";
+            discardPolicy = "both";
         partitions.root = {
           size = "100%";
           content = {
             type = "btrfs";
             subvolumes = {
-              "/root" = {
+              "root" = {
                 mountpoint = "/";
                 mountOptions = [
                   "compress=zstd"
                   "noatime"
                 ];
               };
-              "/nix" = {
+              "nix" = {
                 mountpoint = "/nix";
                 mountOptions = [
                   "compress=zstd"
                   "noatime"
                 ];
               };
-              "/home" = {
+              "home" = {
                 mountpoint = "/home";
                 mountOptions = [
                   "compress=zstd"
@@ -55,7 +60,7 @@
     # 1000 GB SATA - data
     data = {
       type = "disk";
-      device = "/dev/sda";
+      device = "/dev/disk/by-id/ata-WDC_WD1003FZEX-00K3CA0_WD-WCC6Y6TA8E3P"; # "/dev/sda";
       content = {
         type = "gpt";
         partitions.data = {
