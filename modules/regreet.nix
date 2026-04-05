@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -9,9 +10,13 @@
   };
 
   config = lib.mkIf config.regreet.enable {
-    programs.regreet = {
+    programs.regreet.enable = true;
+    services.greetd = {
       enable = true;
-      settings = {};
+      settings.default_session = {
+        command = "${pkgs.cage}/bin/cage -s -- ${pkgs.regreet}/bin/regreet";
+        user = "greeter";
+      };
     };
   };
 }

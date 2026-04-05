@@ -35,14 +35,17 @@
     hostName = "Lenny"; # Define your hostname.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true; # Enable networking
-    stevenblack = { # Local ad and content blocker
+    stevenblack = {
+      # Local ad and content blocker
       enable = true;
-      block = [ "fakenews" "gambling" ]; # Options: "fakenews" "gambling" "porn" "social"
-      whitelist = [];
+      block = [
+        "fakenews"
+        "gambling"
+      ]; # Options: "fakenews" "gambling" "porn" "social"
+      whitelist = [ ];
     };
   };
   opensnitch.enable = true; # OpenSnitch application firewall
-
 
   # Configure console keymap
   console.keyMap = "uk";
@@ -74,6 +77,8 @@
 
   # Desktop environments
   sddm.enable = true;
+  tuigreet.enable = false;
+  regreet.enable = false;
   cosmic.enable = true;
   gnome.enable = true;
   hyprland.enable = true;
@@ -97,7 +102,7 @@
 
   # Android
   programs.adb.enable = true;
-  users.users.cycad.extraGroups = ["adbusers"];
+  users.users.cycad.extraGroups = [ "adbusers" ];
 
   virtualisation.waydroid.enable = true;
 
@@ -119,7 +124,8 @@
   #   shell = pkgs.fish;
   # };
   users.users.cycad.packages = (
-    with pkgs; [
+    with pkgs;
+    [
       bitwarden-desktop
       firefox
       fractal

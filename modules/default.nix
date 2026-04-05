@@ -15,7 +15,9 @@
     ./niri.nix
     ./opensnitch.nix
     ./qt.nix
+    ./regreet.nix
     ./sddm.nix
+    ./tuigreet.nix
   ];
 
   cat-colours.enable = lib.mkDefault true;
