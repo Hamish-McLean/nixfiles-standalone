@@ -12,6 +12,8 @@
 
     # Hardware
     nixos-hardware.url = "github:nixos/nixos-hardware";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
     # For Lenny's 06cb-009a fingerprint sensor
     lenny-fingerprint.url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor";
     lenny-fingerprint.inputs.nixpkgs.follows = "nixpkgs";
@@ -84,6 +86,7 @@
     {
       nixosConfigurations = {
         # NixOS hosts
+        Radagast = nixosSystem "x86_64-linux" "Radagast" "cycad";
         Lenny = nixosSystem "x86_64-linux" "Lenny" "cycad";
         NixBerry = nixosSystem "aarch64-linux" "NixBerry" "cycad";
 
