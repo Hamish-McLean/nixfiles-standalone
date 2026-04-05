@@ -6,8 +6,9 @@
 }:
 {
   imports = [
-    # ./hardware-configuration.nix
     ../common.nix
+    ./disko-config.nix
+    # ./hardware-configuration.nix
     ../../modules
     ../../users/cycad.nix
     ../../users/fallo.nix

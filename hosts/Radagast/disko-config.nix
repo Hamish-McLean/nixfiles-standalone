@@ -8,7 +8,7 @@
   disko.devices.disk = {
     # 500 GB M.2 - system
     system = {
-      device = "";
+      device = "/dev/nvme0n1";
       type = "disk";
       content = {
         type = "gpt";
@@ -36,7 +36,7 @@
     # 1000 GB SATA - data
     data = {
       type = "disk";
-      device = "";
+      device = "/dev/sda";
       content = {
         type = "gpt";
         partitions.data = {
