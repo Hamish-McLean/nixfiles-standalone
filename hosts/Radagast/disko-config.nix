@@ -20,14 +20,33 @@
             format = "vfat";
             mountpoint = "/boot";
           };
+        };
         partitions.root = {
           size = "100%";
           content = {
             type = "btrfs";
             subvolumes = {
-              "/root" = { mountpoint = "/"; mountOptions = [ "compress=zstd" "noatime" ]; };
-              "/nix" = { mountpoint = "/nix"; mountOptions = [ "compress=zstd" "noatime" ]; };
-              "/home" = { mountpoint = "/home"; mountOptions = [ "compress=zstd" "noatime" ]; };
+              "/root" = {
+                mountpoint = "/";
+                mountOptions = [
+                  "compress=zstd"
+                  "noatime"
+                ];
+              };
+              "/nix" = {
+                mountpoint = "/nix";
+                mountOptions = [
+                  "compress=zstd"
+                  "noatime"
+                ];
+              };
+              "/home" = {
+                mountpoint = "/home";
+                mountOptions = [
+                  "compress=zstd"
+                  "noatime"
+                ];
+              };
             };
           };
         };
@@ -44,7 +63,13 @@
           content = {
             type = "btrfs";
             subvolumes = {
-              "/steam" = { mountpoint = "/mnt/games"; mountOptions = [ "compress=zstd" "noatime" ]; };
+              "/steam" = {
+                mountpoint = "/mnt/games";
+                mountOptions = [
+                  "compress=zstd"
+                  "noatime"
+                ];
+              };
             };
           };
         };

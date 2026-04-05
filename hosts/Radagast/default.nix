@@ -25,7 +25,7 @@
   hardware = {
     graphics = {
       enable = true;
-      enable32bit = true;
+      enable32Bit = true;
     };
     nvidia = {
       modesetting.enable = true;
@@ -39,7 +39,7 @@
 
   # Network
   networking = {
-    hostname = "Radagast";
+    hostName = "Radagast";
     networkmanager.enable = true;
     stevenblack = {
       # Local ad and content blocker
@@ -67,4 +67,6 @@
       obsidian
     ]
   );
+
+  system.stateVersion = "25.11";
 }
