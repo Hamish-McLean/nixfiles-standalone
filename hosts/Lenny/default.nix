@@ -48,7 +48,7 @@
   opensnitch.enable = true; # OpenSnitch application firewall
 
   # Configure console keymap
-  console.keyMap = "uk";
+  # console.keyMap = "uk"; # Now managed in common file
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
