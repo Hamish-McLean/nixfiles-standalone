@@ -8,7 +8,7 @@
   imports = [
     ../common.nix
     ./disko-config.nix
-    # ./hardware-configuration.nix
+    ./hardware-configuration.nix
     ../../modules
     ../../users/cycad.nix
     ../../users/fallo.nix
@@ -17,6 +17,8 @@
   # Custom options
   gaming.enable = true;
   niri.enable = true;
+  hyprland.enable = true;
+  sddm.enable = true;
 
   boot.loader.limine.enable = true;
   boot.plymouth.enable = true;
@@ -52,9 +54,8 @@
     };
   };
   opensnitch.enable = true; # OpenSnitch application firewall
+  libredns.enable = false;
   services.tailscale.enable = true;
-
-  console.keyMap = "uk";
 
   services.printing.enable = true; # CUPS printing
 
