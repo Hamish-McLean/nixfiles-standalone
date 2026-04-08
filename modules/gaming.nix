@@ -7,7 +7,7 @@
 }:
 {
   options = {
-    gaming.enable = lib.mkEnableOption "enables gaming";
+    gaming.enable = lib.mkEnableOption "enable gaming";
   };
 
   config = lib.mkIf config.gaming.enable {
@@ -42,6 +42,5 @@
       winetricks
       wineWowPackages.wayland
     ];
-
   };
 }
