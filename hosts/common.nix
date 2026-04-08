@@ -17,6 +17,11 @@
   i18n.defaultLocale = lib.mkDefault "en_GB.UTF-8";
   i18n.extraLocaleSettings.LC_TIME = lib.mkDefault "en_DK.UTF-8"; # ISO 8601 datetimes
 
+  # Keyboard
+  services.xserver.xkb.layout = lib.mkDefault "gb";
+  console.useXkbConfig = true;
+  console.keyMap = lib.mkDefault "uk";
+
   # Network
   # DNS
   libredns.enable = lib.mkDefault true;
@@ -50,16 +55,19 @@
     secrets = { };
   };
 
-  environment.systemPackages = (with pkgs; [
-    curl
-    fish
-    git
-    nano
-    nixd
-    nixfmt-rfc-style
-    nmap
-    pet
-    wget
-  ]);
+  environment.systemPackages = (
+    with pkgs;
+    [
+      curl
+      fish
+      git
+      nano
+      nixd
+      nixfmt-rfc-style
+      nmap
+      pet
+      wget
+    ]
+  );
 
 }
