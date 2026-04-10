@@ -38,6 +38,22 @@
     };
   };
   services.xserver.videoDrivers = [ "nvidia" ];
+  boot = {
+    # initrd (initial RAM disk) Early KMS (Kernel Mode Setting)
+    # for kenel control of GPU
+    initrd.kernelModules = [
+      "nvidia" # Nvidia drivers
+      "nvidia_drm" # Nvidia Direct Rendering Manager for wayland
+      "nvidia_modeset" # Handles display resolution and refresh rate
+      "nvidia_uvm" # Nvidia Unified Video Memory shares memory between GPU and CPU
+    ];
+    kernelParams = [
+      "mem_sleep_default=s2idle" # More stable sleep for Nvidia resume
+      "nvidia-drm.modeset=1" # For wayland
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1" # Save VRAM data to disk
+      "nvidia.NVreg_TemporaryFilePath=/var/tmp" # Path for VRAM data
+    ];
+  };
 
   # Network
   networking = {
@@ -54,7 +70,7 @@
     };
   };
   opensnitch.enable = true; # OpenSnitch application firewall
-  libredns.enable = false;
+  libredns.enable = true;
   services.tailscale.enable = true;
 
   services.printing.enable = true; # CUPS printing
