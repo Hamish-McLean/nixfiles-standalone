@@ -1,9 +1,9 @@
 /*
-OpenSnitch
+  OpenSnitch
 
-OpenSnitch is a GNU/Linux application firewall
+  OpenSnitch is a GNU/Linux application firewall
 
-https://github.com/evilsocket/opensnitch
+  https://github.com/evilsocket/opensnitch
 */
 {
   config,
@@ -19,7 +19,7 @@ https://github.com/evilsocket/opensnitch
     services.opensnitch = {
       enable = true;
       settings = {
-        DefaultAction = "deny";
+        DefaultAction = "allow";
         Firewall = "nftables";
         ProcMonitorMethod = "ebpf";
       };
