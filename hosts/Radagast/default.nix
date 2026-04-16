@@ -7,7 +7,8 @@
 {
   imports = [
     ../common.nix
-    ./disko-config.nix
+    ./disko-data.nix
+    ./disko-system.nix
     ./hardware-configuration.nix
     ../../modules
     ../../users/cycad.nix
@@ -50,8 +51,8 @@
     kernelParams = [
       "mem_sleep_default=s2idle" # More stable sleep for Nvidia resume
       "nvidia-drm.modeset=1" # For wayland
-      "nvidia.NVreg_PreserveVideoMemoryAllocations=1" # Save VRAM data to disk
-      "nvidia.NVreg_TemporaryFilePath=/var/tmp" # Path for VRAM data
+      # "nvidia.NVreg_PreserveVideoMemoryAllocations=1" # Save VRAM data to disk
+      # "nvidia.NVreg_TemporaryFilePath=/var/tmp" # Path for VRAM data
     ];
   };
 
