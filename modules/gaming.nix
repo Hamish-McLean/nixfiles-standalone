@@ -20,8 +20,11 @@
         proton-ge-bin
       ];
       gamescopeSession.enable = true;
+      localNetworkGameTransfers.openFirewall = true;
+      package = pkgs.unstable.steam;
     };
     programs.gamemode.enable = true;
+    programs.xwayland.enable = true;
     services.xserver = {
       enable = true;
       # extraConfig = pkgs.libGL.config;
