@@ -80,7 +80,7 @@
   tuigreet.enable = false;
   regreet.enable = false;
   cosmic.enable = true;
-  gnome.enable = true;
+  gnome.enable = false;
   hyprland.enable = true;
   kde.enable = false;
   niri.enable = true;
@@ -94,20 +94,19 @@
   programs = {
     firefox = {
       enable = true;
-      package = pkgs.firefox;
-      nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
+      # package = pkgs.firefox;
+      # nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
     };
-    fish.enable = true;
+    # fish.enable = true;
   };
 
   # Android
-  programs.adb.enable = true;
   users.users.cycad.extraGroups = [ "adbusers" ];
 
   virtualisation.waydroid.enable = true;
 
   environment.systemPackages = with pkgs; [
-    firefoxpwa
+    # firefoxpwa
     playerctl
     plymouth # Boot screen with catppuccin themes
   ];
