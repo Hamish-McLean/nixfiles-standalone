@@ -1,7 +1,7 @@
 # Radagast
 {
+  config,
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -33,8 +33,9 @@
     };
     nvidia = {
       modesetting.enable = true;
-      nvidiaSettings = true;
+      nvidiaSettings = true; # NVIDIA GUI configuration tool
       open = false; # Open drivers must be disabled for this card
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
       powerManagement.enable = true;
       powerManagement.finegrained = false;
     };
@@ -43,12 +44,12 @@
   boot = {
     # initrd (initial RAM disk) Early KMS (Kernel Mode Setting)
     # for kenel control of GPU
-    initrd.kernelModules = [
-      "nvidia" # Nvidia drivers
-      "nvidia_drm" # Nvidia Direct Rendering Manager for wayland
-      "nvidia_modeset" # Handles display resolution and refresh rate
-      "nvidia_uvm" # Nvidia Unified Video Memory shares memory between GPU and CPU
-    ];
+    # initrd.kernelModules = [
+    #   "nvidia" # Nvidia drivers
+    #   "nvidia_drm" # Nvidia Direct Rendering Manager for wayland
+    #   "nvidia_modeset" # Handles display resolution and refresh rate
+    #   "nvidia_uvm" # Nvidia Unified Video Memory shares memory between GPU and CPU
+    # ];
     kernelParams = [
       "mem_sleep_default=s2idle" # More stable sleep for Nvidia resume
       "nvidia-drm.modeset=1" # For wayland
@@ -80,12 +81,14 @@
   users.users.cycad.packages = (
     with pkgs;
     [
-      bitwarden-desktop
+      # bitwarden-desktop # Requires insecure electron package in nixpkgs 26.05
       firefox
       libreoffice
       obsidian
     ]
   );
+
+  # nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ]; # Required for bitwarden
 
   system.stateVersion = "25.11";
 }
