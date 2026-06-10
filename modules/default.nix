@@ -14,6 +14,7 @@
     ./nh.nix
     ./niri.nix
     ./opensnitch.nix
+    ./printing.nix
     ./qt.nix
     ./regreet.nix
     ./sddm.nix

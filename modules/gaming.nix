@@ -14,6 +14,7 @@
     programs.steam = {
       enable = true;
       extraPackages = with pkgs; [
+        gamescope
         libGL
       ];
       extraCompatPackages = with pkgs; [
@@ -24,6 +25,7 @@
       package = pkgs.unstable.steam;
     };
     programs.gamemode.enable = true;
+    programs.gamescope.enable = true;
     programs.xwayland.enable = true;
     services.xserver = {
       enable = true;

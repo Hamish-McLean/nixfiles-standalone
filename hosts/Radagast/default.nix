@@ -19,6 +19,7 @@
   gaming.enable = true;
   niri.enable = true;
   hyprland.enable = true;
+  printing.enable = true;
   sddm.enable = true;
 
   boot.loader.limine.enable = true;
@@ -70,8 +71,8 @@
       whitelist = [ ];
     };
   };
-  opensnitch.enable = true; # OpenSnitch application firewall
-  libredns.enable = true;
+  # opensnitch.enable = true; # OpenSnitch application firewall
+  # libredns.enable = true;
   services.tailscale.enable = true;
 
   services.printing.enable = true; # CUPS printing
