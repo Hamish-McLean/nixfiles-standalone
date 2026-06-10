@@ -15,5 +15,16 @@
     programs.niri = {
       enable = true;
     };
+    programs.uwsm = {
+      enable = lib.mkDefault true;
+      waylandCompositors = {
+        niri = {
+          prettyName = "Niri";
+          comment = "Niri compositor managed by UWSM";
+          binPath = "/run/current-system/sw/bin/niri";
+          extraArgs = [ "--session" ];
+        };
+      };
+    };
   };
 }
