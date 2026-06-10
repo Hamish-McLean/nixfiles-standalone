@@ -10,7 +10,7 @@
   };
 
   config = lib.mkIf config.printing.enable {
-    networking.printing = {
+    services.printing = {
       enable = true;
       drivers = with pkgs; [
         gutenprint

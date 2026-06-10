@@ -1,6 +1,4 @@
-/*
-LibreDNS
-*/
+# LibreDNS
 {
   config,
   lib,
@@ -18,14 +16,16 @@ LibreDNS
     ];
     services.resolved = lib.mkDefault {
       enable = true;
-      dnsovertls = "opportunistic"; # "opportunistic" will attempt to encrypt DNS
-      dnssec = "true";
-      fallbackDns = [
-        "1.1.1.1#one.one.one.one"
-        "2606:4700:4700::1111#one.one.one.one"
-        "1.0.0.1#one.one.one.one"	
-        "2606:4700:4700::1001#one.one.one.one"
-      ];
+      settings.Resolve = {
+        DNSOverTLS = "opportunistic"; # "opportunistic" will attempt to encrypt DNS
+        DNSSEC = true;
+        FallbackDNS = [
+          "1.1.1.1#one.one.one.one"
+          "2606:4700:4700::1111#one.one.one.one"
+          "1.0.0.1#one.one.one.one"
+          "2606:4700:4700::1001#one.one.one.one"
+        ];
+      };
     };
   };
 }

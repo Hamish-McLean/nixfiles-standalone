@@ -126,7 +126,7 @@
   users.users.cycad.packages = (
     with pkgs;
     [
-      bitwarden-desktop
+      # bitwarden-desktop # Requires insecure electron package in nixpkgs 26.05
       firefox
       fractal
       gtop

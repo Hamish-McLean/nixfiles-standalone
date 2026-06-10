@@ -63,7 +63,7 @@
       git
       nano
       nixd
-      nixfmt-rfc-style
+      nixfmt
       nmap
       pet
       wget
