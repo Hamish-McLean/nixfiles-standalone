@@ -1,0 +1,1 @@
+2026-06-13 Sync noctalia-greeter with noctalia when v5 update is available
