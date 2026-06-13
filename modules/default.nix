@@ -13,6 +13,7 @@
     ./libredns.nix
     ./nh.nix
     ./niri.nix
+    ./noctalia-greet.nix
     ./opensnitch.nix
     ./printing.nix
     ./qt.nix
