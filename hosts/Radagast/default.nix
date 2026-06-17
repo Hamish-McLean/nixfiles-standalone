@@ -80,6 +80,7 @@
   services.printing.enable = true; # CUPS printing
 
   programs.firefox.enable = true;
+  programs.ladybird.enable = true;
 
   users.users.cycad.packages = (
     with pkgs;
@@ -88,6 +89,7 @@
       # firefox
       libreoffice
       obsidian
+      rustdesk
     ]
   );
 

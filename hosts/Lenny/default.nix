@@ -134,6 +134,7 @@
       mumble
       obsidian
       oh-my-git
+      rustdesk
       # stremio
       syncthing
       telegram-desktop
