@@ -25,7 +25,8 @@
 
   # Bootloader
   boot.loader = {
-    systemd-boot.enable = true;
+    limine.enable = true;
+    # systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
   boot.plymouth.enable = true;
@@ -45,7 +46,7 @@
       whitelist = [ ];
     };
   };
-  opensnitch.enable = true; # OpenSnitch application firewall
+  # opensnitch.enable = true; # OpenSnitch application firewall
 
   # Configure console keymap
   # console.keyMap = "uk"; # Now managed in common file
@@ -76,14 +77,15 @@
   # services.xserver.libinput.enable = true;
 
   # Desktop environments
-  sddm.enable = true;
+  sddm.enable = false;
   tuigreet.enable = false;
   regreet.enable = false;
-  cosmic.enable = true;
+  cosmic.enable = false;
   gnome.enable = false;
   hyprland.enable = true;
   kde.enable = false;
   niri.enable = true;
+  noctalia-greet.enable = true;
   qt_config.enable = false;
 
   services.tailscale.enable = true;
