@@ -12,9 +12,10 @@
         "docker"
         "input"
         "networkmanager"
+        "video"
         "wheel"
       ];
-      linger = true; 
+      linger = true;
       shell = pkgs.nushell;
     };
   };

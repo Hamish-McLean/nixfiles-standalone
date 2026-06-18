@@ -22,6 +22,7 @@
   hyprland.enable = true;
   printing.enable = true;
   sddm.enable = false;
+  sunshine.enable = true;
 
   boot.loader.limine.enable = true;
   boot.plymouth.enable = true;
@@ -51,6 +52,7 @@
       "nvidia_modeset" # Handles display resolution and refresh rate
       "nvidia_uvm" # Nvidia Unified Video Memory shares memory between GPU and CPU
     ];
+    kernelModules = [ "uinput" ]; # For keyboard and mouse emulation
     kernelParams = [
       "mem_sleep_default=s2idle" # More stable sleep for Nvidia resume
       "nvidia-drm.modeset=1" # For wayland
@@ -77,9 +79,28 @@
   # libredns.enable = true;
   services.tailscale.enable = true;
 
+  # Bluetooth
+  hardware = {
+    enableRedistributableFirmware = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+  };
+
+  # Audio
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
   services.printing.enable = true; # CUPS printing
 
   programs.firefox.enable = true;
+  programs.kdeconnect.enable = true;
   programs.ladybird.enable = true;
 
   users.users.cycad.packages = (

@@ -97,6 +97,7 @@
       # package = pkgs.firefox;
       # nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
     };
+    kdeconnect.enable = true;
     # fish.enable = true;
   };
 

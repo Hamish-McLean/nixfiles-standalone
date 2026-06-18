@@ -19,6 +19,7 @@
     ./qt.nix
     ./regreet.nix
     ./sddm.nix
+    ./sunshine.nix
     ./tuigreet.nix
   ];
 
