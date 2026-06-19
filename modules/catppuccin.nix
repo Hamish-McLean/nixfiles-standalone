@@ -15,9 +15,10 @@
 
   config = lib.mkIf config.cat-colours.enable {
     catppuccin = {
+      accent = "sapphire";
+      cache.enable = true; # Catppuccin's binary cache
       enable = true;
       flavor = "mocha";
-      accent = "sapphire";
 
       # Options
       grub.enable = true;
