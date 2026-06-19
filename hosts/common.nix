@@ -46,7 +46,9 @@
     gc.automatic = false; # disable automatic garbage collection to handle with nh instead
   };
 
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = true;
+
+  services.ddccontrol.enable = true;
 
   sops = {
     defaultSopsFile = ../secrets/secrets.yaml;
@@ -59,6 +61,7 @@
     with pkgs;
     [
       curl
+      ddcutil
       fish
       git
       nano

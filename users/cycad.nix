@@ -11,6 +11,7 @@
         "adbusers"
         "docker"
         "input"
+        "i2c"
         "networkmanager"
         "video"
         "wheel"
