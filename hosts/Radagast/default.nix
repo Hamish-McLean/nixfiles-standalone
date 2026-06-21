@@ -19,7 +19,7 @@
   gaming.enable = true;
   niri.enable = true;
   noctalia-greet.enable = true;
-  hyprland.enable = true;
+  hyprland.enable = false;
   printing.enable = true;
   sddm.enable = false;
   sunshine.enable = true;

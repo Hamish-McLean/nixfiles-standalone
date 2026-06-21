@@ -3,7 +3,6 @@
   inputs,
   lib,
   pkgs,
-  system,
   ...
 }:
 {
@@ -17,6 +16,7 @@
       enable = true;
       withUWSM = true;
       xwayland.enable = true;
+      package = pkgs.hyprland;
       # package = inputs.hyprland.packages.${system}.hyprland;
       # portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
     };

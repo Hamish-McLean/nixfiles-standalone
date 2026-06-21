@@ -80,6 +80,8 @@
   };
   services.dbus.enable = true;
 
+  services.power-profiles-daemon.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -89,7 +91,7 @@
   regreet.enable = false;
   cosmic.enable = false;
   gnome.enable = false;
-  hyprland.enable = true;
+  hyprland.enable = false;
   kde.enable = false;
   niri.enable = true;
   noctalia-greet.enable = true;
