@@ -21,6 +21,7 @@
     ./sddm.nix
     ./sunshine.nix
     ./tuigreet.nix
+    ./wake-on-lan.nix
   ];
 
   cat-colours.enable = lib.mkDefault true;

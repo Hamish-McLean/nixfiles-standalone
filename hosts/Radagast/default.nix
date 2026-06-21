@@ -23,6 +23,7 @@
   printing.enable = true;
   sddm.enable = false;
   sunshine.enable = true;
+  wake-on-lan.enable = true;
 
   boot.loader.limine.enable = true;
   boot.plymouth.enable = true;
@@ -64,6 +65,7 @@
   # Network
   networking = {
     hostName = "Radagast";
+    interfaces.enp24s0.wakeOnLan.enable = true;
     networkmanager.enable = true;
     stevenblack = {
       # Local ad and content blocker
