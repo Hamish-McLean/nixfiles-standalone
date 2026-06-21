@@ -22,6 +22,7 @@
     ./sunshine.nix
     ./tuigreet.nix
     ./wake-on-lan.nix
+    ./upower.nix
   ];
 
   cat-colours.enable = lib.mkDefault true;

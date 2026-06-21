@@ -22,6 +22,7 @@
 
   # Custom options
   gaming.enable = true;
+  upower.enable = true;
 
   # Bootloader
   boot.loader = {
@@ -53,6 +54,12 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   # Enable sound with pipewire.
   # sound.enable = true; depracated?
