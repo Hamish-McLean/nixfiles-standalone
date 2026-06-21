@@ -2,7 +2,6 @@
   inputs,
   lib,
   pkgs,
-  username,
   ...
 }:
 {
@@ -36,10 +35,15 @@
   nix = {
     # nixPath = [ "nixpkgs=${nixpkgs}" ];
     settings = {
+      accept-flake-config = true;
       auto-optimise-store = true; # deduplicates nix store when files are added; adds overhead
       experimental-features = [
         "nix-command"
         "flakes"
+      ];
+      trusted-users = [
+        "root"
+        "@wheel"
       ];
       warn-dirty = false;
     };
