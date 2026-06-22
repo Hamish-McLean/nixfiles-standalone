@@ -4,12 +4,15 @@
   lib,
   ...
 }:
+let
+  cfg = config.custom.modules.nh;
+in
 {
   options = {
-    nh.enable = lib.mkEnableOption "enable nh";
+    custom.modules.nh.enable = lib.mkEnableOption "enable nh";
   };
 
-  config = lib.mkIf config.nh.enable {
+  config = lib.mkIf cfg.enable {
     programs.nh = {
       enable = true;
       clean = {

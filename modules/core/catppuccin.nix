@@ -4,16 +4,19 @@
   lib,
   ...
 }:
+let
+  cfg = config.custom.modules.catppuccin;
+in
 {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
   ];
 
   options = {
-    cat-colours.enable = lib.mkEnableOption "enables catppuccin";
+    custom.modules.catppuccin.enable = lib.mkEnableOption "enables catppuccin";
   };
 
-  config = lib.mkIf config.cat-colours.enable {
+  config = lib.mkIf cfg.enable {
     catppuccin = {
       accent = "sapphire";
       cache.enable = true; # Catppuccin's binary cache

@@ -9,6 +9,7 @@
   imports = [
     inputs.sops-nix.nixosModules.sops
     ../modules
+    ../profiles
   ];
 
   # Locale
