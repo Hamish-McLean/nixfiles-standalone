@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.custom.modules.catppuccin;
+  cfg = config.custom.modules.core.catppuccin;
 in
 {
   imports = [
@@ -13,7 +13,7 @@ in
   ];
 
   options = {
-    custom.modules.catppuccin.enable = lib.mkEnableOption "enables catppuccin";
+    custom.modules.core.catppuccin.enable = lib.mkEnableOption "Enable catppuccin";
   };
 
   config = lib.mkIf cfg.enable {

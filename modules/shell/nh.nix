@@ -5,11 +5,11 @@
   ...
 }:
 let
-  cfg = config.custom.modules.nh;
+  cfg = config.custom.modules.shell.nh;
 in
 {
   options = {
-    custom.modules.nh.enable = lib.mkEnableOption "enable nh";
+    custom.modules.shell.nh.enable = lib.mkEnableOption "enable nh";
   };
 
   config = lib.mkIf cfg.enable {

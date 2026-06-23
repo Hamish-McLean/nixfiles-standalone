@@ -5,7 +5,6 @@
 {
   pkgs,
   inputs,
-  username,
   ...
 }:
 
@@ -16,9 +15,14 @@
     # ./lenny-fingerprint.nix
     ../common.nix
     ../../modules
+    ../../profiles
     ../../users/cycad.nix
     ../../users/fallo.nix
   ];
+
+  custom.profiles = {
+    core.enable = true;
+  };
 
   # Custom options
   gaming.enable = true;
