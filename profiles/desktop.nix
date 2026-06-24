@@ -19,7 +19,12 @@ in
     #
     # };
 
+    custom.modules.hardware = {
+      printing.enable = mkDefault true;
+    };
+
     custom.modules.network = {
+      opensnitch.enable = mkDefault false;
       libredns.enable = mkDefault true;
     };
   };

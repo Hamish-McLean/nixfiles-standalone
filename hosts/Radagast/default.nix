@@ -30,7 +30,6 @@
   niri.enable = true;
   noctalia-greet.enable = true;
   hyprland.enable = false;
-  printing.enable = true;
   sddm.enable = false;
   sunshine.enable = true;
 
@@ -85,7 +84,6 @@
       whitelist = [ ];
     };
   };
-  # opensnitch.enable = true; # OpenSnitch application firewall
   services.tailscale.enable = true;
 
   # Bluetooth
@@ -105,8 +103,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  services.printing.enable = true; # CUPS printing
 
   programs.firefox.enable = true;
   programs.kdeconnect.enable = true;

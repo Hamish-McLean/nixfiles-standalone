@@ -18,5 +18,9 @@ in
     # custom.modules.desktop = {
     #
     # };
+
+    custom.modules.hardware = {
+      upower.enable = mkDefault true;
+    };
   };
 }

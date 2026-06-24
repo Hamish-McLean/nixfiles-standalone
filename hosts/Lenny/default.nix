@@ -26,9 +26,6 @@
     laptop.enable = true;
   };
 
-  # Custom options
-  upower.enable = true;
-
   # Bootloader
   boot.loader = {
     limine.enable = true;
@@ -52,13 +49,9 @@
       whitelist = [ ];
     };
   };
-  # opensnitch.enable = true; # OpenSnitch application firewall
 
   # Configure console keymap
   # console.keyMap = "uk"; # Now managed in common file
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Bluetooth
   hardware.bluetooth = {
