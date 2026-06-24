@@ -4,12 +4,15 @@
   pkgs,
   ...
 }:
+let
+  cfg = config.custom.modules.desktop.regreet;
+in
 {
-  options = {
-    regreet.enable = lib.mkEnableOption "enable regreet";
+  options.custom.modules.desktop.regreet = {
+    enable = lib.mkEnableOption "Enable regreet";
   };
 
-  config = lib.mkIf config.regreet.enable {
+  config = lib.mkIf cfg.enable {
     programs.regreet.enable = true;
     services.greetd = {
       enable = true;

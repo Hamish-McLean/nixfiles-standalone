@@ -4,14 +4,17 @@
   lib,
   ...
 }:
+let
+  cfg = config.custom.modules.desktop.noctalia-greeter;
+in
 {
   imports = [ inputs.noctalia-greeter.nixosModules.default ];
 
-  options = {
-    noctalia-greet.enable = lib.mkEnableOption "enable noctalia-greeter";
+  options.custom.modules.desktop.noctalia-greeter = {
+    enable = lib.mkEnableOption "Enable noctalia-greeter";
   };
 
-  config = lib.mkIf config.noctalia-greet.enable {
+  config = lib.mkIf cfg.enable {
     programs.noctalia-greeter = {
       enable = true;
       # greeter-args = "";

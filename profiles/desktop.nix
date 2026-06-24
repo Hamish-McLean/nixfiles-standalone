@@ -15,17 +15,18 @@ in
   };
 
   config = mkIf cfg.enable {
-    # custom.modules.desktop = {
-    #
-    # };
-
-    custom.modules.hardware = {
-      printing.enable = mkDefault true;
+    custom.modules.desktop = mkDefault {
+      niri.enable = true;
+      noctalia-greeter.enable = true;
     };
 
-    custom.modules.network = {
-      opensnitch.enable = mkDefault false;
-      libredns.enable = mkDefault true;
+    custom.modules.hardware = mkDefault {
+      printing.enable = true;
+    };
+
+    custom.modules.network = mkDefault {
+      opensnitch.enable = false;
+      libredns.enable = true;
     };
   };
 }

@@ -23,15 +23,9 @@
   };
 
   custom.modules = {
+    desktop.sunshine.enable = true;
     network.wakeOnLan.enable = true;
   };
-
-  # Custom options
-  niri.enable = true;
-  noctalia-greet.enable = true;
-  hyprland.enable = false;
-  sddm.enable = false;
-  sunshine.enable = true;
 
   boot.loader.limine.enable = true;
   boot.plymouth.enable = true;

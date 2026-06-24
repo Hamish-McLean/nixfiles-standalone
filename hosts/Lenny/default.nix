@@ -83,18 +83,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Desktop environments
-  sddm.enable = false;
-  tuigreet.enable = false;
-  regreet.enable = false;
-  cosmic.enable = false;
-  gnome.enable = false;
-  hyprland.enable = false;
-  kde.enable = false;
-  niri.enable = true;
-  noctalia-greet.enable = true;
-  qt_config.enable = false;
-
   services.tailscale.enable = true;
 
   # Flatpaks

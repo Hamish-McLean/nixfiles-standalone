@@ -1,16 +1,19 @@
 {
   config,
-  inputs,
+  # inputs,
   lib,
   pkgs,
   ...
 }:
+let
+  cfg = config.custom.modules.desktop.hyprland;
+in
 {
-  options = {
-    hyprland.enable = lib.mkEnableOption "enables hyprland";
+  options.custom.modules.desktop.hyprland = {
+    enable = lib.mkEnableOption "Enable hyprland";
   };
 
-  config = lib.mkIf config.hyprland.enable {
+  config = lib.mkIf cfg.enable {
 
     programs.hyprland = {
       enable = true;

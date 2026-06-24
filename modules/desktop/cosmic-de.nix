@@ -1,19 +1,22 @@
 {
   config,
-  inputs,
+  # inputs,
   lib,
   ...
 }:
+let
+  cfg = config.custom.modules.desktop.cosmic;
+in
 {
   imports = [
     # inputs.cosmic.nixosModules.default
   ];
 
-  options = {
-    cosmic.enable = lib.mkEnableOption "enables cosmic";
+  options.custom.modules.desktop.cosmic = {
+    enable = lib.mkEnableOption "Enable cosmic";
   };
 
-  config = lib.mkIf config.cosmic.enable {
+  config = lib.mkIf cfg.enable {
 
     # nix.settings = {
     #   substituters = [ "https://cosmic.cachix.org/" ];

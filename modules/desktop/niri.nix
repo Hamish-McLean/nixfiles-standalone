@@ -4,20 +4,29 @@
   lib,
   ...
 }:
+with lib;
+let
+  cfg = config.custom.modules.desktop.niri;
+in
 {
   imports = [ inputs.niri.nixosModules.niri ];
 
-  options = {
-    niri.enable = lib.mkEnableOption "enable niri";
+  options.custom.modules.desktop.niri = {
+    enable = mkEnableOption "Enable niri";
+    uwsm = mkOption {
+      default = true;
+      description = "Manage Niri with UWSM";
+      type = types.bool;
+    };
   };
 
-  config = lib.mkIf config.niri.enable {
+  config = mkIf cfg.enable {
     programs.niri = {
       enable = true;
     };
     programs.uwsm = {
-      enable = lib.mkDefault true;
-      waylandCompositors = {
+      enable = cfg.uwsm;
+      waylandCompositors = mkIf cfg.uwsm {
         niri = {
           prettyName = "Niri";
           comment = "Niri compositor managed by UWSM";

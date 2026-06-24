@@ -4,12 +4,15 @@
   pkgs,
   ...
 }:
+let
+  cfg = config.custom.modules.desktop.sddm;
+in
 {
-  options = {
-    sddm.enable = lib.mkEnableOption "enables sddm";
+  options.custom.modules.desktop.sddm = {
+    enable = lib.mkEnableOption "Enable sddm";
   };
 
-  config = lib.mkIf config.sddm.enable {
+  config = lib.mkIf cfg.enable {
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;
