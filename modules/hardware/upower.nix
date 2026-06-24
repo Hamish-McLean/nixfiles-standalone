@@ -8,12 +8,15 @@
   lib,
   ...
 }:
+let
+  cfg = config.custom.modules.hardware.upower;
+in
 {
-  options = {
-    upower.enable = lib.mkEnableOption "enable upower";
+  options.custom.modules.hardware.upower = {
+    enable = lib.mkEnableOption "Enable upower";
   };
 
-  config = lib.mkIf config.upower.enable {
+  config = lib.mkIf cfg.enable {
     services.upower = {
       enable = true;
     };

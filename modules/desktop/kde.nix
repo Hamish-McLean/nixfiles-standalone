@@ -4,12 +4,15 @@
   pkgs,
   ...
 }:
+let
+  cfg = config.custom.modules.desktop.kde;
+in
 {
-  options = {
-    kde.enable = lib.mkEnableOption "enables kde";
+  options.custom.modules.desktop.kde = {
+    enable = lib.mkEnableOption "Enable KDE";
   };
 
-  config = lib.mkIf config.kde.enable {
+  config = lib.mkIf cfg.enable {
     services = {
       xserver.enable = true;
       displayManager.sddm.wayland.enable = true; # displayManager.sddm.enable = true;

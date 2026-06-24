@@ -5,7 +5,6 @@
 {
   pkgs,
   inputs,
-  username,
   ...
 }:
 
@@ -16,13 +15,16 @@
     # ./lenny-fingerprint.nix
     ../common.nix
     ../../modules
+    ../../profiles
     ../../users/cycad.nix
     ../../users/fallo.nix
   ];
 
-  # Custom options
-  gaming.enable = true;
-  upower.enable = true;
+  custom.profiles = {
+    core.enable = true;
+    desktop.enable = true;
+    laptop.enable = true;
+  };
 
   # Bootloader
   boot.loader = {
@@ -47,13 +49,9 @@
       whitelist = [ ];
     };
   };
-  # opensnitch.enable = true; # OpenSnitch application firewall
 
   # Configure console keymap
   # console.keyMap = "uk"; # Now managed in common file
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Bluetooth
   hardware.bluetooth = {
@@ -84,18 +82,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Desktop environments
-  sddm.enable = false;
-  tuigreet.enable = false;
-  regreet.enable = false;
-  cosmic.enable = false;
-  gnome.enable = false;
-  hyprland.enable = false;
-  kde.enable = false;
-  niri.enable = true;
-  noctalia-greet.enable = true;
-  qt_config.enable = false;
 
   services.tailscale.enable = true;
 

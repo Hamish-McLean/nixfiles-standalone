@@ -5,6 +5,8 @@
   ...
 }:
 let
+  cfg = config.custom.modules.desktop.tuigreet;
+
   # Catppuccin Mocha - Sapphire Focused
   sapphire = "#74c7ec"; # Primary Accent
   sky = "#89dceb"; # Secondary Accent
@@ -14,11 +16,11 @@ let
   surface2 = "#585b70"; # Button/UI Elements
 in
 {
-  options = {
-    tuigreet.enable = lib.mkEnableOption "enable tuigreet";
+  options.custom.modules.desktop.tuigreet = {
+    enable = lib.mkEnableOption "Enable tuigreet";
   };
 
-  config = lib.mkIf config.tuigreet.enable {
+  config = lib.mkIf cfg.enable {
     services.greetd = {
       enable = true;
       settings.default_session = {

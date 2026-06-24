@@ -4,12 +4,15 @@
   config,
   ...
 }:
+let
+  cfg = config.custom.modules.desktop.gnome;
+in
 {
-  options = {
-    gnome.enable = lib.mkEnableOption "enables gnome";
+  options.custom.modules.desktop.gnome = {
+    enable = lib.mkEnableOption "Enable gnome";
   };
 
-  config = lib.mkIf config.gnome.enable {
+  config = lib.mkIf cfg.enable {
     services = {
       desktopManager.gnome.enable = true;
       xserver = {

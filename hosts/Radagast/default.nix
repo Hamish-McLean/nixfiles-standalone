@@ -11,19 +11,21 @@
     ./disko-system.nix
     ./hardware-configuration.nix
     ../../modules
+    ../../profiles
     ../../users/cycad.nix
     ../../users/fallo.nix
   ];
 
-  # Custom options
-  gaming.enable = true;
-  niri.enable = true;
-  noctalia-greet.enable = true;
-  hyprland.enable = false;
-  printing.enable = true;
-  sddm.enable = false;
-  sunshine.enable = true;
-  wake-on-lan.enable = true;
+  custom.profiles = {
+    core.enable = true;
+    desktop.enable = true;
+    gaming.enable = true;
+  };
+
+  custom.modules = {
+    desktop.sunshine.enable = true;
+    network.wakeOnLan.enable = true;
+  };
 
   boot.loader.limine.enable = true;
   boot.plymouth.enable = true;
@@ -65,7 +67,6 @@
   # Network
   networking = {
     hostName = "Radagast";
-    interfaces.enp24s0.wakeOnLan.enable = true;
     networkmanager.enable = true;
     stevenblack = {
       # Local ad and content blocker
@@ -77,8 +78,6 @@
       whitelist = [ ];
     };
   };
-  # opensnitch.enable = true; # OpenSnitch application firewall
-  # libredns.enable = true;
   services.tailscale.enable = true;
 
   # Bluetooth
@@ -98,8 +97,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  services.printing.enable = true; # CUPS printing
 
   programs.firefox.enable = true;
   programs.kdeconnect.enable = true;

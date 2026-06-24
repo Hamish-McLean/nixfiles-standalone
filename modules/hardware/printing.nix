@@ -4,12 +4,15 @@
   pkgs,
   ...
 }:
+let
+  cfg = config.custom.modules.hardware.printing;
+in
 {
-  options = {
-    printing.enable = lib.mkEnableOption "enable printing";
+  options.custom.modules.hardware.printing = {
+    enable = lib.mkEnableOption "Enable printing";
   };
 
-  config = lib.mkIf config.printing.enable {
+  config = lib.mkIf cfg.enable {
     services.printing = {
       enable = true;
       drivers = with pkgs; [

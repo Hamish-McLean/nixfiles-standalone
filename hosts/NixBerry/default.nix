@@ -12,8 +12,15 @@
     inputs.vscode-server.nixosModules.default
     inputs.vscodium-server.nixosModules.default
     ../common.nix
+    ../../modules
+    ../../profiles
     ../../users/cycad.nix
   ];
+
+  custom.profiles = {
+    core.enable = true;
+    server.enable = true;
+  };
 
   # Bootloader
   boot = {
@@ -54,4 +61,3 @@
   hardware.enableRedistributableFirmware = true;
   system.stateVersion = "23.11";
 }
-

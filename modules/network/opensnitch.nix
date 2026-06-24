@@ -10,12 +10,15 @@
   lib,
   ...
 }:
+let
+  cfg = config.custom.modules.network.opensnitch;
+in
 {
-  options = {
-    opensnitch.enable = lib.mkEnableOption "enable opensnitch";
+  options.custom.modules.network.opensnitch = {
+    enable = lib.mkEnableOption "Enable opensnitch";
   };
 
-  config = lib.mkIf config.opensnitch.enable {
+  config = lib.mkIf cfg.enable {
     services.opensnitch = {
       enable = true;
       settings = {

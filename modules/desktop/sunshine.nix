@@ -3,12 +3,15 @@
   lib,
   ...
 }:
+let
+  cfg = config.custom.modules.desktop.sunshine;
+in
 {
-  options = {
-    sunshine.enable = lib.mkEnableOption "enable sunshine";
+  options.custom.modules.desktop.sunshine = {
+    enable = lib.mkEnableOption "Enable sunshine";
   };
 
-  config = lib.mkIf config.sunshine.enable {
+  config = lib.mkIf cfg.enable {
     services.sunshine = {
       enable = true;
       autoStart = true;

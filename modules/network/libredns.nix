@@ -4,17 +4,21 @@
   lib,
   ...
 }:
+with lib;
+let
+  cfg = config.custom.modules.network.libredns;
+in
 {
-  options = {
-    libredns.enable = lib.mkEnableOption "enables libredns";
+  options.custom.modules.network.libredns = {
+    enable = mkEnableOption "Enable libredns";
   };
 
-  config = lib.mkIf config.libredns.enable {
+  config = mkIf cfg.enable {
     networking.nameservers = lib.mkDefault [
       "116.202.176.26#noads.libredns.gr"
       "2a01:4f8:1c0c:8274::1#noads.libredns.gr"
     ];
-    services.resolved = lib.mkDefault {
+    services.resolved = mkDefault {
       enable = true;
       settings.Resolve = {
         DNSOverTLS = "opportunistic"; # "opportunistic" will attempt to encrypt DNS

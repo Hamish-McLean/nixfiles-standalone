@@ -7,7 +7,7 @@
     ./hyprland.nix
     ./kde.nix
     ./niri.nix
-    ./noctalia-greet.nix
+    ./noctalia-greeter.nix
     ./qt.nix
     ./regreet.nix
     ./sddm.nix
