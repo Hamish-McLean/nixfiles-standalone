@@ -12,8 +12,8 @@ in
     inputs.catppuccin.nixosModules.catppuccin
   ];
 
-  options = {
-    custom.modules.core.catppuccin.enable = lib.mkEnableOption "Enable catppuccin";
+  options.custom.modules.core.catppuccin = {
+    enable = lib.mkEnableOption "Enable catppuccin";
   };
 
   config = lib.mkIf cfg.enable {

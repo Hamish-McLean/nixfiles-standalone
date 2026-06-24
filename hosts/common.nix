@@ -22,10 +22,6 @@
   console.useXkbConfig = true;
   console.keyMap = lib.mkDefault "uk";
 
-  # Network
-  # DNS
-  libredns.enable = lib.mkDefault true;
-
   # Firewall
   networking = {
     firewall.enable = true;

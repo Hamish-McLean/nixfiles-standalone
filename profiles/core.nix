@@ -11,8 +11,9 @@ in
   imports = [ ../modules ];
 
   options.custom.profiles.core = {
-    enable = mkEnableOption "Enable core modules";
+    enable = mkEnableOption "Enable core profile";
   };
+
   config = mkIf cfg.enable {
     custom.modules.core = {
       catppuccin.enable = mkDefault true;

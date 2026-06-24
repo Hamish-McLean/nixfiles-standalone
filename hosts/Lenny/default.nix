@@ -22,10 +22,11 @@
 
   custom.profiles = {
     core.enable = true;
+    desktop.enable = true;
+    laptop.enable = true;
   };
 
   # Custom options
-  gaming.enable = true;
   upower.enable = true;
 
   # Bootloader

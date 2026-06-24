@@ -8,8 +8,8 @@ let
   cfg = config.custom.modules.shell.nh;
 in
 {
-  options = {
-    custom.modules.shell.nh.enable = lib.mkEnableOption "enable nh";
+  options.custom.modules.shell.nh = {
+    enable = lib.mkEnableOption "Enable nh";
   };
 
   config = lib.mkIf cfg.enable {

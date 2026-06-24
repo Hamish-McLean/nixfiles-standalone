@@ -18,17 +18,21 @@
 
   custom.profiles = {
     core.enable = true;
+    desktop.enable = true;
+    gaming.enable = true;
+  };
+
+  custom.modules = {
+    network.wakeOnLan.enable = true;
   };
 
   # Custom options
-  gaming.enable = true;
   niri.enable = true;
   noctalia-greet.enable = true;
   hyprland.enable = false;
   printing.enable = true;
   sddm.enable = false;
   sunshine.enable = true;
-  wake-on-lan.enable = true;
 
   boot.loader.limine.enable = true;
   boot.plymouth.enable = true;
@@ -70,7 +74,6 @@
   # Network
   networking = {
     hostName = "Radagast";
-    interfaces.enp24s0.wakeOnLan.enable = true;
     networkmanager.enable = true;
     stevenblack = {
       # Local ad and content blocker
@@ -83,7 +86,6 @@
     };
   };
   # opensnitch.enable = true; # OpenSnitch application firewall
-  # libredns.enable = true;
   services.tailscale.enable = true;
 
   # Bluetooth

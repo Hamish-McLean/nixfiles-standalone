@@ -19,6 +19,7 @@
 
   custom.profiles = {
     core.enable = true;
+    server.enable = true;
   };
 
   # Bootloader

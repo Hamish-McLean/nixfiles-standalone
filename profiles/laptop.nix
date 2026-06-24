@@ -1,4 +1,22 @@
-{ ... }:
 {
+  config,
+  lib,
+  ...
+}:
+with lib;
+let
+  cfg = config.custom.profiles.laptop;
+in
+{
+  imports = [ ../modules ];
 
+  options.custom.profiles.laptop = {
+    enable = mkEnableOption "Enable laptop profile";
+  };
+
+  config = mkIf cfg.enable {
+    # custom.modules.desktop = {
+    #
+    # };
+  };
 }

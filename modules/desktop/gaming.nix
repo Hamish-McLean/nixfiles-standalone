@@ -5,12 +5,29 @@
   pkgs,
   ...
 }:
+let
+  cfg = config.custom.modules.desktop.gaming;
+in
 {
-  options = {
-    gaming.enable = lib.mkEnableOption "enable gaming";
+  options.custom.modules.desktop.gaming = {
+    enable = lib.mkEnableOption "Enable gaming";
   };
 
-  config = lib.mkIf config.gaming.enable {
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      bottles
+      lutris
+      protonup-qt
+      winetricks
+      wineWow64Packages.wayland
+    ];
+
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    hardware.steam-hardware.enable = true; # For steam controller
+
     programs.steam = {
       enable = true;
       extraPackages = with pkgs; [
@@ -27,25 +44,15 @@
     programs.gamemode.enable = true;
     programs.gamescope.enable = true;
     programs.xwayland.enable = true;
+
     services.xserver = {
       enable = true;
       # extraConfig = pkgs.libGL.config;
     };
-    hardware.graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
+
     xdg.portal = {
       enable = true;
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
-    hardware.steam-hardware.enable = true; # For steam controller
-    environment.systemPackages = with pkgs; [
-      bottles
-      lutris
-      protonup-qt
-      winetricks
-      wineWow64Packages.wayland
-    ];
   };
 }
