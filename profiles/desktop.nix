@@ -21,6 +21,7 @@ in
     };
 
     custom.modules.hardware = mkDefault {
+      ddc.enable = true;
       printing.enable = true;
     };
 

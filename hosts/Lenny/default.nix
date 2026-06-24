@@ -13,7 +13,6 @@
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
     # ./lenny-fingerprint.nix
-    ../common.nix
     ../../modules
     ../../profiles
     ../../users/cycad.nix
@@ -49,9 +48,6 @@
       whitelist = [ ];
     };
   };
-
-  # Configure console keymap
-  # console.keyMap = "uk"; # Now managed in common file
 
   # Bluetooth
   hardware.bluetooth = {

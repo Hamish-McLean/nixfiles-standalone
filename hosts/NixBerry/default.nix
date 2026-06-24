@@ -11,7 +11,6 @@
     inputs.nixos-hardware.nixosModules.raspberry-pi-4
     inputs.vscode-server.nixosModules.default
     inputs.vscodium-server.nixosModules.default
-    ../common.nix
     ../../modules
     ../../profiles
     ../../users/cycad.nix

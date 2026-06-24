@@ -15,12 +15,25 @@ in
   };
 
   config = mkIf cfg.enable {
-    custom.modules.core = {
-      catppuccin.enable = mkDefault true;
+    custom.modules.core = mkDefault {
+      catppuccin.enable = true;
+      locale.enable = true;
+      nix.enable = true;
+      sops.enable = false;
     };
 
-    custom.modules.shell = {
-      nh.enable = mkDefault true;
+    custom.modules.hardware = mkDefault {
+      keyboard.enable = true;
+    };
+
+    custom.modules.network = mkDefault {
+      firewall.enable = true;
+    };
+
+    custom.modules.shell = mkDefault {
+      nh.enable = true;
+      packages.enable = true;
+      sudo-rs.enable = false;
     };
   };
 }
