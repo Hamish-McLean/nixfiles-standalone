@@ -13,7 +13,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    nix.settings = mkDefault {
+    nix.settings = {
       accept-flake-config = true;
       auto-optimise-store = true; # deduplicates nix store when files are added; adds overhead
       experimental-features = [
