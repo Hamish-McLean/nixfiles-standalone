@@ -21,13 +21,26 @@ in
     };
 
     custom.modules.hardware = mkDefault {
+      audio.enable = true;
+      bluetooth.enable = true;
       ddc.enable = true;
       printing.enable = true;
     };
 
     custom.modules.network = mkDefault {
-      opensnitch.enable = false;
       libredns.enable = true;
+      opensnitch.enable = false;
+      stevenblack.enable = true;
     };
+
+    boot.plymouth.enable = mkDefault true;
+
+    programs = {
+      firefox.enable = mkDefault true;
+      kdeconnect.enable = mkDefault true;
+      ladybird.enable = mkDefault true;
+    };
+
+    virtualisation.waydroid.enable = true;
   };
 }

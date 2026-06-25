@@ -31,9 +31,14 @@ in
     };
 
     custom.modules.shell = mkDefault {
+      comma.enable = true;
       nh.enable = true;
       packages.enable = true;
       sudo-rs.enable = false;
     };
+
+    networking.networkmanager.enable = true;
+
+    services.tailscale.enable = true;
   };
 }

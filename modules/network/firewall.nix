@@ -13,9 +13,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    networking = mkDefault {
-      firewall.enable = true;
-      nftables.enable = true;
+    networking = {
+      firewall.enable = mkDefault true;
+      nftables.enable = mkDefault true;
     };
   };
 }

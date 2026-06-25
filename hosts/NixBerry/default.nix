@@ -44,12 +44,10 @@
   networking = {
     hostName = "NixBerry";
     wireless.enable = false; # Enables wireless support via wpa_supplicant.
-    networkmanager.enable = true; # Didn't work...
   };
 
   services = {
     openssh.enable = true;
-    tailscale.enable = true;
     # VSCode
     vscode-server.enable = true;
     vscodium-server.enable = true;
