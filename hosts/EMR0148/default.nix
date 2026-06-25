@@ -9,7 +9,6 @@
 
 {
   imports = [
-    ../common.nix
     nixos-wsl.nixosModules.wsl
     vscode-server.nixosModules.default
   ];

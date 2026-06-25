@@ -6,7 +6,6 @@
 }:
 {
   imports = [
-    ../common.nix
     ./disko-data.nix
     ./disko-system.nix
     ./hardware-configuration.nix
@@ -109,7 +108,6 @@
       # firefox
       libreoffice
       obsidian
-      rustdesk
     ]
   );
 
