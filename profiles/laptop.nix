@@ -22,5 +22,7 @@ in
     custom.modules.hardware = {
       upower.enable = mkDefault true;
     };
+
+    services.power-profiles-daemon.enable = mkDefault true;
   };
 }

@@ -3,17 +3,18 @@
   lib,
   ...
 }:
+with lib;
 let
   cfg = config.custom.modules.hardware.keyboard;
 in
 {
   options.custom.modules.hardware.keyboard = {
-    enable = lib.mkEnableOption "Enable keyboard settings";
+    enable = mkEnableOption "Enable keyboard settings";
   };
 
-  config = lib.mkIf cfg.enable {
-    services.xserver.xkb.layout = lib.mkDefault "gb";
+  config = mkIf cfg.enable {
+    services.xserver.xkb.layout = mkDefault "gb";
     console.useXkbConfig = true;
-    console.keyMap = lib.mkDefault "uk";
+    console.keyMap = mkDefault "uk";
   };
 }

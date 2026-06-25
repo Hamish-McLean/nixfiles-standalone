@@ -28,110 +28,28 @@
   # Bootloader
   boot.loader = {
     limine.enable = true;
-    # systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-  boot.plymouth.enable = true;
 
-  # Network
-  networking = {
-    hostName = "Lenny"; # Define your hostname.
-    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networkmanager.enable = true; # Enable networking
-    stevenblack = {
-      # Local ad and content blocker
-      enable = true;
-      block = [
-        "fakenews"
-        "gambling"
-      ]; # Options: "fakenews" "gambling" "porn" "social"
-      whitelist = [ ];
-    };
-  };
+  networking.hostName = "Lenny";
 
-  # Bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-
-  # Enable sound with pipewire.
-  # sound.enable = true; depracated?
-  security.rtkit.enable = true;
-  services.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
   services.dbus.enable = true;
-
-  services.power-profiles-daemon.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  services.tailscale.enable = true;
-
   # Flatpaks
   services.flatpak.enable = true;
 
-  programs = {
-    firefox = {
-      enable = true;
-      # package = pkgs.firefox;
-      # nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
-    };
-    kdeconnect.enable = true;
-    # fish.enable = true;
-  };
-
-  # Android
-  users.users.cycad.extraGroups = [ "adbusers" ];
-
-  virtualisation.waydroid.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    # firefoxpwa
-    playerctl
-    plymouth # Boot screen with catppuccin themes
-  ];
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.cycad = {
-  #   isNormalUser = true;
-  #   description = "Hamish McLean";
-  #   extraGroups = [
-  #     "input"
-  #     "networkmanager"
-  #     "wheel"
-  #   ];
-  #   shell = pkgs.fish;
-  # };
   users.users.cycad.packages = (
     with pkgs;
     [
       # bitwarden-desktop # Requires insecure electron package in nixpkgs 26.05
-      firefox
       fractal
-      gtop
-      libreoffice
       # modrinth-app
       mumble
-      obsidian
       oh-my-git
-      rustdesk
       # stremio
-      syncthing
-      telegram-desktop
       warp-terminal
     ]
   );

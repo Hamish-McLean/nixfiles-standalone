@@ -14,7 +14,7 @@ in
 
   config = mkIf cfg.enable {
     security.sudo.enable = mkDefault false;
-    security.sudo-rs = mkDefault {
+    security.sudo-rs = {
       enable = true;
     };
   };

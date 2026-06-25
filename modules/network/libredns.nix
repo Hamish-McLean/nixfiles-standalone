@@ -14,11 +14,11 @@ in
   };
 
   config = mkIf cfg.enable {
-    networking.nameservers = lib.mkDefault [
+    networking.nameservers = [
       "116.202.176.26#noads.libredns.gr"
       "2a01:4f8:1c0c:8274::1#noads.libredns.gr"
     ];
-    services.resolved = mkDefault {
+    services.resolved = {
       enable = true;
       settings.Resolve = {
         DNSOverTLS = "opportunistic"; # "opportunistic" will attempt to encrypt DNS

@@ -16,7 +16,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    sops = mkDefault {
+    sops = {
       defaultSopsFile = ../secrets/secrets.yaml;
       defaultSopsFormat = "yaml";
       age.keyFile = "/home/cycad/.config/sops/age/keys.txt";

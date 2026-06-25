@@ -16,7 +16,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = [ pkgs.ddcutil ];
 
-    services.ddccontrol = mkDefault {
+    services.ddccontrol = {
       enable = true;
       package = pkgs.ddcutil-service;
     };
