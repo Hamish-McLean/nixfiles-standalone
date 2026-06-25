@@ -1,20 +1,6 @@
 # Radagast
+{ ... }:
 {
-  config,
-  pkgs,
-  ...
-}:
-{
-  imports = [
-    ./disko-data.nix
-    ./disko-system.nix
-    ./hardware-configuration.nix
-    ../../modules
-    ../../profiles
-    ../../users/cycad.nix
-    ../../users/fallo.nix
-  ];
-
   custom.profiles = {
     core.enable = true;
     desktop.enable = true;

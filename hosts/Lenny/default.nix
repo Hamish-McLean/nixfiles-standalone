@@ -4,21 +4,10 @@
 
 {
   pkgs,
-  inputs,
   ...
 }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
-    # ./lenny-fingerprint.nix
-    ../../modules
-    ../../profiles
-    ../../users/cycad.nix
-    ../../users/fallo.nix
-  ];
-
   custom.profiles = {
     core.enable = true;
     desktop.enable = true;
@@ -27,8 +16,8 @@
 
   # Bootloader
   boot.loader = {
-    limine.enable = true;
     efi.canTouchEfiVariables = true;
+    limine.enable = true;
   };
 
   networking.hostName = "Lenny";

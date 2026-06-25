@@ -3,6 +3,7 @@
 
   inputs = {
     # Nix
+    flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
@@ -54,50 +55,14 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      nixpkgs-unstable,
-      ...
-    }@inputs:
+    inputs@{ flake-parts, ... }:
 
-    let
-      nixosSystem =
-        system: hostname: username:
-        nixpkgs.lib.nixosSystem {
-          # pkgs = pkgs;
-          inherit system;
-          specialArgs = {
-            inherit inputs; # pkgs unstablePkgs;
-            customArgs = { inherit system hostname username; };
-          };
-          modules = [
-            {
-              nixpkgs.config.allowUnfree = true;
-              # Overlay to make unstable packages available as `pkgs.unstable.<package>`
-              nixpkgs.overlays = [
-                (final: prev: {
-                  unstable = import nixpkgs-unstable {
-                    inherit system;
-                    config.allowUnfree = true; # Allow unfree in unstable pkgs as well
-                  };
-                })
-              ];
-            }
-            ./hosts/${hostname}
-          ];
-        };
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
 
-    in
-    {
-      nixosConfigurations = {
-        # NixOS hosts
-        Radagast = nixosSystem "x86_64-linux" "Radagast" "cycad";
-        Lenny = nixosSystem "x86_64-linux" "Lenny" "cycad";
-        NixBerry = nixosSystem "aarch64-linux" "NixBerry" "cycad";
-
-        # WSL hosts
-        Roger = nixosSystem "x86_64-linux" "Roger" "cycad";
-        EMR0148 = nixosSystem "x86_64-linux" "EMR0148" "cycad";
-      };
+      imports = [ ./parts ];
     };
 }

@@ -1,21 +1,9 @@
 {
-  # config,
-  inputs,
   pkgs,
-  # lib,
   ...
 }:
 
 {
-  imports = [
-    inputs.nixos-hardware.nixosModules.raspberry-pi-4
-    inputs.vscode-server.nixosModules.default
-    inputs.vscodium-server.nixosModules.default
-    ../../modules
-    ../../profiles
-    ../../users/cycad.nix
-  ];
-
   custom.profiles = {
     core.enable = true;
     server.enable = true;
@@ -43,14 +31,14 @@
 
   networking = {
     hostName = "NixBerry";
-    wireless.enable = false; # Enables wireless support via wpa_supplicant.
+    # wireless.enable = false; # Enables wireless support via wpa_supplicant.
   };
 
   services = {
     openssh.enable = true;
     # VSCode
-    vscode-server.enable = true;
-    vscodium-server.enable = true;
+    # vscode-server.enable = true;
+    # vscodium-server.enable = true;
   };
 
   virtualisation.docker.enable = true; # Docker running as root

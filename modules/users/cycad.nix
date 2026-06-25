@@ -1,9 +1,19 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
+with lib;
+let
+  cfg = config.custom.modules.users.cycad;
+in
 {
-  config = {
+  options.custom.modules.users.cycad = {
+    enable = mkEnableOption "Enable user cycad";
+  };
+
+  config = lib.mkIf cfg.enable {
     users.users.cycad = {
       isNormalUser = true;
       description = "Hamish McLean";

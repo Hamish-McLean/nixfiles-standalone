@@ -7,5 +7,6 @@
     ./network
     ./services
     ./shell
+    ./users
   ];
 }

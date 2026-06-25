@@ -37,6 +37,10 @@ in
       sudo-rs.enable = false;
     };
 
+    custom.modules.users = mkDefault {
+      cycad.enable = true;
+    };
+
     networking.networkmanager.enable = true;
 
     services.tailscale.enable = true;
