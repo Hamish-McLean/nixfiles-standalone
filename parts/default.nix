@@ -1,7 +1,6 @@
-{ ... }:
-{
+_: {
   imports = [
-    # ./devshells.nix
+    ./devshells.nix
     ./hosts.nix
     ./overlays.nix
   ];

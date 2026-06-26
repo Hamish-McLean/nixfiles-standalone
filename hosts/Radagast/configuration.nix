@@ -1,6 +1,5 @@
 # Radagast
-{ ... }:
-{
+_: {
   custom.profiles = {
     core.enable = true;
     desktop.enable = true;

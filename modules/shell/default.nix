@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   imports = [
     ./comma.nix
     ./nh.nix

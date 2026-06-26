@@ -30,18 +30,15 @@
   # Flatpaks
   services.flatpak.enable = true;
 
-  users.users.cycad.packages = (
-    with pkgs;
-    [
-      # bitwarden-desktop # Requires insecure electron package in nixpkgs 26.05
-      fractal
-      # modrinth-app
-      mumble
-      oh-my-git
-      # stremio
-      warp-terminal
-    ]
-  );
+  users.users.cycad.packages = with pkgs; [
+    # bitwarden-desktop # Requires insecure electron package in nixpkgs 26.05
+    fractal
+    # modrinth-app
+    mumble
+    oh-my-git
+    # stremio
+    warp-terminal
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

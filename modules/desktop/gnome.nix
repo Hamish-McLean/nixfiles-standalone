@@ -49,14 +49,11 @@ in
       gnome-terminal.enable = true;
     };
 
-    environment.systemPackages = (
-      with pkgs;
-      [
-        gnome-tweaks
-        gnome-terminal
-        gnomeExtensions.gsconnect
-        nautilus
-      ]
-    );
+    environment.systemPackages = with pkgs; [
+      gnome-tweaks
+      gnome-terminal
+      gnomeExtensions.gsconnect
+      nautilus
+    ];
   };
 }

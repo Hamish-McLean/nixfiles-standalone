@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   imports = [
     ./cosmic-de.nix
     ./gaming.nix
