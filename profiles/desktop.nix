@@ -41,6 +41,8 @@ in
       ladybird.enable = mkDefault true;
     };
 
+    services.flatpak.enable = mkDefault true;
+
     virtualisation.waydroid.enable = true;
   };
 }

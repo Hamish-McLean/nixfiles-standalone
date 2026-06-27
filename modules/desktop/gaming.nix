@@ -5,15 +5,16 @@
   pkgs,
   ...
 }:
+with lib;
 let
   cfg = config.custom.modules.desktop.gaming;
 in
 {
   options.custom.modules.desktop.gaming = {
-    enable = lib.mkEnableOption "Enable gaming";
+    enable = mkEnableOption "Enable gaming";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       bottles
       lutris
@@ -51,7 +52,7 @@ in
     };
 
     xdg.portal = {
-      enable = true;
+      enable = mkDefault true;
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
   };
