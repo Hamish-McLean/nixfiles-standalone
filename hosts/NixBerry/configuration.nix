@@ -18,7 +18,9 @@
       HATs and camera modules may require the custom kernel in
       `inputs.nixos-hardware.nixosModules.raspberry-pi-4`, but this can be slow to compile.
     */
-    kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
+    # kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
+    kernel.sysctl."-vm.mmap_rnd_bits" = 24;
+    kernelPackages = pkgs.linuxPackages;
     initrd.availableKernelModules = [
       "xhci_pci"
       "usbhid"
