@@ -25,7 +25,13 @@ in
       user = "greeter";
     };
 
+    systemd.services.greetd.restartIfChanged = false;
+
     users.users.greeter = {
+      extraGroups = [
+        "video"
+        "render"
+      ]; # Crucial for Wayland greeter compositors
       group = "greeter";
       isSystemUser = true;
     };
