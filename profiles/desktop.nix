@@ -28,7 +28,7 @@ in
     };
 
     custom.modules.network = mkDefault {
-      libredns.enable = true;
+      # libredns.enable = true;
       opensnitch.enable = false;
       stevenblack.enable = true;
     };
