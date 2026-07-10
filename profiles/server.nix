@@ -15,8 +15,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    # custom.modules.services = {
-    #
-    # };
+    custom.modules.services = mkDefault {
+      mosh.enable = true;
+    };
   };
 }
