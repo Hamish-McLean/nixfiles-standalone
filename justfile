@@ -20,6 +20,10 @@ diff:
 fmt:
     nix fmt
 
+# Inspect flake
+inspect:
+  nix-inspect --expr 'builtins.getFlake "{{justfile_directory()}}"'
+
 # Switch to new NixOS configuration
 switch:
     nh os switch .
