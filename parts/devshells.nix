@@ -3,10 +3,11 @@ _: {
     devShells.default = pkgs.mkShell {
       name = "nixfiles";
 
-      packages = [
-        pkgs.just
-        pkgs.statix # Helpful linting suggestions
-        pkgs.nvd # For generation diffs
+      packages = with pkgs; [
+        just
+        nix-inspect
+        nvd # For generation diffs
+        statix # Helpful linting suggestions
       ];
 
       shellHook = ''
