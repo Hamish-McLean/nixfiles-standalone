@@ -18,7 +18,19 @@ in
     programs.noctalia-greeter = {
       enable = true;
       # greeter-args = "";
+      settings = {
+        appearance = {
+          hide_logo = true;
+          password_style = "random";
+          scheme = "Synced";
+        };
+        output.name = "DP-2";
+        session.default = "Niri (UWSM)";
+        user.default = "cycad";
+      };
     };
+
+    services.accounts-daemon.enable = true; # For profile picture
 
     services.greetd.settings.default = {
       # command = "";
