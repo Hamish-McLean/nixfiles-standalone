@@ -7,7 +7,10 @@ _: {
   };
 
   custom.modules = {
-    desktop.sunshine.enable = true;
+    desktop = {
+      sunshine.enable = true;
+      umbriel.enable = true;
+    };
     hardware.nvidiaGTX1080.enable = true;
     network.wakeOnLan.enable = true;
   };

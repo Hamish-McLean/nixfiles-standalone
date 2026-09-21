@@ -12,5 +12,6 @@ _: {
     ./sddm.nix
     ./sunshine.nix
     ./tuigreet.nix
+    ./umbriel.nix
   ];
 }
