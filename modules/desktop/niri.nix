@@ -41,14 +41,17 @@ in
     xdg.portal = {
       enable = mkDefault true;
       extraPortals = [
-        pkgs.xdg-desktop-portal-gnome
         pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-wlr
       ];
       # Tells portals to fall back to GNOME/GTK interfaces under Niri
-      config.common.default = [
-        "gnome"
-        "gtk"
-      ];
+      config = {
+        common.default = [ "gtk" ];
+        niri.default = [
+          "wlr"
+          "gtk"
+        ];
+      };
     };
   };
 }
