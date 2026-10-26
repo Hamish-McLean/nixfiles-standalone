@@ -35,6 +35,7 @@ in
       graphics = {
         enable = true;
         enable32Bit = true;
+        extraPackages = [ config.hardware.nvidia.package ];
       };
       nvidia = {
         modesetting.enable = true;

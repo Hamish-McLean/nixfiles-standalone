@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -15,7 +16,15 @@ in
     services.sunshine = {
       enable = true;
       autoStart = true;
+      capSysAdmin = false; # Enable for escalated privileges
       openFirewall = true;
+      package = pkgs.sunshine.override {
+        cudaSupport = true;
+        # cudaPackages = pkgs.cudaPackages;
+      };
     };
+
+    hardware.uinput.enable = true; # For input events
+    users.users.cycad.extraGroups = [ "uinput" ];
   };
 }
