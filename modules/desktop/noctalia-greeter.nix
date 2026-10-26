@@ -38,6 +38,7 @@ in
     };
 
     systemd.services.greetd.restartIfChanged = false;
+    systemd.services.greetd.stopIfChanged = false;
 
     users.users.greeter = {
       extraGroups = [
