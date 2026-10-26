@@ -8,6 +8,7 @@ _: {
 
   custom.modules = {
     desktop = {
+      noctalia-drive-health.enable = true;
       sunshine.enable = true;
       umbriel.enable = true;
     };

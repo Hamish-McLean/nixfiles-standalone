@@ -6,6 +6,7 @@ _: {
     ./hyprland.nix
     ./kde.nix
     ./niri.nix
+    ./noctalia-drive-health.nix
     ./noctalia-greeter.nix
     ./qt.nix
     ./regreet.nix
